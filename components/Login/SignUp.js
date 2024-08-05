@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
 import { login } from '../reducers/user';
 
-import styles from '../styles/SignUp.module.css';
+import styles from '../../styles/SignUp.module.css';
 
 function SignUp() {
     const [firstName, setFirstName] = useState('');

@@ -1,4 +1,4 @@
-import styles from '../styles/Search.module.css';
+import styles from '../../styles/Search.module.css';
 
 function Search() {
   return (

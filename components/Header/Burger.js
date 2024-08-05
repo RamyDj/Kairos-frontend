@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/BurgerMenu.module.css';
+import styles from '../../styles/BurgerMenu.module.css';
 
 function Burger(){
     const [open, setOpen] = useState(false);

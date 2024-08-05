@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
 import { login } from '../../reducers/user';
 
-import styles from '../styles/SignIn.module.css';
+import styles from '../../styles/SignIn.module.css';
 
 function SignIn() {
     const [mail, setMail] = useState('')
