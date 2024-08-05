@@ -19,6 +19,9 @@ function SignIn() {
     // Page Redirection 
     const router = useRouter();
 
+    //Check to verify the URL of the previous page
+    const referrer = document.referrer
+
     const handleSubmit = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             // const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8}$/; => // Tout decomenter une fois les test ok
@@ -29,7 +32,7 @@ function SignIn() {
     
         // Validate password and email format
         if (!EMAIL_REGEX.test(mail)) {
-            setEmailError(true);
+            setEmailError(true)
             return;
         }
         /*if (!PASSWORD_REGEX.test(password)) {
@@ -43,7 +46,11 @@ function SignIn() {
             }).then(response => response.json())
             .then(data => {
                 data.result && dispatch(login({token: data.token, email: data.user.email }))
-                router.push('/dashboard')
+                if (referrer.includes('/result')) {
+                    router.push('/result')
+                } else {
+                    router.push('/dashboard')
+                }
             })
       }
     return (

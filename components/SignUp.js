@@ -23,6 +23,9 @@ function SignUp() {
     // Page Redirection 
     const router = useRouter();
 
+    //Check to verify the URL of the previous page
+    const referrer = document.referrer
+
     const handleSubmit = () => {
             const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 //const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8}$/; // => Tout décomenter une fois les test ok
@@ -34,7 +37,7 @@ function SignUp() {
         
             // Check if password matches passwordConfirm and validate password format + email 
             if (!EMAIL_REGEX.test(mail)) {
-                setEmailError(true);
+                setEmailError(true)
             }
             /*if (!PASSWORD_REGEX.test(password)) {
                 setPasswordFormatError(true);
@@ -54,7 +57,12 @@ function SignUp() {
             }).then(response => response.json())
             .then(data => {
                 data.result && dispatch(login({ token: data.token, firstName: data.user.firstname, lastName: data.user.name, email: data.user.email }));
-                router.push('/dashboard')
+
+                if (referrer.includes('/result')) {
+                    router.push('/result')
+                } else {
+                    router.push('/dashboard')
+                }
             })
       }
 
@@ -66,13 +74,13 @@ function SignUp() {
             className={styles.input} 
             onChange={(e) => setFirstName(e.target.value)} 
             value={firstName} 
-            placeholder="Nom" />
+            placeholder="Prénom" />
           <input 
             type="text" 
             className={styles.input} 
             onChange={(e) => setLastName(e.target.value)} 
             value={lastName} 
-            placeholder="Prenom" />
+            placeholder="Nom" />
           <input 
             type="email" 
             className={styles.input} 
