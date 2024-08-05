@@ -24,7 +24,7 @@ function SignUp() {
     const router = useRouter();
 
     //Check to verify the URL of the previous page
-    const referrer = document.referrer
+    const referrer = router.referrer
 
     const handleSubmit = () => {
             const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,7 +105,7 @@ function SignUp() {
             placeholder="Confirmation de mot de passe" />
             {passwordError && <p style={{ color: 'red' }}>La confirmation et le mot de passe doivent être identique</p>}
 
-          <button className={styles.button} onClick={() => handleSubmit()}>Je me connecte</button>
+          <button className={styles.button} onClick={() => handleSubmit()}>Je m'inscris</button>
         </div>
       );
 }

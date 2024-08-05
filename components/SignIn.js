@@ -20,7 +20,7 @@ function SignIn() {
     const router = useRouter();
 
     //Check to verify the URL of the previous page
-    const referrer = document.referrer
+    const referrer = router.referrer
 
     const handleSubmit = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,8 +56,8 @@ function SignIn() {
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Connexion</h3>
-            <div className={styles.buttonGoogle}>
-                <button className={styles.button}>Se connecter avec Google</button> 
+            <div className={styles.Google}>
+                <button className={styles.buttonGoogle}>Se connecter avec Google</button> 
             </div>
             <div className={styles.connexion}>
                 <input 

@@ -3,29 +3,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 4px;
+    width: 30%;
+    height: fit-content;
+    background-color: aqua;
   }
   .button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 200px;
-    background-color: rgb(185, 69, 69);
-    color: black;
-    border-radius: 40px;
-    font-weight: 600;
+    height: 40px;
+    width: 40%;
+    background-color: #163050;
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
     cursor: pointer;
     border: none;
   }
   
   .input {
     height: 40px;
-    width: 200px;
+    width: 80%;
     margin-bottom: 15px;
-    border: 1px rgb(114, 131, 148) solid;
+    border: 1px #163050 solid;
     border-radius: 3px;
-    background-color: transparent;
+    background-color: #E6E6E6;
     font-weight: 600;
     padding: 10px;
   }
