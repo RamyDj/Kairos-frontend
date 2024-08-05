@@ -1,0 +1,35 @@
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8E9A9;
+    width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.container h1{
+    color: #163050;
+    width: 100px;
+}
+
+.container img{
+    width: 100px;
+}
+
+.connection{
+    width: 100px;
+    height: 30px;
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: #163050;
+    color: white;
+    border: 0;
+}
+
+.link{
+    color: inherit;
+    text-decoration: none;
+}

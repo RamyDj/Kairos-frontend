@@ -1,13 +1,16 @@
 import styles from '../styles/Home.module.css';
+import Head from 'next/head';
+import Search from './Search';
+import About from './About';
+
 
 function Home() {
   return (
     <div>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Search />
       </main>
+      <About />
     </div>
   );
 }

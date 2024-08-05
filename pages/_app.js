@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import user from '../reducers/user';
+import Header from '../components/Header';
 
 const store = configureStore({
   reducer: { user },
@@ -14,7 +15,7 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Kairos</title>
       </Head>
-      {/* <Header /> */}
+      {<Header />}
       <Component {...pageProps} />
     </Provider>
   );
