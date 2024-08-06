@@ -6,8 +6,6 @@ function MailConfirm(){
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
-    const handleSubmit = () => {
-    
     // Page Redirection 
     const router = useRouter();
 
@@ -15,10 +13,11 @@ function MailConfirm(){
     const dispatch = useDispatch();
     const search = useSelector((state) => state.search.value);
 
+    const handleSubmit = () => {
      fetch(`${url}/users/token`)
      .then(response => response.json())
      .then(data => {
-       data.result && dispatch(login({token: data.token}))})
+       data.result && dispatch(login({token}))})
 
        if (Object.keys(search).length === 0) {
         router.push('/dashboard');
