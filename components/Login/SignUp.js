@@ -58,11 +58,11 @@ function SignUp() {
             .then(data => {
                 data.result && dispatch(login({ token: data.token, firstName: data.user.firstname, lastName: data.user.name, email: data.user.email }));
 
-                if (referrer.includes('/result')) {
-                    router.push('/result')
-                } else {
-                    router.push('/dashboard')
-                }
+              if (referrer === ('/result')) {
+                router.push('/result')
+              } else {
+                  router.push('/dashboard')
+              }
             })
       }
 
