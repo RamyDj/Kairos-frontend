@@ -10,14 +10,16 @@ const store = configureStore({
 });
 
 function App({ Component, pageProps }) {
-  return (
-    <Provider store={store}>
-      <Head>
-        <title>Kairos</title>
-      </Head>
-      {<Header />}
-      <Component {...pageProps} />
-    </Provider>
+  return (      
+
+      <Provider store={store}>
+        <Head>
+          <title>Kairos</title>
+        </Head>
+        {<Header />}
+        <Component {...pageProps} />
+      </Provider>
+
   );
 }
 
