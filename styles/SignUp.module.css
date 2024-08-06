@@ -4,9 +4,11 @@
     justify-content: center;
     align-items: center;
     margin: 4px;
-    width: 30%;
-    height: fit-content;
-    background-color: aqua;
+    width: 20%;
+    height: 60vh;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
   }
   .button {
     display: flex;
@@ -21,7 +23,23 @@
     cursor: pointer;
     border: none;
   }
-  
+  .name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px;
+    width: 80%;
+  }
+  .inputName{
+    height: 40px;
+    width: 48%;
+    margin-bottom: 15px;
+    border: 1px #163050 solid;
+    border-radius: 3px;
+    background-color: #E6E6E6;
+    font-weight: 600;
+    padding: 10px;
+  }
   .input {
     height: 40px;
     width: 80%;
@@ -31,5 +49,11 @@
     background-color: #E6E6E6;
     font-weight: 600;
     padding: 10px;
+  }
+
+  .error{
+    color: red;
+    margin-top: 0;
+    font-size: small;
   }
 

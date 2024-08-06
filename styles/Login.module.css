@@ -1,7 +1,10 @@
 .container {
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    background: linear-gradient(to bottom, #F8E9A9, #ffffff);
+    border-bottom-left-radius: 25vw;
+    border-bottom-right-radius: 25vw;
   }

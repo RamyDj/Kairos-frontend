@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
-import { login } from '../reducers/user';
+import { login } from '../../reducers/user';
 
 import styles from '../../styles/SignUp.module.css';
 
@@ -69,25 +69,27 @@ function SignUp() {
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Inscription</h3>
-          <input 
-            type="text" 
-            className={styles.input} 
-            onChange={(e) => setFirstName(e.target.value)} 
-            value={firstName} 
-            placeholder="Prénom" />
-          <input 
-            type="text" 
-            className={styles.input} 
-            onChange={(e) => setLastName(e.target.value)} 
-            value={lastName} 
-            placeholder="Nom" />
+          <div className={styles.name}>
+            <input 
+              type="text" 
+              className={styles.inputName} 
+              onChange={(e) => setFirstName(e.target.value)} 
+              value={firstName} 
+              placeholder="Prénom" />
+            <input 
+              type="text" 
+              className={styles.inputName} 
+              onChange={(e) => setLastName(e.target.value)} 
+              value={lastName} 
+              placeholder="Nom" />
+          </div>
           <input 
             type="email" 
             className={styles.input} 
             onChange={(e) => setMail(e.target.value)} 
             value={mail} 
             placeholder="Adresse mail" />
-            {emailError && <p style={{ color: 'red' }}>Email non conforme</p>}
+            {emailError && <p className={styles.error}>Email non conforme</p>}
 
           <input 
             type="password" 
@@ -95,7 +97,7 @@ function SignUp() {
             onChange={(e) => setPassword(e.target.value)} 
             value={password} 
             placeholder="Mot de passe" />
-            {/* {passwordFormatError && <p style={{ color: 'red' }}>Le mot de passe doit contenir 8 caractères, dont au moins une majuscule et un chiffre</p>} */}
+            {/* {passwordFormatError && <p className={styles.error}>Le mot de passe doit contenir 8 caractères, dont au moins une majuscule et un chiffre</p>} */}
 
           <input 
             type="password" 
@@ -103,7 +105,7 @@ function SignUp() {
             onChange={(e) => setPasswordConfirm(e.target.value)} 
             value={passwordConfirm} 
             placeholder="Confirmation de mot de passe" />
-            {passwordError && <p style={{ color: 'red' }}>La confirmation et le mot de passe doivent être identique</p>}
+            {passwordError && <p className={styles.error}>La confirmation et le mot de passe doivent être identique</p>}
 
           <button className={styles.button} onClick={() => handleSubmit()}>Je m'inscris</button>
         </div>

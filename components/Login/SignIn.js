@@ -56,7 +56,7 @@ function SignIn() {
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Connexion</h3>
-            <div className={styles.Google}>
+            <div className={styles.divGoogle}>
                 <button className={styles.buttonGoogle}>Se connecter avec Google</button> 
             </div>
             <div className={styles.connexion}>
@@ -66,7 +66,7 @@ function SignIn() {
                     onChange={(e) => setMail(e.target.value)} 
                     value={mail} 
                     placeholder="Adresse mail" />
-                    {emailError && <p style={{ color: 'red' }}>Email non conforme</p>}
+                    {emailError && <p className={styles.error}>Email non conforme</p>}
                 <input 
                     type="password" 
                     className={styles.input} 
