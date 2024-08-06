@@ -53,11 +53,14 @@ function SignIn() {
                 }
             })
       }
+      const handleGoogleLogin = () => {
+        window.location.href = 'http://localhost:3000/users/auth/google';
+      };
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Connexion</h3>
             <div className={styles.divGoogle}>
-                <button className={styles.buttonGoogle}>Se connecter avec Google</button> 
+                <button className={styles.buttonGoogle} onClick={handleGoogleLogin}>Se connecter avec Google</button> 
             </div>
             <div className={styles.connexion}>
                 <input 
