@@ -2,29 +2,41 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
 import { login } from '../../reducers/user';
+import { Modal, Button } from 'antd';
 
 import styles from '../../styles/SignUp.module.css';
 
 function SignUp() {
+    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
+    //Form
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('')
+
+    //Error
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
+    const [emailAlreadyUse, setEmailAlreadyUse] = useState(false)
 
-    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+    //Modal
+    const [emailCheckModalVisible, setEmailCheckModalVisible] = useState(false);
+
+    const showEmailCheckModal = () => {
+      setEmailCheckModalVisible(true);
+    }
+    const handleOk = () => {
+        setEmailCheckModalVisible(false);
+    }
 
     //Reducer 
     const dispatch = useDispatch();
 
     // Page Redirection 
     const router = useRouter();
-
-    //Check to verify the URL of the previous page
-    const referrer = router.referrer
 
     const handleSubmit = () => {
             const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,6 +45,7 @@ function SignUp() {
             // Reset errors 
             setEmailError(false);
             setPasswordError(false);
+            setEmailAlreadyUse(false)
                 //setPasswordFormatError(false);
         
             // Check if password matches passwordConfirm and validate password format + email 
@@ -56,15 +69,14 @@ function SignUp() {
             body: JSON.stringify({ firstname: firstName, name: lastName, email: mail, password }),
             }).then(response => response.json())
             .then(data => {
-                data.result && dispatch(login({ token: data.token, firstName: data.user.firstname, lastName: data.user.name, email: data.user.email }));
-
-              if (referrer === ('/result')) {
-                router.push('/result')
-              } else {
-                  router.push('/dashboard')
-              }
+              if (data.result) {
+                showEmailCheckModal();
+                dispatch(login({firstName, lastName, email: mail}))
+              } else{
+                setEmailAlreadyUse(true)
+              }                       
             })
-      }
+    }
 
     return (
         <div className={styles.container}>
@@ -90,6 +102,7 @@ function SignUp() {
             value={mail} 
             placeholder="Adresse mail" />
             {emailError && <p className={styles.error}>Email non conforme</p>}
+            {emailAlreadyUse && <p className={styles.error}>Email déjà utilisé</p>}
 
           <input 
             type="password" 
@@ -108,6 +121,21 @@ function SignUp() {
             {passwordError && <p className={styles.error}>La confirmation et le mot de passe doivent être identique</p>}
 
           <button className={styles.button} onClick={() => handleSubmit()}>Je m'inscris</button>
+
+          <Modal
+                title="Validation requise"
+                visible={emailCheckModalVisible}
+                centered
+                closable={false}
+                footer={[
+                  <Button key="ok" type="primary" onClick={handleOk}>
+                      OK
+                  </Button>
+              ]}
+              
+          >
+            <p>Veuillez valider votre email avant de continuer.</p>
+          </Modal>
         </div>
       );
 }
