@@ -1,6 +1,8 @@
 import styles from '../../styles/Search.module.css';
+import React, { useState } from 'react';
 
 function Search() {
+  
   return (
     <div className={styles.container}>
         <div className={styles.searchContainer}>
@@ -10,11 +12,11 @@ function Search() {
         <div className={styles.formContainer}>
         <div className={styles.form}>
             <div className={styles.activities}>
-                <label for="activity">Activité</label>
+                <label htmlFor="activity">Activité</label>
                 <input type='text' id='activity' placeholder='Coiffeur,Boulanger...'></input>
             </div>
             <div className={styles.locations}>
-                <label for="location">Secteur Geographique</label>
+                <label htmlFor="location">Secteur Geographique</label>
                 <input type='text' id='location' placeholder='France entière,ville, région...'></input>
             </div>
             
