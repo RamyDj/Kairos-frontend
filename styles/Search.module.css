@@ -59,11 +59,13 @@
 }
 
 .form input{
-    width: 20vw;
-    height: 5vh;
+    width: 25vw;
+    height: 6vh;
     border: 1px solid #163050;
     border-radius: 10px;
     background-color: #f3f3f3;
+    padding-left: 0.5vw;
+    outline: none;
 }
 
 .btnSearch{

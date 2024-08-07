@@ -1,8 +1,8 @@
 const brutCode=[
-     {
-      "NAF rév. 2, 2008 - Niveau 5 - Liste des sous-classes": "Code",
-      "Column2": "Libellé"
-     },
+    //  {
+    //   "NAF rév. 2, 2008 - Niveau 5 - Liste des sous-classes": "Code",
+    //   "Column2": "Libellé"
+    //  },
      {
       "NAF rév. 2, 2008 - Niveau 5 - Liste des sous-classes": "01.11Z",
       "Column2": "Culture de céréales (à l'exception du riz), de légumineuses et de graines oléagineuses"

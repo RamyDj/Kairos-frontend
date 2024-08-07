@@ -4,17 +4,28 @@ import {useDispatch, useSelector} from 'react-redux'
 import { addSearch } from '../../reducers/search';
 import { convertStringApeToCode } from '../../modules/convertingFunctions';
 import {AutoComplete} from 'antd'
+import codesAndStringsApe from '../../datas/codesApeActivities'
 
 function Search() {
     const [activityTypped, setActivityTypped] = useState('')
     const [locationTypped, setLocationTypped] = useState('')
 
-    const url = process.env.NEXT_PUBLIC_BACK_ADRESS
-
+    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
+
+    // Variables engistrant les listes nécessaires à l'affichage des propositions d'autocomplete
+
+    const activitiesList = codesAndStringsApe.map(e=>{
+        return e = {value : e.description}
+    })
+    const [locationsList, setLocationsList]=useState([])
+
+
+    // Fonction appelée quand on clique sur recherche
 
     const searchClick = ()=>{
         const codeApe = convertStringApeToCode(activityTypped)
+        if (!codeApe){return}
         const locationWithoutSpace = locationTypped.replace(/ /g, '-')
         fetch(`${url}/searches/newSearch/${locationWithoutSpace}/${codeApe}`)
         .then(response=>response.json())
@@ -23,6 +34,24 @@ function Search() {
             dispatch(addSearch(data.result))
 
         })
+    }
+
+    // Fonction appelée en tapant du texte dans 'Secteur Géographique' pour fetch api adresse et remplir la liste de l'autoComplete
+
+    const locationTextChange = async (locationSearched)=>{
+        if(locationSearched.length<3){
+            setLocationsList([])
+            return}
+        else {
+            const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${locationSearched}&type=municipality`)
+            const data = await response.json()
+            setLocationsList(data.features.map((e, i)=>{
+                return {value : e.properties.name,
+                    id : i,
+                    }
+            }))
+        }
+     
     }
 
   return (
@@ -35,11 +64,31 @@ function Search() {
         <div className={styles.form}>
             <div className={styles.activities}>
                 <label for="activity">Activité</label>
-                <input type='text' id='activity' placeholder='Coiffeur,Boulanger...' onChange={(e)=>setActivityTypped(e.target.value)} value={activityTypped}></input>
+                <AutoComplete
+                    options={activitiesList}
+                    style={{width : "25vw", height :"6vh"}}
+                    filterOption="true"
+                    onSelect={item=>setActivityTypped(item)}
+                >
+                    <input type='text' id='activity' placeholder="Restauration traditionelle, Coiffure..." onChange={(e)=>setActivityTypped(e.target.value)} value={activityTypped}></input>
+                </AutoComplete>
             </div>
             <div className={styles.locations}>
                 <label for="location">Secteur Geographique</label>
-                <input type='text' id='location' placeholder='France entière,ville, région...' onChange={(e)=>setLocationTypped(e.target.value)} value={locationTypped}></input>
+                <AutoComplete
+                    options={locationsList}
+                    style={{width : "25vw", height :"6vh"}}
+                    filterOption="true"
+                    onSelect={item=>setLocationTypped(item)}
+                 
+                >
+                    <input type='text' id='location' placeholder='Ville' 
+                    onChange={(e)=>{
+                        setLocationTypped(e.target.value)
+                        locationTextChange(e.target.value)
+                        }} 
+                    value={locationTypped}></input>
+                </AutoComplete>
             </div>
             
         </div>
