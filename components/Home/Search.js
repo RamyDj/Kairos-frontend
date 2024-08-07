@@ -1,6 +1,9 @@
 import styles from '../../styles/Search.module.css';
 import {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { addSearch } from '../../reducers/search';
 import { convertStringApeToCode } from '../../modules/convertingFunctions';
+import {AutoComplete} from 'antd'
 
 function Search() {
     const [activityTypped, setActivityTypped] = useState('')
@@ -8,11 +11,18 @@ function Search() {
 
     const url = process.env.NEXT_PUBLIC_BACK_ADRESS
 
+    const dispatch = useDispatch()
+
     const searchClick = ()=>{
         const codeApe = convertStringApeToCode(activityTypped)
-        fetch(`${url}/searches/newSearch/${locationTypped}/${codeApe}`)
+        const locationWithoutSpace = locationTypped.replace(/ /g, '-')
+        fetch(`${url}/searches/newSearch/${locationWithoutSpace}/${codeApe}`)
         .then(response=>response.json())
-        .then(data=> console.log(data))
+        .then(data=> {
+            console.log(data)
+            dispatch(addSearch(data.result))
+
+        })
     }
 
   return (
