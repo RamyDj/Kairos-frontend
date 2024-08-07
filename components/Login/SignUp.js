@@ -10,9 +10,9 @@ function SignUp() {
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
     //Form
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [mail, setMail] = useState('')
+    const [firstname, setFirstname] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEMail] = useState('')
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
@@ -66,12 +66,12 @@ function SignUp() {
             fetch(`${url}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstname: firstName, name: lastName, email: mail, password }),
+            body: JSON.stringify({ firstname, name, email, password }),
             }).then(response => response.json())
             .then(data => {
               if (data.result) {
                 showEmailCheckModal();
-                dispatch(login({firstName, lastName, email: mail}))
+                dispatch(login({firstname, name, email}))
               } else{
                 setEmailAlreadyUse(true)
               }                       
@@ -85,20 +85,20 @@ function SignUp() {
             <input 
               type="text" 
               className={styles.inputName} 
-              onChange={(e) => setFirstName(e.target.value)} 
+              onChange={(e) => setFirstname(e.target.value)} 
               value={firstName} 
               placeholder="Prénom" />
             <input 
               type="text" 
               className={styles.inputName} 
-              onChange={(e) => setLastName(e.target.value)} 
+              onChange={(e) => setName(e.target.value)} 
               value={lastName} 
               placeholder="Nom" />
           </div>
           <input 
             type="email" 
             className={styles.input} 
-            onChange={(e) => setMail(e.target.value)} 
+            onChange={(e) => setEMail(e.target.value)} 
             value={mail} 
             placeholder="Adresse mail" />
             {emailError && <p className={styles.error}>Email non conforme</p>}
@@ -134,7 +134,7 @@ function SignUp() {
               ]}
               
           >
-            <p>Veuillez valider votre email avant de continuer.</p>
+            <p>Vous allez recevoir un email. Veuillez le confirmer avant de continuer.</p>
           </Modal>
         </div>
       );

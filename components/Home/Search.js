@@ -9,7 +9,7 @@ function Search() {
     const [activityTypped, setActivityTypped] = useState('')
     const [locationTypped, setLocationTypped] = useState('')
 
-    const url = process.env.NEXT_PUBLIC_BACK_ADRESS
+    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
     const dispatch = useDispatch()
 
