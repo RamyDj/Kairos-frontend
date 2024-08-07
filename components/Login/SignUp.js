@@ -10,9 +10,9 @@ function SignUp() {
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
     //Form
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [mail, setMail] = useState('')
+    const [firstname, setFirstname] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
@@ -49,7 +49,7 @@ function SignUp() {
                 //setPasswordFormatError(false);
         
             // Check if password matches passwordConfirm and validate password format + email 
-            if (!EMAIL_REGEX.test(mail)) {
+            if (!EMAIL_REGEX.test(email)) {
                 setEmailError(true)
             }
             /*if (!PASSWORD_REGEX.test(password)) {
@@ -66,12 +66,12 @@ function SignUp() {
             fetch(`${url}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstname: firstName, name: lastName, email: mail, password }),
+            body: JSON.stringify({ firstname: firstname, name: name, email: email, password }),
             }).then(response => response.json())
             .then(data => {
               if (data.result) {
                 showEmailCheckModal();
-                dispatch(login({firstName, lastName, email: mail}))
+                dispatch(login({firstname, name, email}))
               } else{
                 setEmailAlreadyUse(true)
               }                       
@@ -85,21 +85,21 @@ function SignUp() {
             <input 
               type="text" 
               className={styles.inputName} 
-              onChange={(e) => setFirstName(e.target.value)} 
-              value={firstName} 
+              onChange={(e) => setFirstname(e.target.value)} 
+              value={firstname} 
               placeholder="Prénom" />
             <input 
               type="text" 
               className={styles.inputName} 
-              onChange={(e) => setLastName(e.target.value)} 
-              value={lastName} 
+              onChange={(e) => setName(e.target.value)} 
+              value={name} 
               placeholder="Nom" />
           </div>
           <input 
             type="email" 
             className={styles.input} 
-            onChange={(e) => setMail(e.target.value)} 
-            value={mail} 
+            onChange={(e) => setEmail(e.target.value)} 
+            value={email} 
             placeholder="Adresse mail" />
             {emailError && <p className={styles.error}>Email non conforme</p>}
             {emailAlreadyUse && <p className={styles.error}>Email déjà utilisé</p>}
@@ -124,7 +124,7 @@ function SignUp() {
 
           <Modal
                 title="Validation requise"
-                visible={emailCheckModalVisible}
+                open={emailCheckModalVisible}
                 centered
                 closable={false}
                 footer={[

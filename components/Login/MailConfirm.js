@@ -17,7 +17,8 @@ function MailConfirm(){
      fetch(`${url}/users/token`)
      .then(response => response.json())
      .then(data => {
-       data.result && dispatch(login({token}))})
+      console.log(data)
+       data.result && dispatch(login({token: data.token}))})
 
        if (Object.keys(search).length === 0) {
         router.push('/dashboard');
