@@ -66,7 +66,7 @@ function SignUp() {
             fetch(`${url}/users/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstname: firstname, name: name, email: email, password }),
+            body: JSON.stringify({ firstname, name, email, password }),
             }).then(response => response.json())
             .then(data => {
               if (data.result) {
@@ -134,7 +134,7 @@ function SignUp() {
               ]}
               
           >
-            <p>Veuillez valider votre email avant de continuer.</p>
+            <p>Vous allez recevoir un email. Veuillez le confirmer avant de continuer.</p>
           </Modal>
         </div>
       );

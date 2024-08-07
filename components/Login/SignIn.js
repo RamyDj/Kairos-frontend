@@ -42,7 +42,7 @@ function SignIn() {
             fetch(`${url}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, password }),
+            body: JSON.stringify({ email, password }),
             }).then(response => response.json())
             .then(data => {
                 data.result && dispatch(login({token: data.token, email: data.user.email }))
