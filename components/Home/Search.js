@@ -3,21 +3,32 @@ import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addSearch } from '../../reducers/search';
 import { convertStringApeToCode } from '../../modules/convertingFunctions';
-import {AutoComplete} from 'antd'
+import {AutoComplete, Modal} from 'antd'
+import {CloseOutlined} from '@ant-design/icons'
 import codesAndStringsApe from '../../datas/codesApeActivities'
+import ActivitiesTable from './ActivitiesTable';
 
 function Search() {
-    const [activityTypped, setActivityTypped] = useState('')
-    const [locationTypped, setLocationTypped] = useState('')
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
+
+    // États reliés aux inputs
+
+    const [activityTypped, setActivityTypped] = useState('')
+    const [locationTypped, setLocationTypped] = useState('')
+
+    // État/condition pour afficher proposition d'aide et modale
+
+    const [isHelpVisible, setIsHelpVisible] = useState(false)
+    const [isModalVisible, setIsModalVisible] = useState(false)
 
     // Variables engistrant les listes nécessaires à l'affichage des propositions d'autocomplete
 
     const activitiesList = codesAndStringsApe.map(e=>{
         return e = {value : e.description}
     })
+
     const [locationsList, setLocationsList]=useState([])
 
 
@@ -51,16 +62,36 @@ function Search() {
                     }
             }))
         }
-     
     }
+
+    // Fonction pour proposer d'afficher le tableau des activités si les caractères tapés ne correspondent à aucune d'entre elles
+    
+    const checkListMatch = (characters)=>{
+        if (characters.length<3){return setIsHelpVisible(false)}
+        const regex = new RegExp(characters, 'i')
+        const isThereAnyMatch = activitiesList.some(e=> regex.test(e.value))
+        console.log(isThereAnyMatch)
+        !isThereAnyMatch ? setIsHelpVisible(true) : setIsHelpVisible(false)
+    }
+
+    let helpStyle
+    isHelpVisible ? helpStyle={display : "flex"} : helpStyle={display : "none"}
 
   return (
     <div className={styles.container}>
         <div className={styles.searchContainer}>
-            <p className={styles.text}>“C’est quoi le statut d’auto-entrepeneur? Est ce que j’ai des concurrents?”<br></br>
+            <p className={styles.text}>“C’est quoi le statut d’entrepreneur individuel? Est ce que j’ai des concurrents?”<br></br>
                 <span className={styles.title}>Difficile de se lancer?<br></br>KAIROS est fait pour vous!</span></p>
         </div>
         <div className={styles.formContainer}>
+        <Modal 
+			onCancel={()=>setIsModalVisible(false)} 
+			open={isModalVisible} 
+			footer={null} styles={{ content: { backgroundColor: 'white' } }} 
+			closeIcon={<CloseOutlined style={{color: "black"}}/>}
+		>
+			<ActivitiesTable/>
+		</Modal>
         <div className={styles.form}>
             <div className={styles.activities}>
                 <label for="activity">Activité</label>
@@ -70,11 +101,18 @@ function Search() {
                     filterOption="true"
                     onSelect={item=>setActivityTypped(item)}
                 >
-                    <input type='text' id='activity' placeholder="Restauration traditionelle, Coiffure..." onChange={(e)=>setActivityTypped(e.target.value)} value={activityTypped}></input>
+                    <input type='text' id='activity' placeholder="Restauration traditionelle, Coiffure..." onChange={(e)=>{
+                        checkListMatch(e.target.value)
+                        setActivityTypped(e.target.value)
+                        }} 
+                        value={activityTypped}></input>
                 </AutoComplete>
+                <p className={styles.helpSentence} style={helpStyle}>
+                    Aucune activité trouvée. <span className={styles.buttonHelp} onClick={()=>setIsModalVisible(true)}>Besoin d'aide ?</span>
+                </p>
             </div>
             <div className={styles.locations}>
-                <label for="location">Secteur Geographique</label>
+                <label for="location">Commune</label>
                 <AutoComplete
                     options={locationsList}
                     style={{width : "25vw", height :"6vh"}}
@@ -82,7 +120,7 @@ function Search() {
                     onSelect={item=>setLocationTypped(item)}
                  
                 >
-                    <input type='text' id='location' placeholder='Ville' 
+                    <input type='text' id='location' placeholder='Ville...' 
                     onChange={(e)=>{
                         setLocationTypped(e.target.value)
                         locationTextChange(e.target.value)
