@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from '../../styles/Header.module.css';
 import Burger from './Burger';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 function Header() {
 
@@ -21,6 +23,12 @@ function Header() {
     //         </div>
     //     );
     // }
+    const router = useRouter();
+    const user = useSelector((state) => state.user.value)
+
+    const handleSignupClick = () => {
+        router.push('/login')
+    }
 
     return (
         <header className={styles.header}>
@@ -29,11 +37,21 @@ function Header() {
                 <h1 id='title'>KAIROS</h1>
                 {/* {userSection} */}
                 <div className={styles.buttonsContainer}>
-                           <a className={styles.link} href='' id='AboutLink'>A Propos</a>
-                            <p>Bienvenue YAAAAAAA</p>
-                <Burger/>
+                <a className={styles.link} href='' id='AboutLink'>A Propos</a>
+                <div className={styles.headerRight}>
+                {user.token === null ? (
+                    <button onClick={() => handleSignupClick()} className={styles.signUpBtn}
+                    >Se connecter</button>
+                ) : (
+                    <>
+                    <p>Bienvenue {user.firstname} {user.name}</p>
+                    <Burger />
+                    </>
+                    )
+                }
+                    </div>
                 </div>
-                
+
             </div>
         </header >
     );

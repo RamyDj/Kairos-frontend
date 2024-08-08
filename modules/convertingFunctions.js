@@ -62,6 +62,7 @@ const toWGS = (x, y) => {
 
   function convertStringApeToCode(string){
     const searchedElement = codesApe.filter(e=>e.description == string)
+    if (searchedElement.length==0){return false}
     return searchedElement[0].code
   }
 
