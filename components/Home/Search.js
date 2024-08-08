@@ -79,6 +79,10 @@ function Search() {
     let helpStyle
     isHelpVisible ? helpStyle={display : "flex"} : helpStyle={display : "none"}
 
+    function getTableActivity(activity){
+        setActivityTypped(activity)
+    }
+
   return (
     <div className={styles.container}>
         <div className={styles.searchContainer}>
@@ -92,7 +96,7 @@ function Search() {
 			footer={null} styles={{ content: { backgroundColor: 'white' } }} 
 			closeIcon={<CloseOutlined style={{color: "black"}}/>}
 		>
-			<ActivitiesTable/>
+			<ActivitiesTable getTableActivity={getTableActivity}/>
 		</Modal>
         <div className={styles.form}>
             <div className={styles.activities}>

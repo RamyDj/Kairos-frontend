@@ -1,3 +1,42 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 600px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+}
+
+
 .tableContainer{
     width: 100%;
+    margin-top: 15px;
+}
+
+.activity{
+    border: 1px solid rgb(27	48	78	);
+    border-radius: 10px;
+    padding: 10px;
+    color :rgb(27	48	78	);
+}
+
+.activity:hover{
+    background-color: rgb(27	48	78	);
+    color:white;
+    cursor: pointer;
+}
+
+.header{
+    color: rgb(27	48	78	);
+    font-weight: 900;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+.backMenu{
+    color: rgb(27	48	78	);
+    font-weight: 900;
+    cursor: pointer;
 }
