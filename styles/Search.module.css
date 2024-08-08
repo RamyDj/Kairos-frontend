@@ -59,11 +59,13 @@
 }
 
 .form input{
-    width: 20vw;
-    height: 5vh;
+    width: 25vw;
+    height: 6vh;
     border: 1px solid #163050;
     border-radius: 10px;
     background-color: #f3f3f3;
+    padding-left: 0.5vw;
+    outline: none;
 }
 
 .btnSearch{
@@ -74,4 +76,27 @@
     background-color: #163050;
     color: white;
     border: 0;
+    cursor: pointer;
+}
+
+.helpSentence{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    border : 1px solid black;
+    font-size: 13.5px;
+    font-weight: 50;
+    width : 25vw;
+    height: 6vh;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 12.5vh;
+}
+
+.buttonHelp{
+    color:#00397f;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
 }

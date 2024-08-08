@@ -16,9 +16,11 @@ function Result() {
       
     return (
         <div>
-            <div className={styles.score}>
-                <p>Score:<span>20/100</span></p>
-                <span>Indice de viabilité</span>
+            <div className={styles.scoreContainer}>
+                <p className={styles.score}
+                >Score :<span> 20/100</span></p>
+                <span className={styles.index}
+                >Indice de viabilité</span>
             </div>
             <div className={styles.firstResult}>
                 <div className={styles.mapResult}>
