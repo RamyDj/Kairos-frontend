@@ -1,30 +1,32 @@
 import { useDispatch, useSelector} from 'react-redux';
 import { useRouter } from 'next/router';
-import { login } from '../../reducers/user';
+import { userInfo } from '../../reducers/user';
 
 function MailConfirm(){
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
-
     // Page Redirection 
     const router = useRouter();
 
     //Reducer 
     const dispatch = useDispatch();
     const search = useSelector((state) => state.search.value);
+    console.log(search)
 
     const handleSubmit = () => {
      fetch(`${url}/users/token`)
      .then(response => response.json())
      .then(data => {
-      console.log(data)
-       data.result && dispatch(login({token: data.token}))})
+       data.result && dispatch(userInfo({token: data.token})) 
+          
+          if (Object.keys(search).length === 0) {
+            router.push('/dashboard');
+          } else {
+            router.push('/result');
+          }  
+        }
+     )
 
-       if (Object.keys(search).length === 0) {
-        router.push('/dashboard');
-      } else {
-        router.push('/result');
-      }  
     }
     return(
         <div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
-import { login } from '../../reducers/user';
+import { userInfo } from '../../reducers/user';
 import { Modal, Button } from 'antd';
 
 import styles from '../../styles/SignUp.module.css';
@@ -71,7 +71,7 @@ function SignUp() {
             .then(data => {
               if (data.result) {
                 showEmailCheckModal();
-                dispatch(login({firstname, name, email}))
+                dispatch(userInfo({firstname, name, email}))
               } else{
                 setEmailAlreadyUse(true)
               }                       
@@ -134,7 +134,7 @@ function SignUp() {
               ]}
               
           >
-            <p>Vous allez recevoir un email. Veuillez le confirmer avant de continuer.</p>
+            <p>Vous allez recevoir un email contenant un lien de confirmation. Vous avez une heure pour le valider. Une fois confirmé, vous pourrez accéder à votre espace.</p>
           </Modal>
         </div>
       );
