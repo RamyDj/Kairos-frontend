@@ -7,11 +7,13 @@ import {AutoComplete, Modal} from 'antd'
 import {CloseOutlined} from '@ant-design/icons'
 import codesAndStringsApe from '../../datas/codesApeActivities'
 import ActivitiesTable from './ActivitiesTable';
+import {useRouter} from 'next/router'
 
 function Search() {
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
+    const router = useRouter()
 
     // États reliés aux inputs
 
@@ -43,7 +45,7 @@ function Search() {
         .then(data=> {
             console.log(data)
             dispatch(addSearch(data.result))
-
+            router.push('/result')
         })
     }
 

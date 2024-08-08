@@ -76,6 +76,7 @@
     background-color: #163050;
     color: white;
     border: 0;
+    cursor: pointer;
 }
 
 .helpSentence{
