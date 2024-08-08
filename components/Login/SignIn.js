@@ -6,7 +6,7 @@ import { login } from '../../reducers/user';
 import styles from '../../styles/SignIn.module.css';
 
 function SignIn() {
-    const [mail, setMail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
@@ -31,7 +31,7 @@ function SignIn() {
             // setPasswordFormatError(false);
     
         // Validate password and email format
-        if (!EMAIL_REGEX.test(mail)) {
+        if (!EMAIL_REGEX.test(email)) {
             setEmailError(true)
             return;
         }
@@ -42,7 +42,7 @@ function SignIn() {
             fetch(`${url}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: mail, password }),
+            body: JSON.stringify({ email, password }),
             }).then(response => response.json())
             .then(data => {
                 data.result && dispatch(login({token: data.token, email: data.user.email }))
@@ -66,8 +66,8 @@ function SignIn() {
                 <input 
                     type="email" 
                     className={styles.input} 
-                    onChange={(e) => setMail(e.target.value)} 
-                    value={mail} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    value={email} 
                     placeholder="Adresse mail" />
                     {emailError && <p className={styles.error}>Email non conforme</p>}
                 <input 
