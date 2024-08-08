@@ -34,11 +34,11 @@ function Search() {
         <div className={styles.formContainer}>
         <div className={styles.form}>
             <div className={styles.activities}>
-                <label for="activity">Activité</label>
+                <label HTMLFor="activity">Activité</label>
                 <input type='text' id='activity' placeholder='Coiffeur,Boulanger...' onChange={(e)=>setActivityTypped(e.target.value)} value={activityTypped}></input>
             </div>
             <div className={styles.locations}>
-                <label for="location">Secteur Geographique</label>
+                <label htmlFor="location">Secteur Geographique</label>
                 <input type='text' id='location' placeholder='France entière,ville, région...' onChange={(e)=>setLocationTypped(e.target.value)} value={locationTypped}></input>
             </div>
             
