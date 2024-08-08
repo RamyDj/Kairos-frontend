@@ -81,6 +81,7 @@ function Search() {
 
     function getTableActivity(activity){
         setActivityTypped(activity)
+        setIsModalVisible(false)
     }
 
   return (
@@ -106,6 +107,7 @@ function Search() {
                     style={{width : "25vw", height :"6vh"}}
                     filterOption="true"
                     onSelect={item=>setActivityTypped(item)}
+                    value={activityTypped}
                 >
                     <input type='text' id='activity' placeholder="Restauration traditionelle, Coiffure..." onChange={(e)=>{
                         checkListMatch(e.target.value)

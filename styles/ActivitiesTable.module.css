@@ -38,5 +38,6 @@
 .backMenu{
     color: rgb(27	48	78	);
     font-weight: 900;
+    font-size: 16px;
     cursor: pointer;
 }
