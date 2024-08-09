@@ -79,9 +79,12 @@ function Search() {
     let helpStyle
     isHelpVisible ? helpStyle={display : "flex"} : helpStyle={display : "none"}
 
+    // Fonction envoyé en props pour changer Search via ActivitiesTable en Inverse Data Flow
+
     function getTableActivity(activity){
         setActivityTypped(activity)
         setIsModalVisible(false)
+        setIsHelpVisible(false)
     }
 
   return (
@@ -92,7 +95,10 @@ function Search() {
         </div>
         <div className={styles.formContainer}>
         <Modal 
-			onCancel={()=>setIsModalVisible(false)} 
+			onCancel={()=>{setIsModalVisible(false)
+                setActivityTypped('')
+            setIsHelpVisible(false)}
+            } 
 			open={isModalVisible} 
 			footer={null} styles={{ content: { backgroundColor: 'white' } }} 
 			closeIcon={<CloseOutlined style={{color: "black"}}/>}
