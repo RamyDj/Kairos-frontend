@@ -1,7 +1,7 @@
-// components/Result/GraphComponent.js
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
 import { useEffect, useState } from 'react';
+import styles from '../../styles/Result.module.css';
 
 // Registering components required for Chart.js
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement);
@@ -27,7 +27,7 @@ const Graph = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.graphContainer}>
       <Line data={data} />
     </div>
   );

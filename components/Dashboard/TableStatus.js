@@ -5,7 +5,7 @@ function TableStatus() {
     const user = useSelector((state) => state.user.value);
 
     return (
-        <div>
+        <div className={styles.statusContainer}>
             <table>
                 <thead>
                     <tr>

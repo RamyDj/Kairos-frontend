@@ -7,16 +7,17 @@ function LastSearch() {
     const user = useSelector((state) => state.user.value);
 
     return (
-        <div>
+        <div className={styles.lastSearchContainer}>
             <ul>
-                <li><Graph /></li>
-                <li>Recherché le <span>06/08/2024</span></li>
-                <li>Activité<span>Coiffeur- visagiste</span></li>
-                <li>Secteur Geographique<span>Nantes</span></li>
+                <il><Graph /></il>
+                <il>Recherché le <span>06/08/2024</span></il>
+                <il>Activité<span>Coiffeur- visagiste</span></il>
+                <il>Secteur Geographique<span>Nantes</span></il>
             </ul>
             <div className={styles.LastSearchLink}>
                 <a href="/">Accéder à ma dernière recherche</a>
             </div>
+            
         </div>
 
     )
