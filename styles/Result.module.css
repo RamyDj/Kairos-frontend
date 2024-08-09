@@ -29,6 +29,7 @@
   height: 60vh;
   min-width: 40%;
   padding: 2%;
+  overflow-y: auto;
 }
 
 .map {
@@ -45,3 +46,4 @@
     height: 30vh;
     width: 30vh;
   }
+
