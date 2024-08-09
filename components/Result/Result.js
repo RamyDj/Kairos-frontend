@@ -10,20 +10,23 @@ import Status from '../../components/Result/Status';
 const MapComponent = dynamic(() => import('../../components/Result/MapComponent'), { ssr: false });
 
 function Result() {
-
+    const company = useSelector((state) => state.search.value);
     const user = useSelector((state) => state.user.value);
+    console.log(company)
   
       
     return (
         <div>
-            <div className={styles.score}>
-                <p>Score:<span>20/100</span></p>
-                <span>Indice de viabilité</span>
+            <div className={styles.scoreContainer}>
+                <p className={styles.score}
+                >Score :<span> 20/100</span></p>
+                <span className={styles.index}
+                >Indice de viabilité</span>
             </div>
             <div className={styles.firstResult}>
                 <div className={styles.mapResult}>
                     <MapComponent />
-                    <span> Nombre d'entreprise : 54000</span>
+                    <span> Nombre d'entreprise : {company[0].current_companies.length}</span>
                 </div>
                 <div className={styles.showResult}>
                     <Show />

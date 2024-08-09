@@ -11,7 +11,7 @@ const PercentageWheel = ({ props }) => {
   // données du graphique
   const data = {
     //text au hover
-    labels: ['Auto-Entrepreneur', 'Autre'],
+    labels: ['', 'Autre Statuts'],
     datasets: [
       {
         data: [percentage, 100 - percentage],

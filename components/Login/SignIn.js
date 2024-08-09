@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/user';
 
 import styles from '../../styles/SignIn.module.css';
@@ -16,11 +16,10 @@ function SignIn() {
     //Reducer 
     const dispatch = useDispatch();
 
+    const search = useSelector((state) => state.search.value);
+
     // Page Redirection 
     const router = useRouter();
-
-    //Check to verify the URL of the previous page
-    const referrer = router.referrer
 
     const handleSubmit = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,12 +44,13 @@ function SignIn() {
             body: JSON.stringify({ email, password }),
             }).then(response => response.json())
             .then(data => {
-                data.result && dispatch(login({token: data.token, email: data.user.email }))
-                if (referrer.includes('/result')) {
-                    router.push('/result')
+                console.log(data)
+                data.result && dispatch(login({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
+                if (Object.keys(search).length === 0) {                router.push('/dashboard');
                 } else {
-                    router.push('/dashboard')
-                }
+                    router.push('/result');
+
+                }  
             })
       }
       const handleGoogleLogin = () => {

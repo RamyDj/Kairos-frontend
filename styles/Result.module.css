@@ -1,3 +1,41 @@
+.scoreContainer {
+  display: flex;
+  align-items: center;
+  padding: 1%;
+}
+
+.score {
+  font-size: 35px;
+  padding-right: 3%;
+}
+
+.firstResult {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mapResult {
+  border: 1px solid green;
+  height: 60vh;
+  min-width: 40%;
+  background-color: #FAFAF5;
+  border-radius: 25px;
+  padding: 2%;
+}
+
+.showResult {
+  border: 1px solid purple;
+  height: 60vh;
+  min-width: 40%;
+  padding: 2%;
+}
+
+.map {
+  height: 500px;
+  border: solid 1px blue;
+}
+
 .statusRatio {
     width: 400px;
     height: 400px; 
