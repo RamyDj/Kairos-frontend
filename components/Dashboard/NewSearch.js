@@ -6,7 +6,8 @@ function NewSearch(){
     const user = useSelector((state) => state.user.value);
     
     return(
-        <div>
+        <div
+        className={styles.newSearchContainer}>
   <div className={styles.activities}>
                 <label htmlFor="activity">Activité</label>
                 <input type='text' id='activity' placeholder='Coiffeur,Boulanger...'  ></input>

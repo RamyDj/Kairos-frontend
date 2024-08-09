@@ -6,8 +6,8 @@ function MyProfile(){
     const user = useSelector((state) => state.user.value);
     
     return(
-        <div className={styles.MyProfileContainer}>
-            <h3>Mon Profil</h3>
+        <div className={styles.myProfileContainer}>
+            <h2>Mon Profil</h2>
             <div className={styles.btnParams}>
                 <button>Mes informations</button>
                 <button>Déconnexion</button>

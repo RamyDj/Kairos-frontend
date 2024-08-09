@@ -6,8 +6,8 @@ function Skills() {
     const user = useSelector((state) => state.user.value);
 
     return (
-        <div className={styles.SkillsContainer}>
-            <h3>Mes Compétences</h3>
+        <div className={styles.skillsContainer}>
+            <h2>Mes Compétences</h2>
             <div className={styles.SkillsList}>
                 <div>
                     <span> Commerce </span>
