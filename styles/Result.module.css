@@ -42,6 +42,14 @@
   }
 
 .map{
-    height: 30vh;
-    width: 30vh;
+    height: 80%;
+    width: 80%;
   }
+
+.showContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
