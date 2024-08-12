@@ -10,6 +10,7 @@ function SignIn() {
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
+    const [signinError, setSignInError] = useState(false)
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
@@ -45,14 +46,16 @@ function SignIn() {
             body: JSON.stringify({ email, password }),
             }).then(response => response.json())
             .then(data => {
-                console.log(data)
-                data.result && dispatch(userInfo({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
-                if (Object.keys(search).length === 0) {                
-                    router.push('/dashboard')
-                } else {
-                    router.push('/result')
-
-                }  
+                if(data.result){
+                    dispatch(userInfo({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
+                    if (Object.keys(search).length === 0) {                
+                        router.push('/dashboard')
+                    } else {
+                        router.push('/result')
+                    } 
+                }else{
+                    setSignInError(true)
+                }
             })
       }
       const handleGoogleLogin = () => {
@@ -71,7 +74,7 @@ function SignIn() {
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email} 
                     placeholder="Adresse mail" />
-                    {emailError && <p className={styles.error}>Email non conforme</p>}
+                    {emailError && (<p className={styles.error}>Email non conforme</p>)}
                 <input 
                     type="password" 
                     className={styles.input} 
@@ -79,6 +82,7 @@ function SignIn() {
                     value={password} 
                     placeholder="Mot de passe" />
             </div>
+            {signinError && (<p className={styles.error}>Email ou mot de passe incorrect</p>)}
           <button className={styles.button} onClick={() => handleSubmit()}>Je me connecte</button>
         </div>
       )
