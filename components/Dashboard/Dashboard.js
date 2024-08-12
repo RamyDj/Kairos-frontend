@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import styles from '../../styles/Dashboard.module.css';
 import MyProfile from "../Dashboard/MyProfile";
 import TableStatus from "../Dashboard/TableStatus";
@@ -10,6 +11,12 @@ import Skills from "../Dashboard/Skills";
 function Dashboard() {
     const user = useSelector((state) => state.user.value);
     console.log(user);
+
+    // useEffect(()=>{
+    //     if (user.token){
+
+    //     }
+    // },[])
 
     return (
         <div className={styles.dashboardContainer}>

@@ -29,9 +29,12 @@ export const userSlice = createSlice({
     },
     addIdOfASearch : (state, action)=>{
       state.value.searches.push(action.payload)
+    },
+    fillSearchesWithAllId: (state, action)=>{
+      state.value.searches = action.payload
     }
   },
 });
 
-export const { userInfo, logout, addIdOfASearch } = userSlice.actions;
+export const { userInfo, logout, addIdOfASearch, fillSearchesWithAllId } = userSlice.actions;
 export default userSlice.reducer;
