@@ -3,6 +3,14 @@ import styles from '../../styles/Dashboard.module.css';
 
 function TableStatus() {
     const user = useSelector((state) => state.user.value);
+    const search = useSelector((state) => state.user.value);
+
+    if (!search) {
+        return <div className={styles.statusContainer}><a href="/">Aucune recherche à afficher</a><a href="/">Acceder à tous les status</a><a href="/">Accéder à toutes mes recherches</a></div> 
+    
+    }
+
+
 
     return (
         <div className={styles.statusContainer}>
