@@ -2,39 +2,44 @@ import { useDispatch, useSelector} from 'react-redux';
 import { useRouter } from 'next/router';
 import { userInfo } from '../../reducers/user';
 
-function MailConfirm(){
+import styles from '../../styles/MailConfirm.module.css';
 
+function MailConfirm(){
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
     // Page Redirection 
     const router = useRouter();
 
     //Reducer 
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.value)
     const search = useSelector((state) => state.search.value);
-    console.log(search)
 
     const handleSubmit = () => {
-     fetch(`${url}/users/token`)
-     .then(response => response.json())
-     .then(data => {
-       data.result && dispatch(userInfo({token: data.token})) 
+        fetch('http://localhost:3000/users/info-user',{
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email : "gallibour.irene@gmail.com"}),
+          }).then(response => response.json())
+        .then(data => {
+          if(data.result) { 
+            dispatch(userInfo({token: data.user.token})) 
           
-          if (Object.keys(search).length === 0) {
-            router.push('/dashboard');
-          } else {
-            router.push('/result');
-          }  
-        }
-     )
-
+            if (Object.keys(search).length === 0) {
+              router.push('/dashboard');
+            } else {
+              router.push('/result');
+            }  
+          }
+        })
     }
     return(
-        <div>
-            <h1>MailConfirm</h1>
-
-            <p>Mail vérifié </p>
-            <p>Bienvenue!</p>
-            <button onClick={() => handleSubmit()}>Continuez</button>
+        <div className={styles.container}>
+            <div className={styles.message}>
+              <p>Mail vérifié </p>
+              <p>Bienvenue!</p>
+              <button className={styles.button} onClick={() => handleSubmit()}>Continuer</button>
+            </div>
         </div>
         
 )

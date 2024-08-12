@@ -8,7 +8,7 @@ function Dashboard(){
         <div>
             <h1>Dashboard</h1>
         <div>
-        {user.firstName} & {user.token}
+        {user.firstname} & {user.token}
      </div>
   </div>
 )
