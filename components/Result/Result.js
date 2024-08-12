@@ -10,23 +10,37 @@ import Status from '../../components/Result/Status';
 const MapComponent = dynamic(() => import('../../components/Result/MapComponent'), { ssr: false });
 
 function Result() {
-    const company = useSelector((state) => state.search.value);
+    const search = useSelector((state) => state.search.value);
     const user = useSelector((state) => state.user.value);
-    console.log(company)
-  
+    console.log(search)
+
+let scoreStyle;
+ 
+    if (search[0].score < 50) {
+        scoreStyle = {'color' : '#CF0506'};
+    }
+    else if (search[0].score >= 50 && search.score < 75) {
+        scoreStyle = {'color' : '#FD5C0D'};
+    }
+    else {
+        scoreStyle = {'color' : '#1E8F28'};
+    }
+
       
     return (
         <div>
             <div className={styles.scoreContainer}>
                 <p className={styles.score}
-                >Score :<span> 20/100</span></p>
+                >Score :<span style={scoreStyle} 
+                > {search[0].score}/100</span></p>
                 <span className={styles.index}
                 >Indice de viabilité</span>
             </div>
             <div className={styles.firstResult}>
                 <div className={styles.mapResult}>
                     <MapComponent />
-                    <span> Nombre d'entreprise : {company[0].current_companies.length}</span>
+                    <span className={styles.companiesNb}
+                    > Nombre d'entreprises : {search[0].current_companies.length}</span>
                 </div>
                 <div className={styles.showResult}>
                     <Show />
@@ -35,11 +49,14 @@ function Result() {
 
             <div className={styles.detailledResult}>
                 <h3>STATUTS DE MA RECHERCHE</h3>
+                <div className={styles.allGraphs}>
+                
                 <div className={styles.graph}>
                 <Graph />
                 </div>
                 <div className={styles.statusRatio}>
                     <Status/>
+                </div>
                 </div>
             </div>
         </div>

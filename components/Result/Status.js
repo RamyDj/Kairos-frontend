@@ -3,14 +3,15 @@ import styles from '../../styles/Result.module.css';
 import PercentageWheel from '../../components/Result/PercentageWheel';
 
 function Status() {
-    const company = useSelector((state) => state.search.value);
+    const search = useSelector((state) => state.search.value);
 
     return (
         <div className={styles.statusContainer}>
-            {company[0].top_status.map((stat, index) => (
-                    <div className={styles.StatusComponent} key={index}>
+            {search[0].top_status.map((stat, index) => (
+                    <div className={styles.statusComponent} key={index}>
                 <PercentageWheel props={stat} />
-                <span>{stat.status_name}</span>
+                <span className={styles.statusName}
+                >{stat.status_name}</span>
             </div>
             ))}
         

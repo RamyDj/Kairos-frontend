@@ -31,11 +31,15 @@ function Header() {
         router.push('/login')
     }
 
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
+                <div className={styles.logo}>
                 <Link href='/'><img src='/logo-removebg-preview.png' id='logo' alt='Logo' /></Link>
-                <h1 id='title'>KAIROS</h1>
+                </div>
+                <h1 className={styles.kairos}
+                 id='title'>KAIROS</h1>
                 {/* {userSection} */}
                 <div className={styles.buttonsContainer}>
                 <a className={styles.link} href='' id='AboutLink'>A Propos</a>

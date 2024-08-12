@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'Tiresias';
+    src: url('../public/font/Tiresias_Infofont.ttf') format('truetype');
+  }
+
+.kairos {
+    display: flex;
+    justify-content: center;
+    min-width: 10vw;
+    max-width: 10vw;
+    position: absolute;
+    left: 45vw; 
+}
 
 .container{
     display: flex;
@@ -33,17 +46,19 @@
 .link{
     color: inherit;
     text-decoration: none;
+    position: absolute;
+    left: 75vw;
 }
 
 .buttonsContainer{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 15vw;
 }
 
 .buttonsContainer p{
     margin: 0 18px;
-    border: 3px blue solid;
     background-color: grey;
 }
 
@@ -52,5 +67,16 @@
 }
 
 .signUpBtn {
-    padding: 5%;
+    padding: 10%;
+    cursor: pointer;
+    width: 8vw;
+    font-family: 'Tiresias';
+    background-color: #163050;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.logo {
+    cursor: pointer;
 }
