@@ -52,7 +52,7 @@ let scoreStyle;
                 <h3>STATUTS DE MA RECHERCHE</h3>
                 <div className={styles.allGraphs}>
                 
-                <div className={styles.graph}>
+                <div className={styles.graphs}>
                 <Graph />
                 </div>
                 <div className={styles.statusRatio}>
