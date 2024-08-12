@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../../styles/BurgerMenu.module.css';
+import Link from 'next/link'
 
 function Burger(){
     const [open, setOpen] = useState(false);
@@ -17,7 +18,9 @@ function Burger(){
             </button>
             {open && (
                 <div className={styles.menu}>
+                    <Link href='/dashboard'>
                     <a className={styles.menuItem} href='/'>Mon Espace</a>
+                    </Link>
                     <a className={styles.menuItem} href='/'>Mes Informations</a>
                     <a className={styles.menuItem} onClick={() => handleLogout()} href='/login'>Déconnexion</a>
                 </div>
