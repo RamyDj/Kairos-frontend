@@ -71,21 +71,33 @@
 
 
 .graphContainer {
-  border: 1px solid #EBEBEB;
   border-radius: 25px;
   padding: 25px;
+  min-width: 70%;
+  min-height: 70%;
+
+}
+
+.graph {
+  min-width: 70%;
+  min-height: 70%;
 }
 
 .statusRatio {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .statusComponent {
-  height: 20vh;
+  height: 15vh;
   display: flex;
   align-items: center;
   margin: 2%;
+}
+
+.doughnut {
+  max-height: 15vh;
 }
 
 .statusName {

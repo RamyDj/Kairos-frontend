@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import styles from '../../styles/Result.module.css';
+import resultStyles from '../../styles/Result.module.css'; 
 import dynamic from 'next/dynamic';
 import Graph from '../../components/Result/Graph';
 import Show from '../../components/Result/Show';
