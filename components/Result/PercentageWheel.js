@@ -1,5 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import styles from '../../styles/Result.module.css';
 
 
 // Enregistrement des composants nécessaires pour Chart.js
@@ -14,7 +15,7 @@ const PercentageWheel = ({ props }) => {
     datasets: [
       {
         data: [percentage, 100 - percentage],
-        backgroundColor: ['#36A2EB', '#E3E4E8'], // Couleurs du graphique
+        backgroundColor: ['#163050', '#F9F2D2'], // Couleurs du graphique
       },
     ],
   };
@@ -22,7 +23,7 @@ const PercentageWheel = ({ props }) => {
   // Options du graphique
   const options = {
     responsive: true,
-    cutout: '80%', // Pour faire en sorte que ce soit une roue avec un trou au centre
+    cutout: '60%', // Pour faire en sorte que ce soit une roue avec un trou au centre
     plugins: {
       tooltip: {
         callbacks: {
@@ -38,7 +39,8 @@ const PercentageWheel = ({ props }) => {
   };
 
   return (
-    <div>
+    <div className={styles.doughnut}
+    >
       <Doughnut data={data} options={options} />
     </div>
   );
