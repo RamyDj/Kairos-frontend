@@ -69,6 +69,11 @@
   align-items: center;
 }
 
+.graph{
+  width: 50%;
+  height: 50%;
+}
+
 
 .graphContainer {
   border: 1px solid #EBEBEB;
