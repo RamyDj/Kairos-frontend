@@ -1,0 +1,96 @@
+.container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.containerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    width: 100%;
+    max-width: 600px; 
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40%;
+    background-color: #163050;
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px;
+    width: 100%;
+    max-width: 500px; 
+}
+.input {
+    height: 40px;
+    width: 100%;
+    max-width: 480px; 
+    margin-bottom: 15px;
+    border: 1px #163050 solid;
+    border-radius: 3px;
+    background-color: #E6E6E6;
+    font-weight: 600;
+    padding: 10px;
+}
+.label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.editButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.cancel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40%;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+}
+.save{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40%;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    background-color: green;
+
+}
+.error{
+    color: red;
+}

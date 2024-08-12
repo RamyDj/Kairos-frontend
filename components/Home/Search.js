@@ -2,6 +2,7 @@ import styles from '../../styles/Search.module.css';
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addSearch } from '../../reducers/search';
+import { addIdOfASearch } from '../../reducers/user';
 import { convertStringApeToCode } from '../../modules/convertingFunctions';
 import {AutoComplete, Modal} from 'antd'
 import {CloseOutlined} from '@ant-design/icons'
@@ -61,6 +62,9 @@ function Search() {
         .then(data=> {
             console.log(data)
             dispatch(addSearch(data.result))
+            // À rechecker en faisant un console log de user dans result
+            if (data.searchForeignKey){dispatch(addIdOfASearch(data.searchForeignKey))}
+            console.log(user)
             router.push('/result')
         })
     }

@@ -1,0 +1,25 @@
+.container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+.message{
+    background-color: #F8E9A9;
+    width: 20%;
+    height: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    text-align: center;
+}
+.button{
+    height: 40px;
+    width: 40%;
+    background-color: #163050;
+    color: white;
+    border-radius: 10px;
+}

@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { useDispatch} from 'react-redux';
-import { login } from '../../reducers/user';
+import { userInfo } from '../../reducers/user';
 import { Modal, Button } from 'antd';
 
 import styles from '../../styles/SignUp.module.css';
@@ -10,20 +9,20 @@ function SignUp() {
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
     //Form
-    const [firstname, setFirstname] = useState('');
-    const [name, setName] = useState('');
+    const [firstname, setFirstname] = useState('')
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
     //Error
-    const [passwordError, setPasswordError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false)
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
     const [emailAlreadyUse, setEmailAlreadyUse] = useState(false)
 
     //Modal
-    const [emailCheckModalVisible, setEmailCheckModalVisible] = useState(false);
+    const [emailCheckModalVisible, setEmailCheckModalVisible] = useState(false)
 
     const showEmailCheckModal = () => {
       setEmailCheckModalVisible(true);
@@ -35,32 +34,31 @@ function SignUp() {
     //Reducer 
     const dispatch = useDispatch();
 
-    // Page Redirection 
-    const router = useRouter();
-
     const handleSubmit = () => {
-            const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                 //const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8}$/; // => Tout décomenter une fois les test ok
 
             // Reset errors 
-            setEmailError(false);
-            setPasswordError(false);
+            setEmailError(false)
+            setPasswordError(false)
             setEmailAlreadyUse(false)
-                //setPasswordFormatError(false);
+                //setPasswordFormatError(false)
         
-            // Check if password matches passwordConfirm and validate password format + email 
+            // Check if newPassword matches confirmPassword and check format password  + email 
             if (!EMAIL_REGEX.test(email)) {
                 setEmailError(true)
+                return
             }
             /*if (!PASSWORD_REGEX.test(password)) {
-                setPasswordFormatError(true);
+                setPasswordFormatError(true)
             }*/
             if (password !== passwordConfirm) {
-                setPasswordError(true);
+                setPasswordError(true)
+                return
             }
             // If an error is detected, do not send
             if (emailError || passwordError || passwordFormatError) {
-                return;
+                return
             }
      
             fetch(`${url}/users/signup`, {
@@ -70,8 +68,8 @@ function SignUp() {
             }).then(response => response.json())
             .then(data => {
               if (data.result) {
-                showEmailCheckModal();
-                dispatch(login({firstname, name, email}))
+                showEmailCheckModal()
+                dispatch(userInfo({ firstname: data.user.firstname, name: data.user.name, email: data.user.email }))
               } else{
                 setEmailAlreadyUse(true)
               }                       
@@ -128,13 +126,15 @@ function SignUp() {
                 centered
                 closable={false}
                 footer={[
-                  <Button key="ok" type="primary" onClick={handleOk}>
+                  <Button key="ok" type="primary" onClick={()=> handleOk()}>
                       OK
                   </Button>
               ]}
               
           >
-            <p>Vous allez recevoir un email. Veuillez le confirmer avant de continuer.</p>
+            <p>Vous allez recevoir un email avec un lien de confirmation. Vérifiez vos courriers indésirables.<br/>
+            Vous disposez d'1h pour le valider. <br/>
+            Une fois confirmé, vous pourrez accéder à votre espace. <br/></p>
           </Modal>
         </div>
       );
