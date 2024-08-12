@@ -3,6 +3,7 @@ import styles from '../../styles/Header.module.css';
 import Burger from './Burger';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link'
 
 function Header() {
 
@@ -30,11 +31,15 @@ function Header() {
         router.push('/login')
     }
 
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
-                <img src='/logo-removebg-preview.png' id='logo' alt='Logo' />
-                <h1 id='title'>KAIROS</h1>
+                <div className={styles.logo}>
+                <Link href='/'><img src='/logo-removebg-preview.png' id='logo' alt='Logo' /></Link>
+                </div>
+                <h1 className={styles.kairos}
+                 id='title'>KAIROS</h1>
                 {/* {userSection} */}
                 <div className={styles.buttonsContainer}>
                 <a className={styles.link} href='' id='AboutLink'>A Propos</a>

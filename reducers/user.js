@@ -5,7 +5,9 @@ const initialState = {
     token: null, 
     name: null, 
     firstname: null,
-    email: null, },
+    email: null, 
+    searches : [],
+  }
 };
 
 export const userSlice = createSlice({
@@ -17,8 +19,7 @@ export const userSlice = createSlice({
       state.value.firstname = action.payload.firstname;
       state.value.name = action.payload.name;
       state.value.email = action.payload.email
-      // state.value = { ...state.value, ...action.payload };
-
+      // state.value = { ...state.value, ...action.payload }; 
     },
     logout: (state) => {
       state.value.token = null;
@@ -26,8 +27,11 @@ export const userSlice = createSlice({
       state.value.name = null;
       state.value.email = null
     },
+    addIdOfASearch : (state, action)=>{
+      state.value.searches.push(action.payload)
+    }
   },
 });
 
-export const { userInfo, logout } = userSlice.actions;
+export const { userInfo, logout, addIdOfASearch } = userSlice.actions;
 export default userSlice.reducer;

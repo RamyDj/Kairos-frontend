@@ -1,0 +1,150 @@
+.dashboardContainer{
+     display: flex;
+     justify-content: space-around;
+}
+
+.col1{
+    width: 13%;
+    margin-top: 7px;
+}
+
+.col2{
+    width: 50%;
+}
+
+.col3{
+    width: 25%;
+}
+
+.myProfileContainer{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9F2D1;
+    border-radius: 20px;
+}
+
+.btnParams{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnParams button{
+    margin-top: 20px;
+}
+
+.dashboardContainer button{
+    width: 120px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #163050;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.skillsContainer{
+    margin-top: 20px;
+    height: 53vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #163050;
+    border-radius: 20px;
+}
+
+.lastSearchContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F9F2D1;
+    height: 40vh;
+    border-radius: 20px;
+}
+
+
+
+.newSearchContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9F2D1;
+    height: 30vh;
+    border-radius: 20px;
+}
+
+.activities{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+.locations{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+.newSearchContainer input{
+    width: 25vw;
+    height: 5vh;
+    border: 1px solid #163050;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    padding-left: 0.5vw;
+    outline: none;
+}
+
+.statusContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 78vh;
+}
+
+.dashboardContainer h2{
+    border-bottom: 1px solid black;
+}
+
+.statusContainer table{
+width: 100%;
+height: 90%;
+text-align: center;
+background-color: #F9F2D1;
+border-radius: 20px;
+}
+
+.statusContainer tr{
+    border-bottom: 1px solid black;
+}
+
+
+.statusContainer thead{
+    background-color: #2B578C;
+    color: white;
+    border-radius: 20px;
+}
+
+.SkillsList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+
+.graphContainer {
+    height: 80%;
+    width: 80%;
+    border: 1px solid black;
+}
+
+
+
