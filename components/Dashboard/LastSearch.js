@@ -8,14 +8,15 @@ function LastSearch() {
 
     return (
         <div className={styles.lastSearchContainer}>
+            <Graph />
             <ul>
-                <il><Graph /></il>
-                <il>Recherché le <span>06/08/2024</span></il>
-                <il>Activité<span>Coiffeur- visagiste</span></il>
-                <il>Secteur Geographique<span>Nantes</span></il>
+                <il>Recherché le <span>06/08/2024</span></il><br/>
+                <il>Activité<span>Coiffeur- visagiste</span></il><br/>
+                <il>Secteur Geographique<span>Nantes</span></il><br/>
+                <il><a href="/">Accéder à ma dernière recherche</a></il>
             </ul>
             <div className={styles.LastSearchLink}>
-                <a href="/">Accéder à ma dernière recherche</a>
+                
             </div>
             
         </div>
