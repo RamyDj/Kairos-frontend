@@ -39,7 +39,8 @@ let scoreStyle;
             <div className={styles.firstResult}>
                 <div className={styles.mapResult}>
                     <MapComponent />
-                    <span> Nombre d'entreprises : {search[0].current_companies.length}</span>
+                    <span className={styles.companiesNb}
+                    > Nombre d'entreprises : {search[0].current_companies.length}</span>
                 </div>
                 <div className={styles.showResult}>
                     <Show />
@@ -48,11 +49,14 @@ let scoreStyle;
 
             <div className={styles.detailledResult}>
                 <h3>STATUTS DE MA RECHERCHE</h3>
+                <div className={styles.allGraphs}>
+                
                 <div className={styles.graph}>
                 <Graph />
                 </div>
                 <div className={styles.statusRatio}>
                     <Status/>
+                </div>
                 </div>
             </div>
         </div>

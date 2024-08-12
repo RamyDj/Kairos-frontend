@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from '../../styles/Result.module.css';
 import Company from './Company';
+import {logout} from '../../reducers/user';
 
 
 function Show() {
@@ -10,20 +11,31 @@ function Show() {
         return <span>Aucune entreprise trouvée</span>;
     }
 
+    const user = useSelector((state) => state.user.value)
+
     const companiesList = search[0].current_companies;
 
-    const randomCA = 18000;
     console.log(companiesList)
 
   const formattedCompaniesList = companiesList.map((data, i) => {
     return (
-        <Company key={i} name={data.name} status={data.status} creationDate={data.creation_date} employees={data.employees} CA={randomCA} />
+        <Company key={i} name={data.name} status={data.status} creationDate={data.creation_date} employees={data.employees} CA={data.ca} />
     )
   })
 
+  const unloggedList = [];
+  unloggedList.push(formattedCompaniesList[0], formattedCompaniesList[1], formattedCompaniesList[2], formattedCompaniesList[3]);
+
+  let renderedList;
+
+  if (user.token!== null) {
+    renderedList = formattedCompaniesList;
+  }
+  else (renderedList = unloggedList)
+
     return (
         <div className={styles.showContainer}>
-            {formattedCompaniesList}
+            {renderedList}
         </div>
     );
 }

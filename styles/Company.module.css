@@ -1,11 +1,12 @@
 .companyContainer {
-    border: 1px blue solid;
     width: 90%;
-    min-height: 28%;
+    min-height: 20%;
     margin: 10px 0;
     padding: 15px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     background-color: #FAFAF4;
+    border-radius: 25px;
+    border: 1px solid #EBEBEB;
 }
