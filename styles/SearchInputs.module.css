@@ -1,0 +1,78 @@
+.formContainer{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 80px;
+    font-size: 20px;
+}
+.activities{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.activities label{
+    margin-bottom: 20px;
+    color: #163050;
+}
+
+.locations{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.locations label{
+    margin-bottom: 20px;
+    color: #163050;
+}
+
+.form input{
+    width: 20vw;
+    height: 6vh;
+    border: 1px solid #163050;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    padding-left: 0.5vw;
+    outline: none;
+}
+
+.btnSearch{
+    width: 120px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #163050;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.helpSentence{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    border : 1px solid black;
+    font-size: 13.5px;
+    font-weight: 50;
+    width : 20vw;
+    height: 6vh;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 12.5vh;
+}
+
+.buttonHelp{
+    color:#00397f;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}

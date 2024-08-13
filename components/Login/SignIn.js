@@ -1,25 +1,26 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../reducers/user';
+import { userInfo } from '../../reducers/user';
 
 import styles from '../../styles/SignIn.module.css';
 
 function SignIn() {
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
+    const [signinError, setSignInError] = useState(false)
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
     //Reducer 
     const dispatch = useDispatch();
 
-    const search = useSelector((state) => state.search.value);
+    const search = useSelector((state) => state.search.value)
 
     // Page Redirection 
-    const router = useRouter();
+    const router = useRouter()
 
     const handleSubmit = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,10 +33,11 @@ function SignIn() {
         // Validate password and email format
         if (!EMAIL_REGEX.test(email)) {
             setEmailError(true)
-            return;
+            return
         }
         /*if (!PASSWORD_REGEX.test(password)) {
             setPasswordFormatError(true);
+            return
         }*/
 
             fetch(`${url}/users/signin`, {
@@ -44,18 +46,21 @@ function SignIn() {
             body: JSON.stringify({ email, password }),
             }).then(response => response.json())
             .then(data => {
-                console.log(data)
-                data.result && dispatch(login({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
-                if (Object.keys(search).length === 0) {                router.push('/dashboard');
-                } else {
-                    router.push('/result');
-
-                }  
+                if(data.result){
+                    dispatch(userInfo({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
+                    if (Object.keys(search).length === 0) {                
+                        router.push('/dashboard')
+                    } else {
+                        router.push('/result')
+                    } 
+                }else{
+                    setSignInError(true)
+                }
             })
       }
       const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3000/users/auth/google';
-      };
+        window.location.href = 'http://localhost:3000/users/auth/google'
+      }
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Connexion</h3>
@@ -69,7 +74,7 @@ function SignIn() {
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email} 
                     placeholder="Adresse mail" />
-                    {emailError && <p className={styles.error}>Email non conforme</p>}
+                    {emailError && (<p className={styles.error}>Email non conforme</p>)}
                 <input 
                     type="password" 
                     className={styles.input} 
@@ -77,6 +82,7 @@ function SignIn() {
                     value={password} 
                     placeholder="Mot de passe" />
             </div>
+            {signinError && (<p className={styles.error}>Email ou mot de passe incorrect</p>)}
           <button className={styles.button} onClick={() => handleSubmit()}>Je me connecte</button>
         </div>
       )

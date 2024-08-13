@@ -1,4 +1,4 @@
-import styles from '../../styles/Search.module.css';
+import styles from '../../styles/SearchInputs.module.css'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addSearch } from '../../reducers/search';
@@ -7,11 +7,10 @@ import { convertStringApeToCode } from '../../modules/convertingFunctions';
 import {AutoComplete, Modal} from 'antd'
 import {CloseOutlined} from '@ant-design/icons'
 import codesAndStringsApe from '../../datas/codesApeActivities'
-import ActivitiesTable from './ActivitiesTable';
+import ActivitiesTable from '../Home/ActivitiesTable';
 import {useRouter} from 'next/router'
 
-function Search() {
-
+export default function SearchInputs(){
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
     const router = useRouter()
@@ -107,13 +106,8 @@ function Search() {
         setIsHelpVisible(false)
     }
 
-  return (
-    <div className={styles.container}>
-        <div className={styles.searchContainer}>
-            <p className={styles.text}>“C’est quoi le statut d’entrepreneur individuel? Est ce que j’ai des concurrents?”<br></br>
-                <span className={styles.title}>Difficile de se lancer?<br></br>KAIROS est fait pour vous!</span></p>
-        </div>
-        <div className={styles.formContainer}>
+    return(
+    <div className={styles.formContainer}>
         <Modal 
 			onCancel={()=>{setIsModalVisible(false)
                 setActivityTypped('')
@@ -130,7 +124,7 @@ function Search() {
                 <label htmlFor="activity">Activité</label>
                 <AutoComplete
                     options={activitiesList}
-                    style={{width : "25vw", height :"6vh"}}
+                    style={{width : "20vw", height :"6vh"}}
                     filterOption="true"
                     onSelect={item=>setActivityTypped(item)}
                     value={activityTypped}
@@ -149,7 +143,7 @@ function Search() {
                 <label htmlFor="location">Commune</label>
                 <AutoComplete
                     options={locationsList}
-                    style={{width : "25vw", height :"6vh"}}
+                    style={{width : "20vw", height :"6vh"}}
                     filterOption="true"
                     onSelect={item=>setLocationTypped(item)}
                  
@@ -165,10 +159,6 @@ function Search() {
             
         </div>
         <button className={styles.btnSearch} id='btnSearch' onClick={()=>searchClick()}>Rechercher</button>
-        <img src='/Image_Pasted_at_2024-8-5_14-22-removebg-preview.png' alt='Arrow-Down'/>
-        </div>
     </div>
-  );
+    )
 }
-
-export default Search;

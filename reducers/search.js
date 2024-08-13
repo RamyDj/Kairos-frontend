@@ -11,8 +11,11 @@ export const searchSlice = createSlice({
     addSearch: (state, action) => {
         state.value.push(action.payload)
     },
+    fillWithAllUserSearches : (state, action)=>{
+      state.value = action.payload
+    }
   },
 });
 
-export const { addSearch } = searchSlice.actions;
+export const { addSearch, fillWithAllUserSearches } = searchSlice.actions;
 export default searchSlice.reducer;
