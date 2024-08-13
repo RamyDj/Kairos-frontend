@@ -22,4 +22,14 @@
     background-color: #163050;
     color: white;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.infoCount{
+    font-size: large;
+}
+
+.countdown{
+    font-size: x-large;
+    color : #163050;
 }

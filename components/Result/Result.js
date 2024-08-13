@@ -28,7 +28,7 @@ useEffect(()=>{
 
     // Si un utilisateur arrive sur la page avec un token et une recherche non enregistrée, fetch de la route pour enregistrer celle ci
     
-    if (user.token && !search[i]._id)
+    if (user.token && search[i]!=="Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !search[i]._id)
     {
         fetch(`${url}/results/registerSearch`,{
             method: 'POST',
@@ -37,6 +37,7 @@ useEffect(()=>{
             })
             .then(response=>response.json())
             .then(data=>{
+                if (!data.result){return}
                 dispatch(fillWithAllUserSearches(data.searches))
                 dispatch(fillSearchesWithAllId(data.allSearchesId))
             })

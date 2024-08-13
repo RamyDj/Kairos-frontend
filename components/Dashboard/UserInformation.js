@@ -1,6 +1,7 @@
 import { useDispatch, useSelector} from 'react-redux';
 import { useState,  useEffect } from 'react';
 import { userInfo } from '../../reducers/user';
+import { useRouter } from 'next/router';
 import { Modal, Button } from 'antd';
 
 import styles from '../../styles/UserInformation.module.css';
@@ -40,14 +41,16 @@ function UserInformation() {
     const dispatch = useDispatch();
     // const userReducer = useSelector((state) => state.user.value);
 
+    // Page Redirection 
+    const router = useRouter();
+
     useEffect(() => {
         // if(!userReducer.token)
         // return
-
         fetch("http://localhost:3000/users/info-user",{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email : "gallibour.irene@gmail.com",token : "UaGo544KbJ8-gsmXGCOWroJqhaasKAtN"}),
+        body: JSON.stringify({ email : "gallibour.irene@gmail.com",token : "N-sQx743as5uDJkTrEiA-j5PrXVAeEVW"}),
         }).then(response => response.json())
         .then(data => {
             if(data.result) {
@@ -59,16 +62,40 @@ function UserInformation() {
             }
         }
     )
-    }, [user]);
+    }, []);
 
     //Modal
     const [emailCheckModalVisible, setEmailCheckModalVisible] = useState(false)
+    const [deleteCheckModalVisible, setDeleteCheckModalVisible] = useState(false);
+        //email Modal
     const showEmailCheckModal = () => {
         setEmailCheckModalVisible(true);
     }
     const handleOk = () => {
         setEmailCheckModalVisible(false);
     }
+        //Delete User Modal
+    const showDeleteCheckModal = () => {
+        setDeleteCheckModalVisible(true);
+    };
+    const handleDeleteModalCancel = () => {
+        setDeleteCheckModalVisible(false);
+    };
+
+    //Delete User
+    const handleDelete = () => {
+        fetch('http://localhost:3000/users/',{
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token : "WmlxIi096ZD1LYJto9avdcbSlsjcDEVK"}),
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if(data.result){
+                    router.push('/delete-confirm')
+                }
+            })
+    };
 
     //Cancel Action
     const cancelPwdUpdate = () =>{
@@ -93,7 +120,6 @@ function UserInformation() {
         setIsEditingFirstname(false)
         setNewFirstname('')
     }
-
 
     //Save Change
     const handleSave = () => {
@@ -121,7 +147,7 @@ function UserInformation() {
         }
 
         const data = {
-            email : "gallibour.irene@gmail.com",
+            email : "gallibour.irene@gmail.com", //envoyer token plutôt que email
         };
         
         
@@ -145,7 +171,6 @@ function UserInformation() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if (data.result) {
                 // dispatch(userInfo({name: data.user.name, firstname:data.user.fistname}))
                 setNewFirstname('')
@@ -173,7 +198,7 @@ function UserInformation() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: "gallibour.irene@gmail.com", newEmail: newEmail}),
+            body: JSON.stringify({ email: "gallibour.irene@gmail.com", newEmail: newEmail}), //envoyer token plutôt que email
         })
         .then(response => response.json())
         .then(data => {
@@ -360,7 +385,7 @@ function UserInformation() {
                     </Button>
                 ]}
                 
-            >
+                 >
                 <p>Vous allez recevoir un email avec un lien de confirmation. Vérifiez vos courriers indésirables.<br/>
                 Vous disposez d'1h pour le valider. <br/>
                 Une fois confirmé, vous pourrez ré-accéder à votre espace. <br/></p>
@@ -369,9 +394,25 @@ function UserInformation() {
             </div>
             <div className={styles.containerInfo}>
                 <h2>Supprimer mon Compte</h2>
-                <button className={styles.button}>
+                <button className={styles.button} onClick={()=> showDeleteCheckModal()}>
                     Supprimer
                 </button>
+                <Modal
+                    title="Suppression du compte"
+                    open={deleteCheckModalVisible}
+                    centered
+                    closable={false}
+                    footer={[
+                    <Button key="ok" type="primary" onClick={()=>handleDelete()}>
+                        Supprimer
+                    </Button>,
+                    <Button key="cancel" onClick={()=>handleDeleteModalCancel()}>
+                        Annuler
+                    </Button>
+                    ]}
+                >
+                <p>Vous vous vous apprêtez à supprimer votre compte. Continuer?</p>
+            </Modal>
             </div>
         </div>
 )
