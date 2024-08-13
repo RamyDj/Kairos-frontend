@@ -19,7 +19,8 @@ function Dashboard() {
 
     const i = searches.length-1
 
-    useEffect(async ()=>{
+    useEffect( ()=>{   
+        const func = async () => {
         if (user.token){
         const response = await fetch(`${url}/dashboard/getSearches`, {
             method: 'POST',
@@ -35,7 +36,8 @@ function Dashboard() {
                 }
             }
         }
-    },[])
+    }
+},[])
 
     if (searches.length == 0){
         return(

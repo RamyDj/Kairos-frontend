@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../../styles/BurgerMenu.module.css';
 import Link from 'next/link'
+import { logout } from '../../reducers/user';
+import { useDispatch } from 'react-redux';
 
 function Burger(){
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const toggleMenu = () => {
         setOpen(!open);
