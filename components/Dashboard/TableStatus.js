@@ -127,7 +127,7 @@ function TableStatus() {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/">Accéder à toutes mes recherches</a>
+                <a href="/lastsearches">Accéder à toutes mes recherches</a>
             </div>
         )
     }
@@ -198,7 +198,7 @@ function TableStatus() {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/">Accéder à toutes mes recherches</a>
+                <a href="/lastsearches">Accéder à toutes mes recherches</a>
             </div>
         )
     }
@@ -280,7 +280,7 @@ function TableStatus() {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/">Accéder à toutes mes recherches</a>
+                <a href="/lastsearches">Accéder à toutes mes recherches</a>
             </div>
         )
     }
@@ -334,7 +334,7 @@ function TableStatus() {
                 </tbody>
             </table>
             <a href="/allstatus">Acceder à tous les status</a>
-            <a href="/">Accéder à toutes mes recherches</a>
+            <a href="/lastsearches">Accéder à toutes mes recherches</a>
         </div>
     );
 }

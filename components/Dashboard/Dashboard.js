@@ -42,7 +42,7 @@ function Dashboard() {
             </div>
             <div className={styles.col2}>
                 <h2>Ma Dernière recherche</h2>
-                <LastSearch />
+                {/* <LastSearch /> */}
                 <h2>Nouvelle Recherche</h2>
                 <NewSearch />
             </div>
