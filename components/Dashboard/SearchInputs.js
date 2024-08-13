@@ -1,4 +1,4 @@
-import styles from '../../styles/SearchInputs'
+import styles from '../../styles/SearchInputs.module.css'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addSearch } from '../../reducers/search';
@@ -124,7 +124,7 @@ export default function SearchInputs(){
                 <label htmlFor="activity">Activité</label>
                 <AutoComplete
                     options={activitiesList}
-                    style={{width : "25vw", height :"6vh"}}
+                    style={{width : "20vw", height :"6vh"}}
                     filterOption="true"
                     onSelect={item=>setActivityTypped(item)}
                     value={activityTypped}
@@ -143,7 +143,7 @@ export default function SearchInputs(){
                 <label htmlFor="location">Commune</label>
                 <AutoComplete
                     options={locationsList}
-                    style={{width : "25vw", height :"6vh"}}
+                    style={{width : "20vw", height :"6vh"}}
                     filterOption="true"
                     onSelect={item=>setLocationTypped(item)}
                  

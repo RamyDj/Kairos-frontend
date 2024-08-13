@@ -4,9 +4,9 @@ import { fillWithAllUserSearches } from '../../reducers/search';
 import styles from '../../styles/Dashboard.module.css';
 import MyProfile from "../Dashboard/MyProfile";
 import TableStatus from "../Dashboard/TableStatus";
-import NewSearch from "../Dashboard/NewSearch";
 import LastSearch from "../Dashboard/LastSearch";
 import Skills from "../Dashboard/Skills";
+import SearchInputs from './SearchInputs';
 
 
 function Dashboard() {
@@ -34,6 +34,29 @@ function Dashboard() {
         }
     },[])
 
+    if (searches.length == 0){
+        return(
+            <div className={styles.dashboardContainer}>
+            <div className={styles.col1}>
+                <MyProfile />
+                <Skills />
+            </div>
+            <div className={styles.col2}>
+                <h2>Ma Dernière recherche</h2>
+                <h4 className={styles.noSearchSentence}>Vous n'avez pas encore fait de recherche. Commencez ci-dessous !</h4>
+                <h2>Nouvelle Recherche</h2>
+                <SearchInputs/>
+            </div>
+            <div className={styles.col3}>
+            <h2>Mes Derniers Statuts</h2>
+            <div className={styles.statusSentenceContainer}>
+                <h4 className={styles.noStatusSentence}>Les statuts de vos prochaines recherches apparaîtront ici.</h4>
+            </div>
+            </div>
+        </div>
+        )
+    }
+
     return (
         <div className={styles.dashboardContainer}>
             <div className={styles.col1}>
@@ -44,7 +67,7 @@ function Dashboard() {
                 <h2>Ma Dernière recherche</h2>
                 <LastSearch />
                 <h2>Nouvelle Recherche</h2>
-                <NewSearch />
+                <SearchInputs/>
             </div>
             <div className={styles.col3}>
             <h2>Mes Derniers Statuts</h2>
