@@ -8,12 +8,12 @@ function LastSearch(props) {
     return (
         <>
         <div className={styles.card}>
-        <h3>Activité : </h3>
-        <p>{props.activity}</p>
-        <h3>Zone géographique : </h3>
-        <p>{props.area}</p>
-        <h3>recherché le : </h3>
-        <p>{props.date}</p>
+        <p>Activité : </p>
+        <h3>{props.activity}</h3>
+        <p>Zone géographique : </p>
+        <h3>{props.area}</h3>
+        <p>recherché le : </p>
+        <h3>{props.date}</h3>
         <button className={styles.btnView} id='btnView' onClick={()=> router.push(`/result/${props._id}`)}>Afficher la recherche</button>
         </div>
         </>

@@ -8,8 +8,8 @@ const moment = require('moment');
 function LastSearches() {
 
     const search = useSelector((state) => state.search.value);
-    
-    
+
+
 
     if (!search.length) {
         //console.log('empty')
@@ -17,16 +17,18 @@ function LastSearches() {
     }
     const lastSearch = search.map((data, i) => {
         let date = moment(data.date).format("DD-MM-YYYY")
-        //console.log(data.date)
-        return <LastSearch key={i} activity={data.activity} area={data.area} date={date} />
+        //console.log(data._id)
+        return <LastSearch key={i} activity={data.activity} area={data.area} date={date} _id={data._id}/>
     })
 
 
     return (
         <>
-            <div className={styles.statusContainer}>
-            <h2>Historique de vos recherches</h2>
-                {lastSearch}
+            <div className={styles.AllsearchContainer}>
+                <h2 className={styles.searchesListTitle}>Historique de vos recherches</h2>
+                <div className={styles.SearchesContainer}>
+                    {lastSearch}
+                </div>
             </div>
         </>
     )
