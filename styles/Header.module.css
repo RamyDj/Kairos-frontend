@@ -67,14 +67,16 @@
 }
 
 .signUpBtn {
-    padding: 10%;
-    cursor: pointer;
-    width: 8vw;
-    font-family: 'Tiresias';
+    text-decoration: none;
+    width: 120px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 10px;
     background-color: #163050;
     color: white;
-    border-radius: 5px;
-    border: none;
+    cursor: pointer;
+    border: 0;
+    text-align: center;
 }
 
 .logo {

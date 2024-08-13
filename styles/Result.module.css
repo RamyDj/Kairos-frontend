@@ -36,10 +36,7 @@
   border-radius: 25px;
 }
 
-.statusRatio {
-    width: 400px;
-    height: 400px; 
-  }
+
 
 .map{
     height: 90%;
@@ -65,42 +62,36 @@
 
 .allGraphs {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
-}
-
-.graphs{
-  width: 70%;
-  height: 70%;
-}
-
-
-.graphContainer {
+  background-color: #FAFAF5;
+  border: 1px solid #EBEBEB;
+  padding: 20px;
   border-radius: 25px;
-  padding: 25px;
-  min-width: 70%;
-  min-height: 70%;
-
 }
 
-.statusRatio {
+.allGraphs canvas{
+ width: 50% !important;
+ height: auto !important;
+}
+
+.details{
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.statusComponent {
-  height: 30%;
-  display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 2%;
 }
 
-.doughnut {
-  max-height: 15vh;
-}
-
-.statusName {
-  font-size: 12px;
-  margin: 2%;
+.ad{
+  text-decoration: none;
+  width: 120px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #163050;
+  color: white;
+  cursor: pointer;
+  text-align: center;
 }

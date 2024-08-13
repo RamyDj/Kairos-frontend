@@ -9,7 +9,9 @@ function OneStatut(props) {
     return (
         <>
         <div className={styles.card}>
-        <h3>{props.statusCode}</h3>
+        <div className={styles.titleContainer}>
+            <h3>{props.statusCode}</h3>
+        </div>
         <h4>Présentation</h4>
         <p>{props.presentation}</p>
         <h4>Nombre d'associés</h4>

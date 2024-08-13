@@ -14,7 +14,7 @@ function Company(props) {
             {props.name}
             </div>
             <div className={styles.companyCA}>
-            Chiffre d'affaire : {props.CA}
+            Chiffre d'affaire : {props.CA}k
             </div>
             
         </div>
