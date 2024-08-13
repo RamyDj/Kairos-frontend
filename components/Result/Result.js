@@ -23,8 +23,6 @@ function Result() {
     const router = useRouter()
     const {searchid} = router.query
 
-    console.log(searchid)
-
     const allSearches = useSelector((state)=>state.search.value)
 
     if (searchid !== "companies"){
@@ -63,16 +61,16 @@ const i = search.length-1
 
 let scoreStyle;
  
-    if (search[0].score < 50) {
+    if (search[i].score < 50) {
         scoreStyle = { 'color': '#CF0506' };
     }
-    else if (search[0].score >= 50 && search.score < 75) {
+    else if (search[i].score >= 50 && search.score < 75) {
         scoreStyle = { 'color': '#FD5C0D' };
     }
     else {
         scoreStyle = { 'color': '#1E8F28' };
     }
-    const histogramData = search[0].top_status.map(status => ({
+    const histogramData = search[i].top_status.map(status => ({
         status_name: status.status_name,
         companies_per_year: [
             { year: '2022', number: status.companies_per_year[2]?.number || 0 },
@@ -86,7 +84,7 @@ let scoreStyle;
             <div className={styles.scoreContainer}>
                 <p className={styles.score}
                 >Score :<span style={scoreStyle}
-                > {search[0].score}/100</span></p>
+                > {search[i].score}/100</span></p>
                 <span className={styles.index}
                 >Indice de viabilité</span>
             </div>
@@ -94,7 +92,7 @@ let scoreStyle;
                 <div className={styles.mapResult}>
                     <MapComponent />
                     <span className={styles.companiesNb}
-                    > Nombre d'entreprises : {search[0].current_companies.length}</span>
+                    > Nombre d'entreprises : {search[i].current_companies.length}</span>
                 </div>
                 <div className={styles.showResult}>
                     <Show />

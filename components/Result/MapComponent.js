@@ -4,6 +4,7 @@ import L from 'leaflet';
 import styles from '../../styles/Result.module.css';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router'
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -14,10 +15,24 @@ L.Icon.Default.mergeOptions({
 });
 
 const MapComponent = () => {
-  const search = useSelector((state) => state.search.value);
+
   const user = useSelector((state) => state.user.value);
 
-  const companiesToDisplay = user.token ? search[0].current_companies : search[0].current_companies.slice(0, 4);
+  let search
+  const router = useRouter()
+  const {searchid} = router.query
+
+  const allSearches = useSelector((state)=>state.search.value)
+
+  if (searchid !== "companies"){
+  search = allSearches.filter(e=>e._id== searchid)
+  }
+  else {
+  search = allSearches
+  }
+  const i = search.length-1
+
+  const companiesToDisplay = user.token ? search[i].current_companies : search[i].current_companies.slice(0, 4);
 
   const SetBounds = () => {
     const map = useMap();
