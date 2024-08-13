@@ -146,5 +146,9 @@ border-radius: 20px;
     border: 1px solid black;
 }
 
-
+.icon {
+    height: 30px;
+    width: 30px;
+    border-color: 2px solid black;
+}
 
