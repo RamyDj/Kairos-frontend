@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fillWithAllUserSearches } from '../../reducers/search';
+import { fillWithAllUserSearches, addSearch } from '../../reducers/search';
 import styles from '../../styles/Dashboard.module.css';
 import MyProfile from "../Dashboard/MyProfile";
 import TableStatus from "../Dashboard/TableStatus";
@@ -17,20 +17,23 @@ function Dashboard() {
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    const i = searches.length-1
+
+    useEffect(async ()=>{
         if (user.token){
-        fetch(`${url}/dashboard/getSearches`, {
+        const response = await fetch(`${url}/dashboard/getSearches`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({email : user.email })
             })
-        .then(response=>response.json())
-        .then(data=>{
+        const data = await response.json()
             if (!data.result){return}
             else{
                 dispatch(fillWithAllUserSearches(data.searches))
+                if (searches[i]== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur."){
+                    dispatch(addSearch("Aucune entreprise trouvée pour ce type d'activité dans ce secteur."))
+                }
             }
-        })
         }
     },[])
 
