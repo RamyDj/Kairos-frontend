@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import styles from '../../styles/Dashboard.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link'
 
 
 function TableStatus() {
@@ -127,7 +128,7 @@ function TableStatus() {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/lastsearches">Accéder à toutes mes recherches</a>
+                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }

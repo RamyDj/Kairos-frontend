@@ -8,41 +8,58 @@ import Show from '../../components/Result/Show';
 import Histogram from '../../components/Result/Histogram';
 import Link from 'next/link';
 import { useEffect } from 'react';
-
+import { useRouter } from 'next/router'
 
 
 const MapComponent = dynamic(() => import('../../components/Result/MapComponent'), { ssr: false });
 
 function Result() {
-    const search = useSelector((state) => state.search.value);
+    
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch()
-   
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
+    let search
+    const router = useRouter()
+    const {searchid} = router.query
+
+    console.log(searchid)
+
+    const allSearches = useSelector((state)=>state.search.value)
+
+    if (searchid !== "companies"){
+    search = allSearches.filter(e=>e._id== searchid)
+    }
+    else {
+    search = allSearches
+    }
 
     console.log(user)
     console.log(search)
+    console.log(allSearches)
 
-useEffect(()=>{
-    const i = search.length-1
+
+    useEffect(()=>{
+    const i = allSearches.length-1
 
     // Si un utilisateur arrive sur la page avec un token et une recherche non enregistrée, fetch de la route pour enregistrer celle ci
     
-    if (user.token && search[i]!=="Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !search[i]._id)
+    if (user.token && allSearches[i]!=="Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !allSearches[i]._id)
     {
         fetch(`${url}/results/registerSearch`,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({search : search[i], email : user.email })
+            body: JSON.stringify({search : allSearches[i], email : user.email })
             })
             .then(response=>response.json())
             .then(data=>{
-                if (!data.result){return}
                 dispatch(fillWithAllUserSearches(data.searches))
                 dispatch(fillSearchesWithAllId(data.allSearchesId))
             })
     }
 },[])
+
+const i = search.length-1
 
 let scoreStyle;
  

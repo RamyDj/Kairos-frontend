@@ -28,7 +28,7 @@ function MailConfirm(){
             if (Object.keys(search).length === 0) {
               router.push('/dashboard');
             } else {
-              router.push('/result');
+              router.push('/result/companies');
             }  
           }
         })

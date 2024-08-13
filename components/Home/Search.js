@@ -65,7 +65,7 @@ function Search() {
             // À rechecker en faisant un console log de user dans result
             if (data.searchForeignKey){dispatch(addIdOfASearch(data.searchForeignKey))}
             console.log(user)
-            router.push('/result')
+            router.push('/result/companies')
         })
     }
 
