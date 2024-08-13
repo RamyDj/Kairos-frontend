@@ -1,3 +1,39 @@
 .card {
-    
+    background-color: rgb(245	239	210	);
+    padding:2vw;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    width: 43vw;
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.titleContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.card h3{
+    color:white;
+    width: 97%;
+    background-color: rgb(52	87	136	);
+    padding: 11px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 200;
+    letter-spacing: 4px;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.card h4{
+    font-size: 17.5px;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    margin-bottom: 25px;
+}
+
+.card p{
+    margin-bottom: 35px;
 }

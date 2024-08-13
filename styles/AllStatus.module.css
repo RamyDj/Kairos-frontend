@@ -1,0 +1,14 @@
+.AllstatusContainer{
+    padding : 2vw;
+}
+
+.statusListTitle{
+    border-bottom: 1px solid black;
+}
+
+.StatusContainer{
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
