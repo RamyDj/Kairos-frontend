@@ -29,10 +29,14 @@ function TableStatus() {
         //console.log(search)
         let currentSearch = search.length - 1
         //console.log(search[currentSearch].status_general)
+        if (search[currentSearch] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
+            return
+        }
         let status = search[currentSearch].status_general
         //console.log(status)
 
-        if (status.length === 0) {
+        if (!status || status.length === 0) {
+            setStatut([]);
             return
         }
 
@@ -50,14 +54,22 @@ function TableStatus() {
             })
     }, [search])
 
+    //exclure les cas ou le tableau contient des index dont la valeur est null
+    let statut2 = statut.filter((e) => e !== null)
+    console.log(statut2)
+
+    //si aucune entreprise ne correspond à la recherche
+    if (search[search.length-1] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
+        statut2 = []
+        return
+    }
+
     // s'il n'y a pas de recherche en cours
     if (!search.length) {
         return <div className={styles.statusContainer}><a href="/">Aucune recherche à afficher</a></div>
     }
 
-    //exclure les cas ou le tableau contient des index dont la valeur est null
-    const statut2 = statut.filter((e) => e !== null)
-    console.log(statut2)
+    
 
     // si aucun statut n'est renseigné et présent dans le reducer
     if (statut2.length === 0) {
