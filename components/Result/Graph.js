@@ -1,57 +1,36 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
 import { useEffect, useState } from 'react';
-import resultStyles from '../../styles/Result.module.css'; 
-import dashboardStyles from '../../styles/Dashboard.module.css';
-import { useSelector } from 'react-redux';
+import Styles from '../../styles/Result.module.css';
 
 // Registering components required for Chart.js
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement);
 
 const Graph = () => {
+  // Données statiques pour le graphique
+  const staticData = {
+    labels: ['SARL', 'SAS', 'EI'], // Les labels des statuts
+    datasets: [
+      {
+        label: 'Part du statut au total',
+        data: [30, 50, 20], // Pourcentage pour chaque statut
+        borderColor: '#163050', // Couleur de la ligne
+        backgroundColor: 'rgba(22, 48, 80, 0.1)', // Couleur de fond sous la ligne
+        fill: true, // Remplir la zone sous la ligne
+      },
+    ],
+  };
+
+  // État pour les données du graphique
   const [data, setData] = useState({ labels: [], datasets: [] });
-  const search = useSelector((state) => state.search.value)
-  const labelsNames = search[0].top_status.map((data, i) => {
-    let name;
-    if (data.status_name === "Société à responsabilité limitée (sans autre indication)") {
-      name = "SARL"
-    }
-    else if (data.status_name === "SAS, société par actions simplifiée") {
-      name = "SAS"
-    }
-    else if (data.status_name === "Entrepreneur individuel") {
-      name = "EI"
-    }
-    return (name)
-  })
-
-  const statusPercentages = search[0].top_status.map((data, i) => {
-    return (data.percentage)
-  })
-
 
   useEffect(() => {
-    setData({
-      labels: labelsNames,
-      datasets: [
-        {
-          label: 'Part du statut au total',
-          data: statusPercentages,
-          //couleur trait
-          borderColor: '#163050',
-          //couleur point
-          backgroundColor: '#F9F2D2',
-          fill: true,
-        }
-      ]
-    });
-    console.log(data)
+    // Mise à jour des données du graphique
+    setData(staticData);
   }, []);
 
   return (
-    <div className={`${resultStyles.graphContainer} ${dashboardStyles.graphContainer}`}>
-      <Line data={data} className={`${resultStyles.graph} ${dashboardStyles.graph}`}/>
-    </div>
+      <Line data={data} className={Styles.graph} />
   );
 };
 

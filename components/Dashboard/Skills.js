@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import styles from '../../styles/Dashboard.module.css';
-import PercentageWheel from "../Result/PercentageWheel";
 
 
 function Skills() {
