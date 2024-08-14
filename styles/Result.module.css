@@ -1,23 +1,34 @@
+.resultPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .scoreContainer {
   display: flex;
   align-items: center;
-  padding: 1%;
+  width: 90%;
+  border-bottom: 1px solid #EBEBEB;
+  margin-bottom: 25px;
+  padding-top: 15px;
 }
 
 .score {
-  font-size: 35px;
+  font-size: 45px;
   padding-right: 3%;
+  padding-bottom: 0px;
 }
 
 .firstResult {
+  width: 90%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .mapResult {
   border: 1px solid #EBEBEB;
   height: 60vh;
-  min-width: 40%;
+  min-width: 45%;
   background-color: #FAFAF5;
   border-radius: 25px;
   padding: 2%;
@@ -29,7 +40,7 @@
 
 .showResult {
   height: 60vh;
-  min-width: 40%;
+  min-width: 50%;
   padding: 2%;
   overflow-y: auto;
   border: 1px solid #EBEBEB;
@@ -94,4 +105,25 @@
   color: white;
   cursor: pointer;
   text-align: center;
+}
+
+.hoverBulle {
+  margin-left: 8px;
+  margin-bottom: 20px;
+  background-color: #EBEBEB;
+  color: #163050;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 10px;
+}
+
+.scoreContainer .bulle {
+  background-color: #163050;
+  width: 250px;
+  overflow-wrap: break-word;
 }
