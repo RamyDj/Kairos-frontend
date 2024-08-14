@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Graph from '../../components/Result/Graph';
+import GraphDashboard from './GraphDashboard';
 import styles from '../../styles/Dashboard.module.css';
 
 
@@ -8,7 +8,7 @@ function LastSearch() {
 
     return (
         <div className={styles.lastSearchContainer}>
-            <Graph />
+            <GraphDashboard />
             <ul>
                 <il>Recherché le <span>06/08/2024</span></il><br/>
                 <il>Activité<span>Coiffeur- visagiste</span></il><br/>
