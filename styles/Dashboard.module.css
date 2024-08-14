@@ -12,7 +12,7 @@
 }
 
 .col2{
-    width: 50%;
+    width: 54%;
 }
 
 .col3{
@@ -57,6 +57,17 @@
     background-color: #F9F2D1;
     height: 40vh;
     border-radius: 20px;
+}
+
+.searchDescription{
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.linkLastSearch{
+    cursor: pointer;
+    color:rgb(0, 0, 190);
+    text-decoration: underline;
 }
 
 .noSearchSentence{
