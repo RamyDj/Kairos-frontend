@@ -21,7 +21,7 @@ function TableStatus() {
     useEffect(() => {
 
 
-if (!search.length) {
+        if (!search.length) {
             return
         }
 
@@ -73,7 +73,7 @@ if (!search.length) {
 
     // s'il n'y a pas de recherche en cours
     if (!search.length) {
-        return <div className={styles.statusContainer}><a href="/">Aucune recherche à afficher</a></div>
+        return <div className={styles.statusContainer}><Link href="/">Aucune recherche à afficher</Link></div>
     }
 
 
@@ -82,13 +82,12 @@ if (!search.length) {
     if (statut2.length === 0) {
         return (
             <div className={styles.statusContainer}>
-                <a href="/">Statuts non renseignés</a>
+                <Link href="/">Statuts non renseignés</Link>
             </div>
         )
     }
 
 
-    let compare = <></>
     let iconStyle = { 'color': '#00E000' }
     let iconStyle2 = { 'color': '#CC0000' }
 
@@ -218,7 +217,7 @@ if (!search.length) {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/lastsearches">Accéder à toutes mes recherches</a>
+                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }
@@ -300,61 +299,13 @@ if (!search.length) {
                     </tbody>
                 </table>
                 <a href="/allstatus">Acceder à tous les status</a>
-                <a href="/lastsearches">Accéder à toutes mes recherches</a>
+                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }
 
     return (
         <div className={styles.statusContainer}>
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Auto-Entrepreneur</th>
-                        <th>Travailleur indépendant</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CA max/an</td>
-                        <td>75K BRUT</td>
-                        <td>45K BRUT</td>
-                    </tr>
-                    <tr>
-                        <td>Taux de cotisation</td>
-                        <td>25%</td>
-                        <td>70%</td>
-                    </tr>
-                    <tr>
-                        <td>Indemnités journalières</td>
-                        <td>✅</td>
-                        <td>❌</td>
-                    </tr>
-                    <tr>
-                        <td>Eligible a l'ACRE</td>
-                        <td>✅</td>
-                        <td>❌</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de salariés max</td>
-                        <td>❌</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td>Impot libératoire</td>
-                        <td>❌</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td>Droits chomage</td>
-                        <td>✅</td>
-                        <td>❌</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="/allstatus">Acceder à tous les status</a>
-            <a href="/lastsearches">Accéder à toutes mes recherches</a>
         </div>
     );
 }
