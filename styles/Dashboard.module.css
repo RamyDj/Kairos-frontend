@@ -12,11 +12,11 @@
 }
 
 .col2{
-    width: 54%;
+    width: 52%;
 }
 
 .col3{
-    width: 25%;
+    width: 28%;
 }
 
 .myProfileContainer{
@@ -52,16 +52,27 @@
 .lastSearchContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: #F9F2D1;
     height: 40vh;
+    width: 100%;
     border-radius: 20px;
+}
+.graphContainer{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .searchDescription{
     overflow-x: scroll;
     scrollbar-width: none;
+    padding-right: 2%;
 }
 
 .linkLastSearch{
