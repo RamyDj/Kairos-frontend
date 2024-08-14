@@ -110,10 +110,12 @@ function Result() {
     }
     if (user.token) {
         bottomPage =
-            <div className={styles.details}>
+            <div className={styles.detailledResult}>
                 <h3>COMPARAISON DES STATUTS</h3>
+                <div>
                 <Comparaisonstatus/>
-                <Zoom/>
+                <Zoom/>   
+                </div>
                 <Selectedstatus/>
             </div>
     }
