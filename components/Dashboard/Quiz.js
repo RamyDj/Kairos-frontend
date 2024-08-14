@@ -1,27 +1,32 @@
 import { useState } from 'react';
 import { questions } from '../../datas/quiz'
 import { useRouter } from 'next/router';
-import { useDispatch} from 'react-redux';
-import { userInfo } from '../../reducers/user';
+import { useDispatch, useSelector} from 'react-redux';
+import { userSkill } from '../../reducers/user';
 import { Modal, Button } from 'antd';
 
 import styles from '../../styles/Quiz.module.css';
 
 function QuizPage(){
 
+    //Reducer
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.user.value);
+    console.log(user)
+
+    if(!user.token)
+      return
+
+  // const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [userAnswers, setUserAnswers] = useState({})
   const [score, setScore] = useState({ legalScore: 0, commerceScore: 0 })
-  const [quizCompleted, setQuizCompleted] = useState(false)
 
   const [showModal,setShowModal] = useState(false)
 
   //redirection
   const router = useRouter()
-
-  //Reducer
-  const dispatch = useDispatch()
-  // const user = useSelector((state) => state.user.value);
 
   const handleAnswer = (questionId, selectedOptionIndex) => {
     const question = questions.find(q => q.id === questionId);
@@ -47,25 +52,28 @@ function QuizPage(){
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
     } else {
-      setQuizCompleted(true)
       saveResults()
     }
   }
 
   const saveResults = () => {
-    // if(!user.token)
-    //   return
-    fetch('http://localhost:3000/dashboard/save-scores', {
+     const roundedScore = {
+      legalScore: Math.ceil(score.legalScore), //Arrondis le nombre vers le haut au nombre entier le plus proche
+      commerceScore: Math.ceil(score.commerceScore)
+    }
+
+    fetch(`http://localhost:3000/dashboard/save-scores`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ token: "vyX0H2SnSh1xT26jxmPLkE2eg1vLHDi8", score  })
+        body: JSON.stringify({ token: user.token, score: roundedScore })
       }).then(response => response.json())
       .then(data => {
+        console.log(data)
           if(data.result) {
-            dispatch(userInfo({ skill: { legal: score.legalScore, commerce: score.commerceScore } }))
-            router.push('/dashboard');
+            dispatch(userSkill({ skills: { legal: roundedScore.legalScore, commerce: roundedScore.commerceScore } }))
+            router.push('/dashboard')
           }
       })
   }
@@ -87,7 +95,6 @@ function QuizPage(){
   }
 
   const confirmCancel = () => {
-    setQuizCompleted(false)
     setShowModal(false)
     router.push('/dashboard')
   }

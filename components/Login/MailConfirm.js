@@ -14,24 +14,33 @@ function MailConfirm(){
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.value)
     const search = useSelector((state) => state.search.value);
+    console.log(user)
 
     const handleSubmit = () => {
-        fetch('http://localhost:3000/users/info-user',{
+        fetch(`${url}/users/info-user`,{
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email : "gallibour.irene@gmail.com"}),
+          body: JSON.stringify({ email : user.email}),
           }).then(response => response.json())
         .then(data => {
+          console.log(data)
           if(data.result) { 
-            dispatch(userInfo({token: data.user.token})) 
+            dispatch(userInfo({
+              token: data.user.token, 
+              email: data.user.email,
+              name: data.user.name,
+              firstname : data.user.firstname,
+              search: data.user.search,
+              skills : data.user.skills,
+            }))
           
             if (Object.keys(search).length === 0) {
               router.push('/dashboard');
             } else {
               router.push('/result/companies');
-            }  
-          }
-        })
+             }  
+           }
+          })
     }
     return(
         <div className={styles.container}>
