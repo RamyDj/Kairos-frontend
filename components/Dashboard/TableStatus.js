@@ -22,7 +22,7 @@ function TableStatus() {
     useEffect(() => {
 
 
-        if (!search.length) {
+if (!search.length) {
             return
         }
 
@@ -52,6 +52,8 @@ function TableStatus() {
                 setStatut(statusData.data)
                 //console.log(statusData.data)
             })
+
+
     }, [search])
 
     //exclure les cas ou le tableau contient des index dont la valeur est null
@@ -59,9 +61,15 @@ function TableStatus() {
     console.log(statut2)
 
     //si aucune entreprise ne correspond à la recherche
-    if (search[search.length-1] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
+    if (search[search.length - 1] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
         statut2 = []
-        return
+        return (
+            <div className={styles.statusContainer}>
+                <a href="/">Aucuns statuts correspondants à votre recherche à afficher</a>
+                <a href="/allstatus">Acceder à tous les status</a>
+                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+            </div>
+        )
     }
 
     // s'il n'y a pas de recherche en cours
@@ -69,7 +77,7 @@ function TableStatus() {
         return <div className={styles.statusContainer}><a href="/">Aucune recherche à afficher</a></div>
     }
 
-    
+
 
     // si aucun statut n'est renseigné et présent dans le reducer
     if (statut2.length === 0) {
