@@ -9,7 +9,7 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {
     addSearch: (state, action) => {
-        state.value.push(action.payload)
+      state.value.push(action.payload)
     },
     fillWithAllUserSearches : (state, action)=>{
       state.value = action.payload
