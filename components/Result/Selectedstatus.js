@@ -1,15 +1,13 @@
+import styles from '../../styles/Selectedstatus.module.css';
 
-import styles from '../../styles/OneStatus.module.css';
 
-
-function OneStatut(props) {
+function Selectedstatus(props) {
 
 
     const allLinksInArray = props.links
     const links = allLinksInArray.map((e,i)=>{
         return <div className={styles.linkContainer}>< a href={e} key={i} >{e}</a></div>
     })
-
 
     return (
         <>
@@ -47,4 +45,5 @@ function OneStatut(props) {
         </>
     )
 }
-    export default OneStatut;
+
+export default Selectedstatus;

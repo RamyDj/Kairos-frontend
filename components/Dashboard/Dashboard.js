@@ -11,20 +11,14 @@ import SearchInputs from './SearchInputs';
 
 function Dashboard() {
     const user = useSelector((state) => state.user.value);
-    console.log(user)
-    // if(!user.token)
-    // return
-
-    const searches = useSelector((state)=>state.search.value)
+    const searches = useSelector((state) => state.search.value)
     console.log(searches)
     console.log(user);
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const dispatch = useDispatch()
 
-    const i = searches.length-1
-
-    useEffect( ()=>{   
-        const func = async () => {
+    const i = searches.length - 1
+       const func = async () => {
         if (user.token){
         const response = await fetch(`${url}/dashboard/getSearches`, {
             method: 'POST',
@@ -35,34 +29,37 @@ function Dashboard() {
             if (!data.result){return}
             else{
                 dispatch(fillWithAllUserSearches(data.searches))
-                if (searches[i]== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur."){
+                if (searches[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
                     dispatch(addSearch("Aucune entreprise trouvée pour ce type d'activité dans ce secteur."))
                 }
             }
         }
     }
+    useEffect( ()=>{   
+ 
+    func();
 },[])
 
-    if (searches.length == 0){
-        return(
+    if (searches.length == 0) {
+        return (
             <div className={styles.dashboardContainer}>
-            <div className={styles.col1}>
-                <MyProfile />
-                <Skills />
+                <div className={styles.col1}>
+                    <MyProfile />
+                    <Skills />
+                </div>
+                <div className={styles.col2}>
+                    <h2>Ma Dernière recherche</h2>
+                    <h4 className={styles.noSearchSentence}>Vous n'avez pas encore fait de recherche. Commencez ci-dessous !</h4>
+                    <h2>Nouvelle Recherche</h2>
+                    <SearchInputs />
+                </div>
+                <div className={styles.col3}>
+                    <h2>Mes Derniers Statuts</h2>
+                    <div className={styles.statusSentenceContainer}>
+                        <h4 className={styles.noStatusSentence}>Les statuts de vos prochaines recherches apparaîtront ici.</h4>
+                    </div>
+                </div>
             </div>
-            <div className={styles.col2}>
-                <h2>Ma Dernière recherche</h2>
-                <h4 className={styles.noSearchSentence}>Vous n'avez pas encore fait de recherche. Commencez ci-dessous !</h4>
-                <h2>Nouvelle Recherche</h2>
-                <SearchInputs/>
-            </div>
-            <div className={styles.col3}>
-            <h2>Mes Derniers Statuts</h2>
-            <div className={styles.statusSentenceContainer}>
-                <h4 className={styles.noStatusSentence}>Les statuts de vos prochaines recherches apparaîtront ici.</h4>
-            </div>
-            </div>
-        </div>
         )
     }
 
@@ -74,12 +71,12 @@ function Dashboard() {
             </div>
             <div className={styles.col2}>
                 <h2>Ma Dernière recherche</h2>
-                {/* <LastSearch /> */}
+                <LastSearch />
                 <h2>Nouvelle Recherche</h2>
-                <SearchInputs/>
+                <SearchInputs />
             </div>
             <div className={styles.col3}>
-            <h2>Mes Derniers Statuts</h2>
+                <h2>Mes Derniers Statuts</h2>
                 <TableStatus />
             </div>
         </div>
