@@ -31,7 +31,7 @@ function LastSearches() {
             <div className={styles.AllsearchContainer}>
                 <h2 className={styles.searchesListTitle}>Historique de vos recherches</h2>
                 <div className={styles.SearchesContainer}>
-                    {/* {lastSearch} */}
+                    {lastSearch}
                 </div>
             </div>
         </>
