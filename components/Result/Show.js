@@ -1,3 +1,4 @@
+
 import { useSelector } from 'react-redux';
 import styles from '../../styles/Result.module.css';
 import Company from './Company';
@@ -34,7 +35,7 @@ function Show() {
 
   const formattedCompaniesList = companiesList.map((data, i) => {
     return (
-      <Company key={i} name={data.name} status={data.status} creationDate={data.creation_date} employees={data.employees} CA={data.ca} />
+      <Company key={i} name={data.name} status={data.status} creationDate={data.creation_date} employees={data.employees} CA={data.ca_per_year[0].ca} />
     )
   })
 

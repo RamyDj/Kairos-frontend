@@ -19,22 +19,25 @@ function Dashboard() {
 
     const i = searches.length - 1
 
-    useEffect(() => {
-        (async () => {
-            if (user.token) {
-                const response = await fetch(`${url}/dashboard/getSearches`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: user.email })
-                })
-                const data = await response.json()
+    useEffect( ()=>{   
+        const func = async () => {
+        if (user.token){
+        const response = await fetch(`${url}/dashboard/getSearches`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({email : user.email })
+            })
+        const data = await response.json()
+            if (!data.result){return}
+            else{
                 dispatch(fillWithAllUserSearches(data.searches))
                 if (searches[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
                     dispatch(addSearch("Aucune entreprise trouvée pour ce type d'activité dans ce secteur."))
                 }
             }
-        })()
-    }, [])
+        }
+    }
+},[])
 
     if (searches.length == 0) {
         return (

@@ -9,6 +9,7 @@ import Histogram from '../../components/Result/Histogram';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
+import { Tooltip } from 'react-tooltip'
 
 
 const MapComponent = dynamic(() => import('../../components/Result/MapComponent'), { ssr: false });
@@ -59,20 +60,24 @@ function Result() {
 
 const i = search.length-1
 
+const score = search[i].score.average_ca + search[i].score.average_lifetime + search[i].score.density_of_companies + search[i].score.turnover;
+console.log(score)
+
 let scoreStyle;
  
-    if (search[i].score < 50) {
-        scoreStyle = { 'color': '#CF0506' };
+     if (score < 50) {
+        scoreStyle = {'color' : '#CF0506'};
     }
-    else if (search[i].score >= 50 && search.score < 75) {
-        scoreStyle = { 'color': '#FD5C0D' };
+    else if (score >= 50 && score < 75) {
+        scoreStyle = {'color' : '#FD5C0D'};
     }
     else {
-        scoreStyle = { 'color': '#1E8F28' };
-    }
-    const histogramData = search[i].top_status.map(status => ({
-        status_name: status.status_name,
-        companies_per_year: [
+        scoreStyle = {'color' : '#1E8F28'};
+    } 
+
+const histogramData = search[i].top_status.map(status => ({
+    status_name: status.status_name,
+    companies_per_year: [
             { year: '2022', number: status.companies_per_year[2]?.number || 0 },
             { year: '2023', number: status.companies_per_year[1]?.number || 0 },
             { year: '2024', number: status.companies_per_year[0]?.number || 0 }
@@ -80,13 +85,20 @@ let scoreStyle;
     }));
 
     return (
-        <div>
+        <div className={styles.resultPage}
+        >
             <div className={styles.scoreContainer}>
                 <p className={styles.score}
                 >Score :<span style={scoreStyle}
-                > {search[i].score}/100</span></p>
+                > {score}/100</span></p>
                 <span className={styles.index}
                 >Indice de viabilité</span>
+                <span className={styles.hoverBulle}
+                 id='infoBulle'>?</span>
+                <Tooltip className={styles.bulle}
+                 anchorSelect="#infoBulle" place="right">
+                L'indice de viabilité est calculé en fonction de la saturation du secteur et de l'évolution du chiffre d'affaire moyen.
+                </Tooltip>
             </div>
             <div className={styles.firstResult}>
                 <div className={styles.mapResult}>

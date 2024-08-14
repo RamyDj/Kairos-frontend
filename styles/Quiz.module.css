@@ -1,0 +1,42 @@
+.container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+.answer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.buttonCancel{
+    background-color: red;
+    color: white;
+    height: 40px;
+    width: 20vh;
+    border-radius: 10px;
+    cursor: pointer;
+   
+}
+.button{
+    height: 40px;
+    width: 40%;
+    background-color: #F8E9A9;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 2%;
+}
+.button:hover{
+    background-color: #163050;
+    color: white;
+}
+.title{
+    color: #163050;
+}
