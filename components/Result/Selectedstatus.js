@@ -1,7 +1,13 @@
-import styles from '../../styles/OneStatus.module.css';
+import styles from '../../styles/Selectedstatus.module.css';
 
 
 function Selectedstatus(props) {
+
+
+    const allLinksInArray = props.links
+    const links = allLinksInArray.map((e,i)=>{
+        return <div className={styles.linkContainer}>< a href={e} key={i} >{e}</a></div>
+    })
 
     return (
         <>
@@ -34,7 +40,7 @@ function Selectedstatus(props) {
         <h4>Désavantages du statut {props.statusCode}</h4>
         <p>{props.disadvantages}</p>
         <h4>Liens utiles</h4>
-        <p>{props.links}</p>
+        <p>{links}</p>
         </div>
         </>
     )

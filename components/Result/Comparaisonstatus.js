@@ -99,50 +99,50 @@ function Comparaisonstatus(props) {
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th onClick={() => select(0)}>{statut3[0].status_id.name}</th>
+                            <th className={styles.radiusTL}></th>
+                            <th className={styles.radiusTR} onClick={() => select(0)}>{statut3[0].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Nombre d'associés maximum</td>
+                            <td className={styles.firstTD}>Nombre d'associés maximum</td>
                             <td>{statut3[0].status_id.associes}</td>
                         </tr>
                         <tr>
-                            <td>Capital social minimum</td>
+                            <td className={styles.firstTD}>Capital social minimum</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[0].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Etendue de la responsabilité</td>
+                            <td className={styles.firstTD}>Etendue de la responsabilité</td>
                             <td>{statut3[0].status_id.responsabitlity}</td>
                         </tr>
                         <tr>
-                            <td>Imposition des bénéfices</td>
+                            <td className={styles.firstTD}>Imposition des bénéfices</td>
                             <td>{statut3[0].status_id.taxation_of_benefits}</td>
                         </tr>
                         <tr>
-                            <td>Allocations chômage</td>
+                            <td className={styles.firstTD}>Allocations chômage</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[0].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Eligible a l'ACRE</td>
+                            <td className={styles.firstTD}>Eligible a l'ACRE</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.acre ? faSquareCheck : faXmark} style={statut3[0].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Indemnités journalières</td>
+                            <td className={styles.firstTD}>Indemnités journalières</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[0].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Impot libératoire</td>
+                            <td className={styles.firstTD}>Impot libératoire</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[0].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Taux de cotisation</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                         </tr>
                         <tr>
-                            <td>CA max/an</td>
-                            <td>{statut3[0].status_id.max_ca}</td>
+                            <td className={styles.radiusBL}>CA max/an</td>
+                            <td className={styles.radiusBR}>{statut3[0].status_id.max_ca}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -157,61 +157,61 @@ function Comparaisonstatus(props) {
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
+                            <th className={styles.radiusTL}></th>
                             <th  onClick={() => select(0)}>{statut3[0].status_id.name}</th>
-                            <th  onClick={() => select(1)}>{statut3[1].status_id.name}</th>
+                            <th className={styles.radiusTR} onClick={() => select(1)}>{statut3[1].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Nombre d'associés maximum</td>
+                            <td className={styles.firstTD}>Nombre d'associés maximum</td>
                             <td>{statut3[0].status_id.associes}</td>
                             <td>{statut3[1].status_id.associes}</td>
                         </tr>
                         <tr>
-                            <td>Capital social minimum</td>
+                            <td className={styles.firstTD}>Capital social minimum</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[0].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[1].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Etendue de la responsabilité</td>
+                            <td className={styles.firstTD}>Etendue de la responsabilité</td>
                             <td>{statut3[0].status_id.responsabitlity}</td>
                             <td>{statut3[1].status_id.responsabitlity}</td>
                         </tr>
                         <tr>
-                            <td>Imposition des bénéfices</td>
+                            <td className={styles.firstTD}>Imposition des bénéfices</td>
                             <td>{statut3[0].status_id.taxation_of_benefits}</td>
                             <td>{statut3[1].status_id.taxation_of_benefits}</td>
                         </tr>
                         <tr>
-                            <td>Allocations chômage</td>
+                            <td className={styles.firstTD}>Allocations chômage</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[0].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[1].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Eligible a l'ACRE</td>
+                            <td className={styles.firstTD}>Eligible a l'ACRE</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.acre ? faSquareCheck : faXmark} style={statut3[0].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.acre ? faSquareCheck : faXmark} style={statut3[1].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Indemnités journalières</td>
+                            <td className={styles.firstTD}>Indemnités journalières</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[0].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[1].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Impot libératoire</td>
+                            <td className={styles.firstTD}>Impot libératoire</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[0].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[1].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Taux de cotisation</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                             <td>{statut3[1].status_id.cotisation_percentage}</td>
                         </tr>
                         <tr>
-                            <td>CA max/an</td>
+                            <td className={styles.radiusBL}>CA max/an</td>
                             <td>{statut3[0].status_id.max_ca}</td>
-                            <td>{statut3[1].status_id.max_ca}</td>
+                            <td className={styles.radiusBR}>{statut3[1].status_id.max_ca}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -226,72 +226,72 @@ function Comparaisonstatus(props) {
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
+                            <th className={styles.radiusTL}></th>
                             <th onClick={() => select(0)}>{statut3[0].status_id.name}</th>
                             <th onClick={() => select(1)}>{statut3[1].status_id.name}</th>
-                            <th onClick={() => select(2)}>{statut3[2].status_id.name}</th>
+                            <th className={styles.radiusTR} onClick={() => select(2)}>{statut3[2].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Nombre d'associés maximum</td>
+                            <td className={styles.firstTD}>Nombre d'associés maximum</td>
                             <td>{statut3[0].status_id.associes}</td>
                             <td>{statut3[1].status_id.associes}</td>
                             <td>{statut3[2].status_id.associes}</td>
                         </tr>
                         <tr>
-                            <td>Capital social minimum</td>
+                            <td className={styles.firstTD}>Capital social minimum</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[0].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[1].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[2].status_id.registered_capital ? faSquareCheck : faXmark} style={statut3[2].status_id.registered_capital ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Etendue de la responsabilité</td>
+                            <td className={styles.firstTD}>Etendue de la responsabilité</td>
                             <td>{statut3[0].status_id.responsabitlity}</td>
                             <td>{statut3[1].status_id.responsabitlity}</td>
                             <td>{statut3[2].status_id.responsabitlity}</td>
                         </tr>
                         <tr>
-                            <td>Imposition des bénéfices</td>
+                            <td className={styles.firstTD}>Imposition des bénéfices</td>
                             <td>{statut3[0].status_id.taxation_of_benefits}</td>
                             <td>{statut3[1].status_id.taxation_of_benefits}</td>
                             <td>{statut3[2].status_id.taxation_of_benefits}</td>
                         </tr>
                         <tr>
-                            <td>Allocations chômage</td>
+                            <td className={styles.firstTD}>Allocations chômage</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[0].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[1].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[2].status_id.unemployement_allocation ? faSquareCheck : faXmark} style={statut3[2].status_id.unemployement_allocation ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Eligible a l'ACRE</td>
+                            <td className={styles.firstTD}>Eligible a l'ACRE</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.acre ? faSquareCheck : faXmark} style={statut3[0].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.acre ? faSquareCheck : faXmark} style={statut3[1].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[2].status_id.acre ? faSquareCheck : faXmark} style={statut3[2].status_id.acre ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Indemnités journalières</td>
+                            <td className={styles.firstTD}>Indemnités journalières</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[0].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[1].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[2].status_id.daily_indemnities ? faSquareCheck : faXmark} style={statut3[2].status_id.daily_indemnities ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Impot libératoire</td>
+                            <td className={styles.firstTD}>Impot libératoire</td>
                             <td><FontAwesomeIcon icon={statut3[0].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[0].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[1].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[1].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                             <td><FontAwesomeIcon icon={statut3[2].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[2].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Taux de cotisation</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                             <td>{statut3[1].status_id.cotisation_percentage}</td>
                             <td>{statut3[2].status_id.cotisation_percentage}</td>
                         </tr>
                         <tr>
-                            <td>CA max/an</td>
+                            <td className={styles.radiusBL}>CA max/an</td>
                             <td>{statut3[0].status_id.max_ca}</td>
                             <td>{statut3[1].status_id.max_ca}</td>
-                            <td>{statut3[2].status_id.max_ca}</td>
+                            <td className={styles.radiusBR}>{statut3[2].status_id.max_ca}</td>
                         </tr>
                     </tbody>
                 </table>

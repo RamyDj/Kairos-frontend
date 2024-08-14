@@ -167,6 +167,37 @@ border-radius: 20px;
     border-color: 2px solid black;
 }
 
+.statusContainer td{
+    height: 7vh;
+    border-bottom: 2px solid #2B578C;
+}
+
+.radiusTL{
+border-top: 2px solid #2B578C;
+border-top-left-radius: 20px;
+border-right: 2px solid #2B578C;
+}
+
+.radiusTR{
+border-top: 2px solid #2B578C;
+border-top-right-radius: 20px;
+}
+
+.radiusBL{
+border-bottom: 2px solid #2B578C;
+border-bottom-left-radius: 20px;
+border-right: 2px solid #2B578C;
+}
+
+.radiusBR{
+border-bottom: 2px solid #2B578C;
+border-bottom-right-radius: 20px;
+}
+
+.firstTD{
+border-right: 2px solid #2B578C;
+}
+
 /*SKILL*/
 .skillsContainer{
     margin-top: 20px;
