@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../../reducers/user';
+import { userInfo } from '../../reducers/user';
 
 function GoogleCallback() {
   const dispatch = useDispatch();
@@ -19,13 +19,13 @@ function GoogleCallback() {
             window.location.href = '/'; // Redirige en cas d'erreur
           } else {
             // Dispatch des informations de l'utilisateur et du token dans Redux
-            dispatch(login({
+            dispatch(userInfo({
               token: data.token,
               name: data.name,
               email: data.email,
             }));
             // Rediriger vers le tableau de bord
-            // window.location.href = 'http://localhost:3001/dashboard';
+            window.location.href = 'http://localhost:3001/dashboard';
           }
         })
         .catch(error => {
