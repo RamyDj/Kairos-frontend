@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import styles from '../../styles/Dashboard.module.css';
+import styles from '../../styles/Comparaisonstatus.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link'
@@ -71,7 +71,7 @@ function Comparaisonstatus() {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>{statut[0].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[0].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,8 +129,8 @@ function Comparaisonstatus() {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>{statut[0].status_id.name}</th>
-                            <th>{statut[1].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[0].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[1].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -198,9 +198,9 @@ function Comparaisonstatus() {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>{statut[0].status_id.name}</th>
-                            <th>{statut[1].status_id.name}</th>
-                            <th>{statut[2].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[0].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[1].status_id.name}</th>
+                            <th onClick={() => console.log('hello')}>{statut[2].status_id.name}</th>
                         </tr>
                     </thead>
                     <tbody>
