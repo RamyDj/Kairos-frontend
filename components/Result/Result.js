@@ -10,7 +10,7 @@ import Comparaisonstatus from '../../components/Result/Comparaisonstatus';
 import Selectedstatus from '../../components/Result/Selectedstatus';
 import Zoom from '../../components/Result/Zoom';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { Tooltip } from 'react-tooltip'
 
@@ -22,6 +22,11 @@ function Result() {
     const user = useSelector((state) => state.user.value);
     const dispatch = useDispatch()
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+    const [selection, setSelection] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    console.log(`statut ${isOpen}`)
+
+    console.log(selection)
 
     // Variable search qui va enregistrer tout le reducer ou juste une recherche si on arrive sur la page avec son id en router.query
 
@@ -99,6 +104,9 @@ console.log(score)
         ]
     }));
 
+
+
+
     let bottomPage
     if (!user.token) {
         bottomPage =
@@ -110,15 +118,22 @@ console.log(score)
             </div>
     }
     if (user.token) {
+
+        //fonction inverse data flow qui appelle Selectedstatus
+        const callStatus = (data) => {
+            setSelection(data)
+            setIsOpen(true)
+        }
+
         bottomPage =
-            <div className={styles.detailledResult}>
-                <h3>COMPARAISON DES STATUTS</h3>
-                <div>
-                <Comparaisonstatus/>
-                <Zoom/>   
-                </div>
-                <Selectedstatus/>
+        <div className={styles.detailledResult}>
+            <h3>COMPARAISON DES STATUTS</h3>
+            <div>
+                <Comparaisonstatus callStatus={callStatus} />
+                <Zoom />
             </div>
+            { isOpen ? ( <Selectedstatus {...selection} /> ) : null }
+        </div>
     }
 
     return (
@@ -153,7 +168,7 @@ console.log(score)
                     <Graph />
                     <Histogram data={histogramData} />
                 </div>
-                {bottomPage}
+                {bottomPage} 
             </div>
         </div>
     )

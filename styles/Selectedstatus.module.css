@@ -1,11 +1,12 @@
 .card {
     background-color: rgb(245	239	210	);
     padding:2vw;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 24px;
     width: 43vw;
     height: 800px;
     overflow-y: scroll;
+    margin-top: 10vh;
 }
 
 .titleContainer{

@@ -1,0 +1,64 @@
+/* Comparaison statuts */
+
+.statusContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 78vh;
+  }
+
+  .statusContainer table{
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    background-color: #F9F2D1;
+    border-radius: 20px;
+    }
+    
+    .statusContainer thead{
+        height: 8vh;
+        background-color: #2B578C;
+        color: white;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .statusContainer th{
+        cursor: pointer;
+    }
+
+    .icon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .statusContainer td{
+        height: 7vh;
+        border-bottom: 2px solid #2B578C;
+  }
+
+  .radiusTL{
+    border-top: 2px solid #2B578C;
+    border-top-left-radius: 20px;
+    border-right: 2px solid #2B578C;
+  }
+
+  .radiusTR{
+    border-top: 2px solid #2B578C;
+    border-top-right-radius: 20px;
+  }
+
+  .radiusBL{
+    border-bottom: 2px solid #2B578C;
+    border-bottom-left-radius: 20px;
+    border-right: 2px solid #2B578C;
+  }
+
+  .radiusBR{
+    border-bottom: 2px solid #2B578C;
+    border-bottom-right-radius: 20px;
+  }
+
+  .firstTD{
+    border-right: 2px solid #2B578C;
+  }

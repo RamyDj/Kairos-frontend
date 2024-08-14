@@ -12,11 +12,11 @@
 }
 
 .col2{
-    width: 50%;
+    width: 52%;
 }
 
 .col3{
-    width: 25%;
+    width: 28%;
 }
 
 .myProfileContainer{
@@ -52,11 +52,33 @@
 .lastSearchContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: #F9F2D1;
     height: 40vh;
+    width: 100%;
     border-radius: 20px;
+}
+.graphContainer{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.searchDescription{
+    overflow-x: scroll;
+    scrollbar-width: none;
+    padding-right: 2%;
+}
+
+.linkLastSearch{
+    cursor: pointer;
+    color:rgb(0, 0, 190);
+    text-decoration: underline;
 }
 
 .noSearchSentence{
@@ -146,25 +168,43 @@ border-radius: 20px;
     border-radius: 20px;
 }
 
-/* .SkillsList{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 80%;
-} */
-
-/* .graphContainer {
-    height: 80%;
-    width: 80%;
-    border: 1px solid black;
-} */
 
 .icon {
     height: 30px;
     width: 30px;
     border-color: 2px solid black;
+}
+
+.statusContainer td{
+    height: 7vh;
+    border-bottom: 2px solid #F8E9A9;
+}
+
+.radiusTL{
+border-top: 2px solid #2B578C;
+border-top-left-radius: 20px;
+border-right: 2px solid #F8E9A9;
+}
+
+.radiusTR{
+border-top: 2px solid #F8E9A9;
+border-top-right-radius: 20px;
+}
+
+.radiusBL{
+border-bottom: 2px solid #F8E9A9;
+border-bottom-left-radius: 20px;
+border-right: 2px solid #F8E9A9;
+}
+
+.radiusBR{
+border-bottom: 2px solid #F8E9A9;
+border-bottom-right-radius: 20px;
+}
+
+.firstTD{
+    font-weight: 900;
+border-right: 2px solid #F8E9A9;
 }
 
 /*SKILL*/
