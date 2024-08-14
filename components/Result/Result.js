@@ -20,6 +20,8 @@ function Result() {
     const dispatch = useDispatch()
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
+    // Variable search qui va enregistrer tout le reducer ou juste une recherche si on arrive sur la page avec son id en router.query
+
     let search
     const router = useRouter()
     const {searchid} = router.query
@@ -35,7 +37,6 @@ function Result() {
 
     console.log(user)
     console.log(search)
-    console.log(allSearches)
 
 
     useEffect(()=>{
@@ -59,6 +60,17 @@ function Result() {
 },[])
 
 const i = search.length-1
+
+// Affichage si pas d'entreprise trouvée
+
+if (search[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur."){
+    return (
+        <div className={styles.resultPage}>
+            <h2 className={styles.noResultSentence}>Aucune entreprise trouvée pour ce type d'activité dans ce secteur.</h2>
+            <h3 className={styles.newSearchSentence}>Voulez vous essayer une nouvelle recherche avec une autre zone ?</h3>
+        </div>
+    )
+}
 
 const score = search[i].score.average_ca + search[i].score.average_lifetime + search[i].score.density_of_companies + search[i].score.turnover;
 console.log(score)
