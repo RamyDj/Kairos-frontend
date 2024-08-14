@@ -5,6 +5,17 @@ import Link from 'next/link';
 
 function LastSearch() {
     const user = useSelector((state) => state.user.value);
+    const search = useSelector((state)=>state.search.value)
+
+    const i = search.length-1
+
+    if (search[i]== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur."){
+        return (
+            <div>
+                <h4 className={styles.noResultSentence}>Aucune entreprise trouvée pour votre dernière recherche.</h4>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.lastSearchContainer}>
