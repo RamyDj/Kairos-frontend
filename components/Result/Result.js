@@ -65,9 +65,9 @@ const i = search.length-1
 
 if (search[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur."){
     return (
-        <div className={styles.resultPage}>
+        <div className={styles.noResultPage}>
             <h2 className={styles.noResultSentence}>Aucune entreprise trouvée pour ce type d'activité dans ce secteur.</h2>
-            <h3 className={styles.newSearchSentence}>Voulez vous essayer une nouvelle recherche avec une autre zone ?</h3>
+            <a href='/' > <h3 className={styles.newSearchSentence}>Voulez vous essayer une nouvelle recherche avec une autre zone ?</h3></a>
         </div>
     )
 }
