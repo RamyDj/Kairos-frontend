@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../../styles/BurgerMenu.module.css';
 import Link from 'next/link'
-import { logout } from '../../reducers/user';
+import {logout} from '../../reducers/user';
+import {deleteSearches} from '../../reducers/search';
 import { useDispatch } from 'react-redux';
+
 
 function Burger(){
     const [open, setOpen] = useState(false);
@@ -13,6 +15,7 @@ function Burger(){
     }
     const handleLogout = () => {
 		dispatch(logout());
+        dispatch(deleteSearches())
 	};
     return (
         <div className={styles.burgerMenu}>
@@ -25,7 +28,7 @@ function Burger(){
                     <a className={styles.menuItem} href='/'>Mon Espace</a>
                     </Link>
                     <a className={styles.menuItem} href='/'>Mes Informations</a>
-                    <a className={styles.menuItem} onClick={() => handleLogout()} href='/login'>Déconnexion</a>
+                    <a className={styles.menuItem} onClick={() => handleLogout()} href='/'>Déconnexion</a>
                 </div>
             )}
         </div>

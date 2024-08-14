@@ -6,7 +6,7 @@ import { faSquareCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link'
 
 
-function TableStatus() {
+function Comparaisonstatus() {
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const search = useSelector((state) => state.search.value);
@@ -20,17 +20,7 @@ function TableStatus() {
 
     useEffect(() => {
 
-
-        if (!search.length) {
-            return
-        }
-
-        //console.log(search)
         let currentSearch = search.length - 1
-        //console.log(search[currentSearch].status_general)
-        if (search[currentSearch] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
-            return
-        }
         let status = search[currentSearch].status_general
         //console.log(status)
 
@@ -59,30 +49,12 @@ function TableStatus() {
     let statut2 = statut.filter((e) => e !== null)
     console.log(statut2)
 
-    //si aucune entreprise ne correspond à la recherche
-    if (search[search.length - 1] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
-        statut2 = []
-        return (
-            <div className={styles.statusContainer}>
-                <a href="/">Aucuns statuts correspondants à votre recherche à afficher</a>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
-            </div>
-        )
-    }
-
-    // s'il n'y a pas de recherche en cours
-    if (!search.length) {
-        return <div className={styles.statusContainer}><Link href="/">Aucune recherche à afficher</Link></div>
-    }
-
-
 
     // si aucun statut n'est renseigné et présent dans le reducer
     if (statut2.length === 0) {
         return (
             <div className={styles.statusContainer}>
-                <Link href="/">Statuts non renseignés</Link>
+                <a>Statuts non renseignés</a>
             </div>
         )
     }
@@ -145,8 +117,6 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }
@@ -216,8 +186,6 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }
@@ -298,8 +266,6 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
             </div>
         )
     }
@@ -310,4 +276,4 @@ function TableStatus() {
     );
 }
 
-export default TableStatus;
+export default Comparaisonstatus;
