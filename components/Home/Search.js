@@ -16,6 +16,7 @@ function Search() {
     const dispatch = useDispatch()
     const router = useRouter()
     const user = useSelector((state)=>state.user.value)
+    const search = useSelector((state) => state.search.value)
 
     // États reliés aux inputs
 
@@ -68,6 +69,8 @@ function Search() {
             router.push('/result/companies')
         })
     }
+
+    console.log(search)
 
     // Fonction appelée en tapant du texte dans 'Secteur Géographique' pour fetch api adresse et remplir la liste de l'autoComplete
 

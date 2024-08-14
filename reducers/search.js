@@ -13,9 +13,12 @@ export const searchSlice = createSlice({
     },
     fillWithAllUserSearches : (state, action)=>{
       state.value = action.payload
+    },
+    deleteSearches: (state, action) => {
+      state.value = [];
     }
   },
 });
 
-export const { addSearch, fillWithAllUserSearches } = searchSlice.actions;
+export const { addSearch, fillWithAllUserSearches, deleteSearches } = searchSlice.actions;
 export default searchSlice.reducer;

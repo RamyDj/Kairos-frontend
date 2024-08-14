@@ -3,7 +3,6 @@ import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, L
 import { useEffect, useState } from 'react';
 import Styles from '../../styles/Result.module.css';
 import { useSelector } from 'react-redux';
-import {useRouter} from 'next/router'
 const moment = require('moment')
 
 // Registering components required for Chart.js
@@ -11,22 +10,11 @@ ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale
 
 
 
-const Graph = () => {
+const GraphDashboard = () => {
 
-    let search
-    const router = useRouter()
-    const {searchid} = router.query
-
-    const allSearches = useSelector((state)=>state.search.value)
-    const i = allSearches.length-1
-
-    if (searchid !== "companies"){
-    const arrayWithOneSearch = allSearches.filter(e=>e._id== searchid)
-    search = arrayWithOneSearch[0]
-    }
-    else {
-    search = allSearches[i]
-    }
+const allSearches = useSelector((state) => state.search.value);
+const i = allSearches.length-1;
+const search = allSearches[i];
 
 let caCurrentYear = 0;
 let caNMinus1 = 0;
@@ -76,4 +64,4 @@ const NMinus2 = (currentYearNumber-2).toString();
   );
 };
 
-export default Graph;
+export default GraphDashboard;
