@@ -14,8 +14,8 @@ function Skills() {
     const router = useRouter();
     const user = useSelector((state) => state.user.value);
     console.log(user)
-    const legalScore = user.skills.legal;
-    const commerceScore = user.skills.commerce;
+    const legalScore = user.skills?.legal;
+    const commerceScore = user.skills?.commerce;
     // const legalScore = 80;
     // const commerceScore = 20;
 
