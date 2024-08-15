@@ -20,7 +20,7 @@ function Skills() {
     // const legalScore = 80;
     // const commerceScore = 20;
 
-    const hasCompletedQuiz = legalScore !==  0 && commerceScore !== 0;
+    const hasCompletedQuiz = legalScore ===  0 && commerceScore === 0;
 
     const goToQuizz = () => {
         router.push('/quiz');
