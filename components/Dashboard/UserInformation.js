@@ -1,19 +1,23 @@
 import { useDispatch, useSelector} from 'react-redux';
 import { useState,  useEffect } from 'react';
-import { userInfo } from '../../reducers/user';
+import { logout, userInfo } from '../../reducers/user';
 import { useRouter } from 'next/router';
 import { Modal, Button } from 'antd';
 
 import styles from '../../styles/UserInformation.module.css';
 
 function UserInformation() {
+
+    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
+    //Verif Mail
+    const [emailChangeRequest, setEmailChangeRequest] = useState(false);
+    const [verifiedEmail, setVerifiedEmail] = useState(false)
+
     //User
-    const [user, setUser] = useState({
-        email: '',
-        name: '',
-        firstname: '',
-        token: '',
-    });
+    const [userEmail, setUserEmail] = useState('')
+    const [userFirstname, setUserFirstname] = useState('')
+    const [userName, setUserName] = useState('')
 
     //Affichage Bouton
     const [isEditingEmail, setIsEditingEmail] = useState(false)
@@ -39,32 +43,38 @@ function UserInformation() {
 
     //Reducer
     const dispatch = useDispatch();
-    // const userReducer = useSelector((state) => state.user.value);
+    const userReducer = useSelector((state) => state.user.value);
+    // console.log(userReducer)
+
 
     // Page Redirection 
     const router = useRouter();
 
+    if(!userReducer.token) {
+        router.push('/')
+    }
+    
     useEffect(() => {
-        // if(!userReducer.token)
-        // return
-        fetch("http://localhost:3000/users/info-user",{
+        fetch(`${url}/users/info-user`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email : "gallibour.irene@gmail.com",token : "N-sQx743as5uDJkTrEiA-j5PrXVAeEVW"}),
+        body: JSON.stringify({ token : userReducer.token,}),
         }).then(response => response.json())
         .then(data => {
+            console.log(data)
             if(data.result) {
-                setUser({
-                    email: data.user.email,
-                    name: data.user.name,
-                    firstname: data.user.firstname,
-                });
-            }
-        }
-    )
-    }, []);
+                setUserEmail(data.user.email)
+                setUserFirstname(data.user.firstname)
+                setUserName(data.user.name)
 
-    //Modal
+                if (data.user.verified !== verifiedEmail) {
+                    setVerifiedEmail(data.user.verified);
+                }
+            }
+        })
+    }, [verifiedEmail]);
+
+    //MODAL
     const [emailCheckModalVisible, setEmailCheckModalVisible] = useState(false)
     const [deleteCheckModalVisible, setDeleteCheckModalVisible] = useState(false);
         //email Modal
@@ -87,11 +97,11 @@ function UserInformation() {
         fetch('http://localhost:3000/users/',{
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token : "WmlxIi096ZD1LYJto9avdcbSlsjcDEVK"}),
+            body: JSON.stringify({ token : userReducer.token}),
             }).then(response => response.json())
             .then(data => {
-                console.log(data)
                 if(data.result){
+                    dispatch(userInfo(logout()))
                     router.push('/delete-confirm')
                 }
             })
@@ -141,28 +151,24 @@ function UserInformation() {
             setPasswordError(true)
         }
 
-        // If an error is detected, do not send
-        if (passwordError || passwordFormatError) {
-            return
-        }
-
         const data = {
-            email : "gallibour.irene@gmail.com", //envoyer token plutôt que email
+            token : userReducer.token, 
+
         };
-        
         
         if (newPassword) {
             data.oldPassword = oldPassword;
             data.newPassword = newPassword;
         } 
-         if (newName) {
+        else if (newName) {
             data.name = newName
         } 
-        if(newFirstname) {
+        else if(newFirstname) {
             data.firstname = newFirstname
         }
+        console.log(data)
 
-        fetch('http://localhost:3000/users/update-user', {
+        fetch(`${url}/users/update-user`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -171,20 +177,28 @@ function UserInformation() {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if (data.result) {
-                // dispatch(userInfo({name: data.user.name, firstname:data.user.fistname}))
+                dispatch(userInfo({
+                    name: data.user.name, 
+                    firstname: data.user.firstname,
+                    token : data.user.token,
+                    email : data.user.email,
+                    searches : data.user.searches,
+                    skills : data.user.searches,
+                }))
                 setNewFirstname('')
                 setNewName('')
                 setNewPassword('')
-                setUser({
-                    name: data.user.name,
-                    firstname: data.user.firstname,
-                });
+
+                setUserFirstname(data.user.firstname)
+                setUserName(data.user.name)
+
                 setIsEditingName(false)
                 setIsEditingFirstname(false)
-
             }
-        });
+        })
+
     }
     const handleSaveEmail = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -193,22 +207,22 @@ function UserInformation() {
             setEmailError(true)
             return
         }
-        fetch('http://localhost:3000/users/update-email', {
+        fetch(`${url}/users/update-email`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: "gallibour.irene@gmail.com", newEmail: newEmail}), //envoyer token plutôt que email
+            body: JSON.stringify({ token: userReducer.token, email: newEmail}), 
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if (!data.result) {
                 setEmailAlreadyUse(true)
             } else{
+                setEmailChangeRequest(true);
                 setNewEmail('')
                 showEmailCheckModal()
-                // dispatch(userInfo({email : newEmail}))
-                setIsEditingEmail(false)
             }
         })
     }
@@ -219,7 +233,7 @@ function UserInformation() {
                 <h2>Mes Informations</h2>
                 <div className={styles.info}>
                     <label className={styles.label}>Email</label>
-                    {isEditingEmail ? (
+                    {isEditingEmail && !emailChangeRequest ? (
                     <>
                     <input
                         type="email"
@@ -230,28 +244,35 @@ function UserInformation() {
                             setEmailError(false); 
                             setEmailAlreadyUse(false);
                         }}
-                        placeholder={user.email}
+                        placeholder={userEmail}
                         className={styles.input}
                     />
                     {emailError && <p className={styles.error}>Email non conforme ou vide</p>}
                     {emailAlreadyUse && <p className={styles.error}>Email déjà utilisé</p>}
                     </>) : (
-                    <span>{user.email}</span>
+                    <span>{userEmail}</span>
                     )}
-                        {isEditingEmail || 
-                        <button className={styles.button} onClick={() => setIsEditingEmail(true)}>
-                            Modifier
-                        </button>}
-                        {isEditingEmail && (
-                            <div className={styles.editButtons}>
-                                <button className={styles.cancel} onClick={()=> cancelEmailUpdate()}>
-                                    Annuler
-                                </button>
-                                <button className={styles.save} onClick={()=>handleSaveEmail()}>
-                                    Sauvegarder
-                                </button> 
-                            </div>
+                        {emailChangeRequest ? (
+                            <p>Une demande de changement d'email est en cours. Veuillez confirmer votre nouvel email.</p>
+                        ) : ( 
+                        <>
+                            {isEditingEmail || 
+                                <button className={styles.button} onClick={() => setIsEditingEmail(true)}>
+                                    Modifier
+                                </button>}
+                                {isEditingEmail && (
+                                    <div className={styles.editButtons}>
+                                        <button className={styles.cancel} onClick={()=> cancelEmailUpdate()}>
+                                            Annuler
+                                        </button>
+                                        <button className={styles.save} onClick={()=>handleSaveEmail()}>
+                                            Sauvegarder
+                                        </button> 
+                                    </div>
+                                )}
+                            </>
                         )}
+
                 </div>
         
                 <div className={styles.info}>
@@ -262,11 +283,11 @@ function UserInformation() {
                         name="name"
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)}
-                        placeholder={user.name}
+                        placeholder={userName}
                         className={styles.input}
                     />
                     ) : (
-                    <span>{user.name}</span>
+                    <span>{userName}</span>
                     )}
                         {isEditingName || 
                         <button className={styles.button} onClick={() => setIsEditingName(true)}>
@@ -292,11 +313,11 @@ function UserInformation() {
                         name="firstName"
                         value={newFirstname}
                         onChange={(e) => setNewFirstname(e.target.value)}
-                        placeholder={user.firstname}
+                        placeholder={userFirstname}
                         className={styles.input}
                     />
                     ) : (
-                    <span>{user.firstname}</span>
+                    <span>{userFirstname}</span>
                     )}
                         {isEditingFirstname || 
                         <button className={styles.button} onClick={() => setIsEditingFirstname(true)}>
@@ -388,7 +409,7 @@ function UserInformation() {
                  >
                 <p>Vous allez recevoir un email avec un lien de confirmation. Vérifiez vos courriers indésirables.<br/>
                 Vous disposez d'1h pour le valider. <br/>
-                Une fois confirmé, vous pourrez ré-accéder à votre espace. <br/></p>
+                 <br/></p>
             </Modal>
             </div>
             </div>

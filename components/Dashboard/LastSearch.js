@@ -20,7 +20,9 @@ function LastSearch() {
     const date = moment(search[i.date]).format('DD-MM-YYYY')
     return (
         <div className={styles.lastSearchContainer}>
+            <div className={styles.graphContainer}>
             <GraphDashboard />
+            </div>
             <div className={styles.searchDescription}>
                 <p>Recherché le : {date}</p>
                 <p>Activité : {search[i].activity}</p>

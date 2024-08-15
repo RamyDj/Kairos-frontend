@@ -18,8 +18,7 @@ function TableStatus() {
         console.log(statut[0].status_id.name)
     }
 
-    useEffect(() => {
-
+    const useEffectFunction = ()=>{
 
         if (!search.length) {
             return
@@ -27,7 +26,7 @@ function TableStatus() {
 
         console.log(search)
         let currentSearch = search.length - 1
-        //console.log(search[currentSearch].status_general)
+        console.log(search[currentSearch].status_general)
         if (search[currentSearch] === "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
             return
         }
@@ -52,7 +51,10 @@ function TableStatus() {
                 //console.log(statusData.data)
             })
 
+    }
 
+    useEffect(() => {
+        useEffectFunction()
     }, [search])
 
     //exclure les cas ou le tableau contient des index dont la valeur est null

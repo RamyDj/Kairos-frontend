@@ -47,7 +47,7 @@ function SignIn() {
             }).then(response => response.json())
             .then(data => {
                 if(data.result){
-                    dispatch(userInfo({token: data.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
+                    dispatch(userInfo({token: data.user.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
                     if (Object.keys(search).length === 0) {                
                         router.push('/dashboard')
                     } else {
@@ -59,7 +59,7 @@ function SignIn() {
             })
       }
       const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3000/users/auth/google'
+        window.location.href = `${url}/users/auth/google`
       }
     return (
         <div className={styles.container}>

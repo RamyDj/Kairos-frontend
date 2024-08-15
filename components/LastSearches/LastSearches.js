@@ -2,13 +2,20 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../../styles/LastSearches.module.css';
 import LastSearch from './LastSearch';
+import { useRouter } from 'next/router';
 
 const moment = require('moment');
 
 function LastSearches() {
 
     const search = useSelector((state) => state.search.value);
+    const user = useSelector((state) => state.user.value);
+    const router = useRouter();
 
+    if(!user.token) {
+        router.push('/')
+    }
+        
 
     const cleanSearch = search.filter(e => e  !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.")
 

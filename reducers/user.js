@@ -7,6 +7,7 @@ const initialState = {
     firstname: null,
     email: null, 
     searches : [],
+    skills : {},
   }
 };
 
@@ -18,8 +19,11 @@ export const userSlice = createSlice({
       state.value.token = action.payload.token;
       state.value.firstname = action.payload.firstname;
       state.value.name = action.payload.name;
-      state.value.email = action.payload.email
+      state.value.email = action.payload.email;
       // state.value = { ...state.value, ...action.payload }; 
+    },
+    userSkill : (state,action) => {
+        state.value.skills = { ...state.value.skills, ...action.payload.skills }; 
     },
     logout: (state) => {
       state.value.token = null;
@@ -37,5 +41,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { userInfo, logout, addIdOfASearch, fillSearchesWithAllId } = userSlice.actions;
+export const { userInfo,userSkill, logout, addIdOfASearch, fillSearchesWithAllId } = userSlice.actions;
 export default userSlice.reducer;
