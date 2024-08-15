@@ -60,8 +60,8 @@ function QuizPage(){
 
   const saveResults = () => {
      const roundedScore = {
-      legalScore: Math.ceil(score.legalScore), //Arrondis le nombre vers le haut au nombre entier le plus proche
-      commerceScore: Math.ceil(score.commerceScore)
+      legalScore: Math.floor(score.legalScore), 
+      commerceScore: Math.floor(score.commerceScore)
     }
 
     fetch(`http://localhost:3000/dashboard/save-scores`, {
