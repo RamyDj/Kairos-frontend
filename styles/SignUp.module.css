@@ -57,3 +57,27 @@
     font-size: small;
   }
 
+  .pwdInputContainer {
+    width: 80%;
+
+  }
+
+  .eyeIcon {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    bottom: 25%;
+    left: 88%;
+    color: #163050;
+  }
+
+  .pwdInput {
+    height: 40px;
+    border: 1px #163050 solid;
+    border-radius: 3px;
+    background-color: #E6E6E6;
+    font-weight: 600;
+    padding: 10px;
+    width : 100%;
+  }
+

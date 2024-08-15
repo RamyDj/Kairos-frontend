@@ -54,7 +54,7 @@ function Result() {
 
         // Si un utilisateur arrive sur la page avec un token et une recherche non enregistrée, fetch de la route pour enregistrer celle ci
 
-        if (user.token && allSearches[i] !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !allSearches[i]._id) {
+        if (user.token && allSearches[i] !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !allSearches[i]?._id && search[i]) {
             fetch(`${url}/results/registerSearch`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -69,10 +69,11 @@ function Result() {
     }, [])
 
     const i = search.length - 1
+    console.log(search[i])
 
-    // Affichage si pas d'entreprise trouvée
+    // Affichage si pas d'entreprise trouvée 
 
-    if (search[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.") {
+    if (search[i] == "Aucune entreprise trouvée pour ce type d'activité dans ce secteur." || !search[i]) {
         return (
             <div className={styles.noResultPage}>
                 <h2 className={styles.noResultSentence}>Aucune entreprise trouvée pour ce type d'activité dans ce secteur.</h2>
@@ -81,12 +82,18 @@ function Result() {
         )
     }
 
-if (!search[i].score[0]) {
-    
+
+ const scores = search[i].score[0];
+
+ let score;
+
+if (!scores) {
+    score = 0;
 }
-else (
- score = search[i].score[0].average_ca + search[i].score[0].average_lifetime + search[i].score[0].density_of_companies + search[i].score[0].turnover
-)
+
+else {
+ score = scores.average_ca + scores.average_lifetime + scores.density_of_companies + scores.turnover;
+}
 console.log(score)
 
     let scoreStyle;
@@ -104,9 +111,9 @@ console.log(score)
     const histogramData = search[i].top_status.map(status => ({
         status_name: status.status_name,
         companies_per_year: [
-            { year: '2022', number: status.companies_per_year[2]?.number || 0 },
-            { year: '2023', number: status.companies_per_year[1]?.number || 0 },
-            { year: '2024', number: status.companies_per_year[0]?.number || 0 }
+            { year: '2022', number: status.companies_per_year[2].number || 0 },
+            { year: '2023', number: status.companies_per_year[1].number || 0 },
+            { year: '2024', number: status.companies_per_year[0].number || 0 }
         ]
     }));
 
@@ -173,8 +180,14 @@ console.log(score)
             <div className={styles.detailledResult}>
                 <h3>DETAILS DE MA RECHERCHE</h3>
                 <div className={styles.allGraphs}>
+                    <div className={styles.caGraph}>
+                <h3>Evolution du chiffre d'affaire moyen par année</h3>
                     <Graph />
+                    </div>
+                    <div className={styles.histo}>
+                    <h3>Nombre d'entreprises par statut par année</h3>
                     <Histogram data={histogramData} />
+                    </div>
                 </div>
                 {bottomPage}
             </div>

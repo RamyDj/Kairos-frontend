@@ -29,7 +29,7 @@ function Show() {
 
   const user = useSelector((state) => state.user.value)
 
-  const companiesList = search[i].current_companies;
+  const companiesList = search[i]?.current_companies;
 
   console.log(companiesList)
 

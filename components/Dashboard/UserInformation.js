@@ -338,7 +338,7 @@ function UserInformation() {
                 <div className={styles.info}>
                     <label className={styles.label}>Mot de passe</label>
                     {isEditingPassword ? (
-                        <div>
+                        <div className={styles.mdpContainer}>
                             <input
                                 type="password"
                                 name="oldPassword"
