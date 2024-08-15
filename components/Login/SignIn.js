@@ -10,8 +10,6 @@ import styles from '../../styles/SignIn.module.css';
 function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [emailError, setEmailError] = useState(false)
-    const [passwordFormatError, setPasswordFormatError] = useState(false)
     const [signinError, setSignInError] = useState(false)
     const [inputType, setInputType] = useState("password")
 
@@ -33,66 +31,52 @@ function SignIn() {
     }
 
     const handleSubmit = () => {
-        const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            // const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8}$/; => // Tout decomenter une fois les test ok
-
+       
         // Reset errors 
-        setEmailError(false);
-            // setPasswordFormatError(false);
+        setSignInError(false);
     
-        // Validate password and email format
-        if (!EMAIL_REGEX.test(email)) {
-            setEmailError(true)
-            return
-        }
-        /*if (!PASSWORD_REGEX.test(password)) {
-            setPasswordFormatError(true);
-            return
-        }*/
-
-            fetch(`${url}/users/signin`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-            }).then(response => response.json())
-            .then(data => {
-                if(data.result){
-                    console.log(data.user.skills)
-                    dispatch(userInfo({
-                        token: data.user.token, 
-                        email: data.user.email, 
-                        name: data.user.name, 
-                        firstname: data.user.firstname }))
-                    if (data.user.skills.length >=1) {
-                        dispatch(userSkill({ 
-                            skills: { 
-                                legal: data.user.skills[0].legalScore, 
-                                commerce: data.user.skills[0].commerceScore 
-                            } 
-                        }));
-                    } else {
-                        dispatch(userSkill({ 
-                            skills: { 
-                                legal: 0, 
-                                commerce: 0 
-                            } 
-                        }))
-                    }
-                    if (Object.keys(search).length === 0) {                
-                        router.push('/dashboard')
-                    } else {
-                        router.push('/result/companies')
-                    } 
-                    
-                }else{
-                    setSignInError(true)
+        fetch(`${url}/users/signin`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+        }).then(response => response.json())
+        .then(data => {
+            if(data.result){
+                console.log(data.user.skills)
+                dispatch(userInfo({
+                    token: data.user.token, 
+                    email: data.user.email, 
+                    name: data.user.name, 
+                    firstname: data.user.firstname }))
+                if (data.user.skills.length >=1) {
+                    dispatch(userSkill({ 
+                        skills: { 
+                            legal: data.user.skills[0].legalScore, 
+                            commerce: data.user.skills[0].commerceScore 
+                        } 
+                    }));
+                } else {
+                    dispatch(userSkill({ 
+                        skills: { 
+                            legal: 0, 
+                            commerce: 0 
+                        } 
+                    }))
                 }
-            })
-      }
-      const handleGoogleLogin = () => {
-        window.location.href = `${url}/users/auth/google`
-      }
-
+                if (Object.keys(search).length === 0) {                
+                    router.push('/dashboard')
+                } else {
+                    router.push('/result/companies')
+                } 
+                
+            }else{
+                setSignInError(true)
+            }
+        })
+    }
+    const handleGoogleLogin = () => {
+    window.location.href = `${url}/users/auth/google`
+    }
 
     return (
         <div className={styles.container}>
@@ -107,12 +91,14 @@ function SignIn() {
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email} 
                     placeholder="Adresse mail" />
-                    {emailError && (<p className={styles.error}>Email non conforme</p>)}
                 <div className={styles.pwdInputContainer}>
                 <input 
                     type={inputType}
                     className={styles.pwdInput} 
-                    onChange={(e) => setPassword(e.target.value)} 
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                        setSignInError(false) 
+                    }} 
                     value={password} 
                     placeholder="Mot de passe" />
                 { inputType === "password" ? (

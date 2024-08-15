@@ -55,6 +55,8 @@
     color: red;
     margin-top: 0;
     font-size: small;
+    text-align: center;
+    padding : 5px;
   }
 
   .pwdInputContainer {
