@@ -164,8 +164,14 @@ function Result() {
             <div className={styles.detailledResult}>
                 <h3>DETAILS DE MA RECHERCHE</h3>
                 <div className={styles.allGraphs}>
+                    <div className={styles.caGraph}>
+                <h3>Evolution du chiffre d'affaire moyen par année</h3>
                     <Graph />
+                    </div>
+                    <div className={styles.histo}>
+                    <h3>Nombre d'entreprises par statut par année</h3>
                     <Histogram data={histogramData} />
+                    </div>
                 </div>
                 {bottomPage} 
             </div>
