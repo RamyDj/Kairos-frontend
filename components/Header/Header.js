@@ -9,32 +9,41 @@ import Image from 'next/image';
 function Header() {
     const router = useRouter();
     const user = useSelector((state) => state.user.value);
+    console.log(user)
 
     const handleSignupClick = () => {
         router.push('/login');
     };
 
-    // Vérifier si l'utilisateur est sur la page de login
-    const isLoginPage = router.pathname === '/login';
+    const isLoginPage = 
+        router.pathname === '/login' ||
+        router.pathname === '/mail-confirm' ||
+        router.pathname === '/new-mail-confirm';
 
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.logo}>
                     <Link href='/'>
-                        <Image src='/logo-removebg-preview.png' id='logo' alt='Logo'     width={80} height={80}/>
+                        <Image 
+                            src='/logo-removebg-preview.png' 
+                            id='logo' 
+                            alt='Logo'     
+                            width={80} 
+                            height={80}
+                        />
                     </Link>
                 </div>
                 <h1 className={styles.kairos} id='title'>KAIROS</h1>
                 <div className={styles.buttonsContainer}>
                     <a className={styles.link} href='/' id='AboutLink'>À Propos</a>
                     <div className={styles.headerRight}>
-                        {user.token === null && !isLoginPage ? (
+                        {!user.token && !isLoginPage ? (
                             <button onClick={handleSignupClick} className={styles.signUpBtn}>
                                 Se connecter
                             </button>
                         ) : (
-                            user.token !== null && (
+                            user.token !== null && !isLoginPage && (
                                 <div className={styles.info}>
                                     <p>Bienvenue {user.firstname} {user.name}</p>
                                     <Burger />

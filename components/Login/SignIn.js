@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { userInfo, userSkill } from '../../reducers/user';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 import styles from '../../styles/SignIn.module.css';
 
@@ -11,6 +13,7 @@ function SignIn() {
     const [emailError, setEmailError] = useState(false)
     const [passwordFormatError, setPasswordFormatError] = useState(false)
     const [signinError, setSignInError] = useState(false)
+    const [inputType, setInputType] = useState("password")
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
@@ -21,6 +24,13 @@ function SignIn() {
 
     // Page Redirection 
     const router = useRouter()
+
+    const showPassword = () => {
+        if (inputType === "password") {
+            setInputType("text")
+        }
+        else {setInputType("password")}
+    }
 
     const handleSubmit = () => {
         const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,6 +92,8 @@ function SignIn() {
       const handleGoogleLogin = () => {
         window.location.href = `${url}/users/auth/google`
       }
+
+
     return (
         <div className={styles.container}>
           <h3 className={styles.title}>Connexion</h3>
@@ -96,12 +108,21 @@ function SignIn() {
                     value={email} 
                     placeholder="Adresse mail" />
                     {emailError && (<p className={styles.error}>Email non conforme</p>)}
+                <div className={styles.pwdInputContainer}>
                 <input 
-                    type="password" 
-                    className={styles.input} 
+                    type={inputType}
+                    className={styles.pwdInput} 
                     onChange={(e) => setPassword(e.target.value)} 
                     value={password} 
                     placeholder="Mot de passe" />
+                { inputType === "password" ? (
+                <FontAwesomeIcon className={styles.eyeIcon}
+                 icon={faEye} onClick={() => showPassword()}/>) : (
+                <FontAwesomeIcon className={styles.eyeIcon} icon={faEyeSlash} onClick={() => showPassword()} />
+                )
+                }
+                </div>
+                
             </div>
             {signinError && (<p className={styles.error}>Email ou mot de passe incorrect</p>)}
           <button className={styles.button} onClick={() => handleSubmit()}>Je me connecte</button>

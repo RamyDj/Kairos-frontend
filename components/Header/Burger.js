@@ -1,65 +1,66 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styles from '../../styles/BurgerMenu.module.css';
-import Link from 'next/link'
-import {logout} from '../../reducers/user';
-import {deleteSearches} from '../../reducers/search';
+import Link from 'next/link';
+import { logout } from '../../reducers/user';
+import { deleteSearches } from '../../reducers/search';
 import { useDispatch } from 'react-redux';
 import {useRouter} from 'next/router'
 
-
-function Burger(){
+function Burger() {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const menuRef = useRef(null);
     const router = useRouter();
 
-    const toggleMenu = () => {
-        setOpen(!open);
-    }
-    const handleLogout = () => {
-		dispatch(logout());
-        dispatch(deleteSearches())
-        router.push('/')
-	};
+    const toggleMenu = useCallback(() => {
+        setOpen((prevOpen) => !prevOpen);
+    }, []);
 
-        // Fonction pour fermer le menu si on clique en dehors
-        const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setOpen(false);
-            }
+    const handleLogout = useCallback(() => {
+        dispatch(logout());
+        dispatch(deleteSearches());
+    }, [dispatch]);
+
+    const handleClickOutside = useCallback((event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setOpen(false);
+        }
+    }, []);
+
+    const clickListenner = () => {
+                if (open) {
+            document.addEventListener('click', handleClickOutside);
+        } else {
+            document.removeEventListener('click', handleClickOutside);
+        }
+        
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
         };
-    
-        useEffect(() => {
-            if (open) {
-                document.addEventListener('click', handleClickOutside);
-            } else {
-                document.removeEventListener('click', handleClickOutside);
-            }
-    
-            // Nettoyage de l'écouteur d'événements lors du démontage du composant
-            return () => {
-                document.removeEventListener('click', handleClickOutside);
-            };
-        }, [open]);
+    }
+    useEffect(() => {
+        clickListenner();
+    }, [open, handleClickOutside]);
+
     return (
-        <div className={styles.burgerMenu} ref={menuRef}>
-            <button className={styles.burgerButton} onClick={toggleMenu}>
-                ☰
-            </button>
-            {open && (
-                <div className={styles.menu} >
-                    <Link href='/dashboard'>
-                    <a className={styles.menuItem}>Mon Espace</a>
-                    </Link>
-                    <Link href='/result'>
-                    <a className={styles.menuItem} >Mes Informations</a>
-                    </Link>
-                    <Link href='/'>
-                    <a className={styles.menuItem} onClick={() => handleLogout()}>Déconnexion</a>
-                    </Link>
-                    </div>
-            )}
-        </div>
+            <div className={styles.burgerMenu} ref={menuRef}>
+                <button className={styles.burgerButton} onClick={toggleMenu} aria-expanded={open}>
+                    ☰
+                </button>
+                {open && (
+                    <div className={styles.menu} >
+                        <Link href='/dashboard'>
+                        <a className={styles.menuItem}>Mon espace</a>
+                        </Link>
+                        <Link href='/user-information'>
+                        <a className={styles.menuItem} >Mes informations</a>
+                        </Link>
+                        <Link href='/'>
+                        <a className={styles.menuItem} onClick={() => handleLogout()}>Déconnexion</a>
+                        </Link>
+                        </div>
+                )}
+            </div>
     );
 }
 
