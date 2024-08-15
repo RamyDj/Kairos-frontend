@@ -18,6 +18,17 @@ function GoogleCallback() {
             console.error('Authentication failed:', data.error);
             window.location.href = '/'; // Redirige en cas d'erreur
           } else {
+
+            //Met à jour le token utilisateur
+            fetch('http://localhost:3000/users/update', {
+              method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({token: data.token, email: data.email})
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data)
+              })
             // Dispatch des informations de l'utilisateur et du token dans Redux
             dispatch(userInfo({
               token: data.token,
