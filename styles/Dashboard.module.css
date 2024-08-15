@@ -1,25 +1,27 @@
-.dashboardContainer{
-     display: flex;
-     justify-content: space-around;
+.dashboardContainer {
+    display: flex;
+    justify-content: space-around;
 }
-.noResultSentence{
+
+.noResultSentence {
     margin-top: 40px;
     margin-bottom: 40px;
 }
-.col1{
+
+.col1 {
     width: 13%;
     margin-top: 7px;
 }
 
-.col2{
+.col2 {
     width: 54%;
 }
 
-.col3{
+.col3 {
     width: 25%;
 }
 
-.myProfileContainer{
+.myProfileContainer {
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -28,17 +30,17 @@
     border-radius: 20px;
 }
 
-.btnParams{
+.btnParams {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.btnParams button{
+.btnParams button {
     margin-top: 20px;
 }
 
-.dashboardContainer button{
+.dashboardContainer button {
     width: 120px;
     height: 40px;
     padding: 8px;
@@ -49,7 +51,7 @@
     cursor: pointer;
 }
 
-.lastSearchContainer{
+.lastSearchContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -59,28 +61,28 @@
     border-radius: 20px;
 }
 
-.searchDescription{
+.searchDescription {
     overflow-x: scroll;
     scrollbar-width: none;
 }
 
-.linkLastSearch{
+.linkLastSearch {
     cursor: pointer;
-    color:rgb(0, 0, 190);
+    color: rgb(0, 0, 190);
     text-decoration: underline;
 }
 
-.noSearchSentence{
+.noSearchSentence {
     margin-bottom: 7vh;
     margin-top: 5vh;
     font-size: 18px;
 }
 
-.statusSentenceContainer{
+.statusSentenceContainer {
     height: 90%;
-    padding : 5px;
+    padding: 5px;
     padding-top: 15px;
-    background-color: rgb(248	242	213	);
+    background-color: rgb(248 242 213);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,13 +90,13 @@
     border-radius: 10px;
 }
 
-.noStatusSentence{
+.noStatusSentence {
     font-size: 18px;
     line-height: 30px;
     text-align: center;
 }
 
-.newSearchContainer{
+.newSearchContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,21 +105,21 @@
     border-radius: 20px;
 }
 
-.activities{
+.activities {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2%;
 }
 
-.locations{
+.locations {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2%;
 }
 
-.newSearchContainer input{
+.newSearchContainer input {
     width: 25vw;
     height: 5vh;
     border: 1px solid #163050;
@@ -127,31 +129,32 @@
     outline: none;
 }
 
-.statusContainer{
+.statusContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 78vh;
 }
 
-.dashboardContainer h2{
+.dashboardContainer h2 {
     border-bottom: 1px solid black;
 }
 
-.statusContainer table{
-width: 100%;
-height: 90%;
-text-align: center;
-background-color: #F9F2D1;
-border-radius: 20px;
+.statusContainer table {
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    background-color: #F9F2D1;
+    border-radius: 20px;
 }
 
-.statusContainer tr{
+.statusContainer tr {
     border-bottom: 1px solid black;
 }
 
 
-.statusContainer thead{
+.statusContainer thead {
+    height: 8vh;
     background-color: #2B578C;
     color: white;
     border-radius: 20px;
@@ -164,40 +167,42 @@ border-radius: 20px;
     border-color: 2px solid black;
 }
 
-.statusContainer td{
+.statusContainer td {
     height: 7vh;
     border-bottom: 2px solid #F8E9A9;
 }
 
-.radiusTL{
-border-top: 2px solid #2B578C;
-border-top-left-radius: 20px;
-border-right: 2px solid #F8E9A9;
+.radiusTL {
+    border-top: 2px solid #2B578C;
+    border-top-left-radius: 20px;
+    border-right: 2px solid #F8E9A9;
 }
 
-.radiusTR{
-border-top: 2px solid #F8E9A9;
-border-top-right-radius: 20px;
+.radiusTR {
+    border-top: 2px solid #2B578C;
+    border-top: 2px solid #F8E9A9;
+    border-top-right-radius: 20px;
 }
 
-.radiusBL{
-border-bottom: 2px solid #F8E9A9;
-border-bottom-left-radius: 20px;
-border-right: 2px solid #F8E9A9;
-}
-
-.radiusBR{
-border-bottom: 2px solid #F8E9A9;
-border-bottom-right-radius: 20px;
-}
-
-.firstTD{
+.radiusBL {
     font-weight: 900;
-border-right: 2px solid #F8E9A9;
+    border-bottom: 2px solid #F8E9A9;
+    border-bottom-left-radius: 20px;
+    border-right: 2px solid #F8E9A9;
+}
+
+.radiusBR {
+    border-bottom: 2px solid #F8E9A9;
+    border-bottom-right-radius: 20px;
+}
+
+.firstTD {
+    font-weight: 900;
+    border-right: 2px solid #F8E9A9;
 }
 
 /*SKILL*/
-.skillsContainer{
+.skillsContainer {
     margin-top: 20px;
     height: 53vh;
     display: flex;
@@ -207,7 +212,7 @@ border-right: 2px solid #F8E9A9;
     border-radius: 20px;
 }
 
-.skillsInfo{
+.skillsInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -217,21 +222,23 @@ border-right: 2px solid #F8E9A9;
     height: 90%;
 
 }
-.titleSkill{
+
+.titleSkill {
     margin: 10px 10px 0 10px
 }
-.donutContainer{
+
+.donutContainer {
     height: 100%;
-    width : 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.doughnut{
+
+.doughnut {
     margin: 2% 0;
     cursor: pointer;
     max-width: 80%;
     max-height: 45%;
 }
-

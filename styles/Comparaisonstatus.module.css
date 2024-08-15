@@ -49,6 +49,7 @@
   }
 
   .radiusBL{
+    font-weight: 900;
     border-bottom: 2px solid #2B578C;
     border-bottom-left-radius: 20px;
     border-right: 2px solid #2B578C;
@@ -60,5 +61,6 @@
   }
 
   .firstTD{
+    font-weight: 900;
     border-right: 2px solid #2B578C;
   }

@@ -138,3 +138,7 @@
   overflow-wrap: break-word;
 }
 
+.faq {
+  display:flex;
+  justify-content: space-evenly;
+}
