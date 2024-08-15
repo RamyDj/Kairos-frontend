@@ -46,8 +46,8 @@ function UserInformation() {
     const userReducer = useSelector((state) => state.user.value);
     // console.log(userReducer)
 
-    // if(!userReducer.token)
-    //  return
+    if(!userReducer.token)
+        return <p>SORTEZ! ou Connectez-vous ^^</p>
 
     // Page Redirection 
     const router = useRouter();

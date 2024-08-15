@@ -8,7 +8,10 @@ const moment = require('moment');
 function LastSearches() {
 
     const search = useSelector((state) => state.search.value);
+    const user = useSelector((state) => state.user.value);
 
+    if(!user.token)
+        return <p>SORTEZ! ou Connectez-vous ^^</p>
 
     const cleanSearch = search.filter(e => e  !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur.")
 
