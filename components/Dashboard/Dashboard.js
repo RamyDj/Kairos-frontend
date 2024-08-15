@@ -11,6 +11,10 @@ import SearchInputs from './SearchInputs';
 
 function Dashboard() {
     const user = useSelector((state) => state.user.value);
+
+    if(!user.token)
+        return <p>SORTEZ! ou Connectez-vous ^^</p>
+
     const searches = useSelector((state) => state.search.value)
     console.log(searches)
     console.log(user);

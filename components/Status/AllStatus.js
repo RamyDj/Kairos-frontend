@@ -1,10 +1,16 @@
 import OneStatut from './OneStatut';
 import { useState, useEffect } from 'react';
+import {useSelector} from 'react-redux';
 import styles from '../../styles/AllStatus.module.css';
 
 function AllStatus() {
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
     const [statusData, setStatutData] = useState([]);
+
+    const user = useSelector((state) => state.user.value);
+
+    if(!user.token)
+        return <p>SORTEZ! ou Connectez-vous ^^</p>
 
     useEffect(() => {
         fetch(`${url}/status/status`)

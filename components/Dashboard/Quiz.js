@@ -15,7 +15,7 @@ function QuizPage(){
     console.log(user)
 
     if(!user.token)
-      return
+      return <p>SORTEZ! ou Connectez-vous ^^</p>
 
   // const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
