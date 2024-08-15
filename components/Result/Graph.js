@@ -39,9 +39,9 @@ for (let company of search.current_companies) {
   caNMinus2 += company.ca_per_year[2].ca;
 }
 
-// caCurrentYear = Math.round((caCurrentYear/search.current_companies.length) * 100) / 100
-// caNMinus1 = Math.round((caNMinus1/search.current_companies.length) * 100) / 100
-// caNMinus2 = Math.round((caNMinus2/search.current_companies.length) * 100) / 100
+caCurrentYear = Math.round((caCurrentYear/search.current_companies.length) * 100) / 100
+caNMinus1 = Math.round((caNMinus1/search.current_companies.length) * 100) / 100
+caNMinus2 = Math.round((caNMinus2/search.current_companies.length) * 100) / 100
 
 const date = new Date()
 const currentYearString = moment(date).format("YYYY")
