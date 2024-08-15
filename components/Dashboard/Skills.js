@@ -14,12 +14,13 @@ function Skills() {
     const router = useRouter();
     const user = useSelector((state) => state.user.value);
     console.log(user)
-    const legalScore = user.skills?.legal;
-    const commerceScore = user.skills?.commerce;
+
+    const legalScore = user.skills.legal;
+    const commerceScore = user.skills.commerce;
     // const legalScore = 80;
     // const commerceScore = 20;
 
-    const hasCompletedQuiz = legalScore !== undefined && commerceScore !== undefined;
+    const hasCompletedQuiz = legalScore !==  0 && commerceScore !== 0;
 
     const goToQuizz = () => {
         router.push('/quiz');

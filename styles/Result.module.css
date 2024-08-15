@@ -79,6 +79,7 @@
 
 .detailledResult {
   padding: 2%;
+  width: 80%;
 }
 
 .allGraphs {
@@ -90,10 +91,11 @@
   border: 1px solid #EBEBEB;
   padding: 20px;
   border-radius: 25px;
+  width: 100%;
 }
 
-.allGraphs canvas{
- width: 50% !important;
+.caGraph canvas{
+ width: 100% !important;
  height: auto !important;
 }
 
@@ -138,6 +140,16 @@
   overflow-wrap: break-word;
 }
 
+.caGraph{
+  width: 50%;
+  padding: 25px;
+}
+
+.histo{
+  width: 50%;
+  padding: 25px;
+
+}
 .faq {
   display:flex;
   justify-content: space-evenly;

@@ -131,7 +131,7 @@ function QuizPage(){
           </Button>
           ]}
       >
-        <p>En cliquant sur ce lien, le quiz sera réinitialisé et vous serez redirigé vers la page d'accueil. Continuer?</p>
+        <p>En cliquant sur ce lien, le quiz sera réinitialisé et vous serez redirigé vers votre espace. Continuer?</p>
       </Modal>
     </div>
   )
