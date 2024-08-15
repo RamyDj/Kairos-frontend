@@ -49,10 +49,10 @@ function Burger(){
             {open && (
                 <div className={styles.menu} >
                     <Link href='/dashboard'>
-                    <a className={styles.menuItem}>Mon Espace</a>
+                    <a className={styles.menuItem}>Mon espace</a>
                     </Link>
-                    <Link href='/result'>
-                    <a className={styles.menuItem} >Mes Informations</a>
+                    <Link href='/user-information'>
+                    <a className={styles.menuItem} >Mes informations</a>
                     </Link>
                     <Link href='/'>
                     <a className={styles.menuItem} onClick={() => handleLogout()}>Déconnexion</a>

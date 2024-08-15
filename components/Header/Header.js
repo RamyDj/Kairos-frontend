@@ -9,6 +9,7 @@ import Image from 'next/image';
 function Header() {
     const router = useRouter();
     const user = useSelector((state) => state.user.value);
+    console.log(user)
 
     const handleSignupClick = () => {
         router.push('/login');
@@ -29,12 +30,12 @@ function Header() {
                 <div className={styles.buttonsContainer}>
                     <a className={styles.link} href='/' id='AboutLink'>À Propos</a>
                     <div className={styles.headerRight}>
-                        {user.token === null && !isLoginPage ? (
+                        {!user.token && !isLoginPage ? (
                             <button onClick={handleSignupClick} className={styles.signUpBtn}>
                                 Se connecter
                             </button>
                         ) : (
-                            user.token !== null && (
+                            user.token && (
                                 <div className={styles.info}>
                                     <p>Bienvenue {user.firstname} {user.name}</p>
                                     <Burger />
