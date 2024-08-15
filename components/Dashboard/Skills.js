@@ -21,6 +21,7 @@ function Skills() {
     // const commerceScore = 20;
 
     const hasCompletedQuiz = legalScore ===  0 && commerceScore === 0;
+    console.log(hasCompletedQuiz)
 
     const goToQuizz = () => {
         router.push('/quiz');
@@ -131,7 +132,7 @@ function Skills() {
         <div className={styles.skillsContainer}>
             <h2 className={styles.titleSkill}>Mes Compétences</h2>
             <div className={styles.skillsInfo}>
-                {!hasCompletedQuiz ? (
+                {hasCompletedQuiz ? (
                     <>
                         <p>Faire le quiz pour évaluer vos compétences en droit et commerce.</p>
                         <button onClick={()=>goToQuizz()}>Commencer le quizz</button>
