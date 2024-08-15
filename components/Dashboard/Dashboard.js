@@ -7,13 +7,17 @@ import TableStatus from "../Dashboard/TableStatus";
 import LastSearch from "../Dashboard/LastSearch";
 import Skills from "../Dashboard/Skills";
 import SearchInputs from './SearchInputs';
+import { useRouter } from 'next/router';
 
 
 function Dashboard() {
     const user = useSelector((state) => state.user.value);
+    const router = useRouter();
 
-    if(!user.token)
-        return <p>SORTEZ! ou Connectez-vous ^^</p>
+    if(!user.token) {
+        router.push('/')
+    }
+        
 
     const searches = useSelector((state) => state.search.value)
     console.log(searches)
@@ -40,7 +44,7 @@ function Dashboard() {
         }
     }
     useEffect( ()=>{   
- 
+
     func();
 },[])
 

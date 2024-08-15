@@ -4,12 +4,14 @@ import Link from 'next/link'
 import {logout} from '../../reducers/user';
 import {deleteSearches} from '../../reducers/search';
 import { useDispatch } from 'react-redux';
+import {useRouter} from 'next/router'
 
 
 function Burger(){
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const menuRef = useRef(null);
+    const router = useRouter();
 
     const toggleMenu = () => {
         setOpen(!open);
@@ -17,6 +19,7 @@ function Burger(){
     const handleLogout = () => {
 		dispatch(logout());
         dispatch(deleteSearches())
+        router.push('/')
 	};
 
         // Fonction pour fermer le menu si on clique en dehors
