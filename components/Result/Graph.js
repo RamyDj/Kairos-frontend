@@ -32,11 +32,12 @@ let caCurrentYear = 0;
 let caNMinus1 = 0;
 let caNMinus2 = 0;
 
-// for (let company of search.current_companies) {
-//   caCurrentYear += company.ca_per_year[0].ca;
-//   caNMinus1 += company.ca_per_year[1].ca;
-//   caNMinus2 += company.ca_per_year[2].ca;
-// }
+
+for (let company of search.current_companies) {
+  caCurrentYear += company.ca_per_year[0].ca;
+  caNMinus1 += company.ca_per_year[1].ca;
+  caNMinus2 += company.ca_per_year[2].ca;
+}
 
 // caCurrentYear = Math.round((caCurrentYear/search.current_companies.length) * 100) / 100
 // caNMinus1 = Math.round((caNMinus1/search.current_companies.length) * 100) / 100
