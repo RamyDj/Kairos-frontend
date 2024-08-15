@@ -31,6 +31,7 @@ export const userSlice = createSlice({
       state.value.name = null;
       state.value.email = null;
       state.value.searches = [];
+      state.value.skills = {};
     },
     addIdOfASearch : (state, action)=>{
       state.value.searches.push(action.payload)

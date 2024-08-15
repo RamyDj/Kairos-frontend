@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Selectedstatus from './Selectedstatus';
 
 
+
 function Comparaisonstatus(props) {
 
     const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
@@ -137,7 +138,7 @@ function Comparaisonstatus(props) {
                             <td><FontAwesomeIcon icon={statut3[0].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[0].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                         </tr>
                         <tr>
@@ -204,7 +205,7 @@ function Comparaisonstatus(props) {
                             <td><FontAwesomeIcon icon={statut3[1].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[1].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                             <td>{statut3[1].status_id.cotisation_percentage}</td>
                         </tr>
@@ -282,7 +283,7 @@ function Comparaisonstatus(props) {
                             <td><FontAwesomeIcon icon={statut3[2].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut3[2].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut3[0].status_id.cotisation_percentage}</td>
                             <td>{statut3[1].status_id.cotisation_percentage}</td>
                             <td>{statut3[2].status_id.cotisation_percentage}</td>

@@ -9,6 +9,7 @@ import Histogram from '../../components/Result/Histogram';
 import Comparaisonstatus from '../../components/Result/Comparaisonstatus';
 import Selectedstatus from '../../components/Result/Selectedstatus';
 import Zoom from '../../components/Result/Zoom';
+import zoom from '../../datas/zoom';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
@@ -35,6 +36,7 @@ function Result() {
     const { searchid } = router.query
 
     const allSearches = useSelector((state) => state.search.value)
+    console.log(allSearches)
 
     if (searchid !== "companies") {
         search = allSearches.filter(e => e._id == searchid)
@@ -79,8 +81,13 @@ function Result() {
         )
     }
 
-    const score = search[i].score[0].average_ca + search[i].score[0].average_lifetime + search[i].score[0].density_of_companies + search[i].score[0].turnover;
-    console.log(score)
+if (!search[i].score[0]) {
+    
+}
+else (
+ score = search[i].score[0].average_ca + search[i].score[0].average_lifetime + search[i].score[0].density_of_companies + search[i].score[0].turnover
+)
+console.log(score)
 
     let scoreStyle;
 
@@ -125,14 +132,16 @@ function Result() {
         }
 
         bottomPage =
-        <div className={styles.detailledResult}>
-            <h3>COMPARAISON DES STATUTS</h3>
-            <div>
-                <Comparaisonstatus callStatus={callStatus} />
-                <Zoom />
+            <div className={styles.detailledResult}>
+                <h3>COMPARAISON DES STATUTS</h3>
+                <div>
+                    <Comparaisonstatus callStatus={callStatus} />
+                </div>
+                <div className={styles.faq}>
+                    {isOpen ? (<Selectedstatus {...selection} />) : null}
+                    <Zoom {...zoom} />
+                </div>
             </div>
-            { isOpen ? ( <Selectedstatus {...selection} /> ) : null }
-        </div>
     }
 
     return (
@@ -173,7 +182,7 @@ function Result() {
                     <Histogram data={histogramData} />
                     </div>
                 </div>
-                {bottomPage} 
+                {bottomPage}
             </div>
         </div>
     )

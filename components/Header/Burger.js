@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { logout } from '../../reducers/user';
 import { deleteSearches } from '../../reducers/search';
 import { useDispatch } from 'react-redux';
+import {useRouter} from 'next/router'
 
 function Burger() {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const menuRef = useRef(null);
+    const router = useRouter();
 
     const toggleMenu = useCallback(() => {
         setOpen((prevOpen) => !prevOpen);

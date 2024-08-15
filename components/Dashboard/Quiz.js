@@ -13,9 +13,7 @@ function QuizPage(){
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.value);
     console.log(user)
-
-    if(!user.token)
-      return <p>SORTEZ! ou Connectez-vous ^^</p>
+      
 
   // const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
@@ -27,6 +25,10 @@ function QuizPage(){
 
   //redirection
   const router = useRouter()
+
+  if(!user.token) {
+    router.push('/')
+  }
 
   const handleAnswer = (questionId, selectedOptionIndex) => {
     const question = questions.find(q => q.id === questionId);
@@ -58,8 +60,8 @@ function QuizPage(){
 
   const saveResults = () => {
      const roundedScore = {
-      legalScore: Math.ceil(score.legalScore), //Arrondis le nombre vers le haut au nombre entier le plus proche
-      commerceScore: Math.ceil(score.commerceScore)
+      legalScore: Math.floor(score.legalScore), 
+      commerceScore: Math.floor(score.commerceScore)
     }
 
     fetch(`http://localhost:3000/dashboard/save-scores`, {

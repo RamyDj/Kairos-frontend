@@ -2,7 +2,7 @@ export const questions = [
     // Questions de droit
     {
       id: 1,
-      question: "Si vous lancez une startup et embauchez des stagiaires, devez-vous les déclarer à l'URSSAF ?",
+      question: "Si vous lancez une startup et embauchez des stagiaires, devez-vous les déclarer dans votre DSN ?",
       options: [
         "Oui, toujours, même si le stage est non rémunéré",
         "Non, seulement si les stagiaires sont rémunérés",
