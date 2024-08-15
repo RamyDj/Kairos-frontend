@@ -17,7 +17,6 @@
     justify-content: space-between;
     align-items: center;
     background-color: #F8E9A9;
-    width: auto;
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -31,39 +30,22 @@
     width: 100px;
 }
 
-
-.connection{
-    width: 100px;
-    height: 30px;
-    padding: 8px;
-    margin-left: 10px;
-    border-radius: 10px;
-    background-color: #163050;
-    color: white;
-    border: 0;
-}
-
 .link{
-    color: inherit;
+    color:#163050;
     text-decoration: none;
-    position: absolute;
-    left: 75vw;
+    padding: 0 30px ;
 }
 
 .buttonsContainer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 15vw;
 }
 
-.buttonsContainer p{
-    margin: 0 18px;
-    background-color: grey;
-}
 
-.buttonsContainer a{
-    color: #163050;
+.linkContainer{
+    width: 50%;
+    border: 1px solid purple;
 }
 
 .signUpBtn {
@@ -82,3 +64,20 @@
 .logo {
     cursor: pointer;
 }
+
+.info{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .info p{
+        display: none;
+    }
+
+    .link{
+        color:#163050;
+        text-decoration: none;
+        padding: 0 20px ;
+    }
+  }
