@@ -13,9 +13,7 @@ function QuizPage(){
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.value);
     console.log(user)
-
-    if(!user.token)
-      return
+      
 
   // const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
 
@@ -27,6 +25,10 @@ function QuizPage(){
 
   //redirection
   const router = useRouter()
+
+  if(!user.token) {
+    router.push('/')
+  }
 
   const handleAnswer = (questionId, selectedOptionIndex) => {
     const question = questions.find(q => q.id === questionId);

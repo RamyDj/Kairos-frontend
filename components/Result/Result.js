@@ -35,6 +35,7 @@ function Result() {
     const { searchid } = router.query
 
     const allSearches = useSelector((state) => state.search.value)
+    console.log(allSearches)
 
     if (searchid !== "companies") {
         search = allSearches.filter(e => e._id == searchid)
@@ -79,8 +80,8 @@ function Result() {
         )
     }
 
-    const score = search[i].score.average_ca + search[i].score.average_lifetime + search[i].score.density_of_companies + search[i].score.turnover;
-    console.log(score)
+const score = search[i].score[0].average_ca + search[i].score[0].average_lifetime + search[i].score[0].density_of_companies + search[i].score[0].turnover;
+console.log(score)
 
     let scoreStyle;
 

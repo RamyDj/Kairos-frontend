@@ -46,11 +46,13 @@ function UserInformation() {
     const userReducer = useSelector((state) => state.user.value);
     // console.log(userReducer)
 
-    // if(!userReducer.token)
-    //  return
 
     // Page Redirection 
     const router = useRouter();
+
+    if(!userReducer.token) {
+        router.push('/')
+    }
     
     useEffect(() => {
         fetch(`${url}/users/info-user`,{
