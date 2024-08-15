@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { userInfo } from '../../reducers/user';
+import { userInfo, userSkill } from '../../reducers/user';
 
 import styles from '../../styles/SignIn.module.css';
 
@@ -47,12 +47,33 @@ function SignIn() {
             }).then(response => response.json())
             .then(data => {
                 if(data.result){
-                    dispatch(userInfo({token: data.user.token, email: data.user.email, name: data.user.name, firstname: data.user.firstname }))
+                    console.log(data.user.skills)
+                    dispatch(userInfo({
+                        token: data.user.token, 
+                        email: data.user.email, 
+                        name: data.user.name, 
+                        firstname: data.user.firstname }))
+                    if (data.user.skills.length >=1) {
+                        dispatch(userSkill({ 
+                            skills: { 
+                                legal: data.user.skills[0].legalScore, 
+                                commerce: data.user.skills[0].commerceScore 
+                            } 
+                        }));
+                    } else {
+                        dispatch(userSkill({ 
+                            skills: { 
+                                legal: 0, 
+                                commerce: 0 
+                            } 
+                        }))
+                    }
                     if (Object.keys(search).length === 0) {                
                         router.push('/dashboard')
                     } else {
                         router.push('/result/companies')
                     } 
+                    
                 }else{
                     setSignInError(true)
                 }
