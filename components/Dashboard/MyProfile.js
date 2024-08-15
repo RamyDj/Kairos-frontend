@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../reducers/user';
 import styles from '../../styles/Dashboard.module.css';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../reducers/user';
 import { deleteSearches } from '../../reducers/search';
 
 function MyProfile(){

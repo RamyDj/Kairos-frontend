@@ -14,15 +14,23 @@ function Header() {
         router.push('/login');
     };
 
-    // Vérifier si l'utilisateur est sur la page de login
-    const isLoginPage = router.pathname === '/login';
+    const isLoginPage = 
+        router.pathname === '/login' ||
+        router.pathname === '/mail-confirm' ||
+        router.pathname === '/new-mail-confirm';
 
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.logo}>
                     <Link href='/'>
-                        <Image src='/logo-removebg-preview.png' id='logo' alt='Logo'     width={80} height={80}/>
+                        <Image 
+                            src='/logo-removebg-preview.png' 
+                            id='logo' 
+                            alt='Logo'     
+                            width={80} 
+                            height={80}
+                        />
                     </Link>
                 </div>
                 <h1 className={styles.kairos} id='title'>KAIROS</h1>
@@ -34,7 +42,7 @@ function Header() {
                                 Se connecter
                             </button>
                         ) : (
-                            user.token !== null && (
+                            user.token !== null && !isLoginPage && (
                                 <div className={styles.info}>
                                     <p>Bienvenue {user.firstname} {user.name}</p>
                                     <Burger />
