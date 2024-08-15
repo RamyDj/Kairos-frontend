@@ -32,6 +32,7 @@ let caCurrentYear = 0;
 let caNMinus1 = 0;
 let caNMinus2 = 0;
 
+
 for (let company of search.current_companies) {
   caCurrentYear += company.ca_per_year[0].ca;
   caNMinus1 += company.ca_per_year[1].ca;
