@@ -46,8 +46,28 @@ function Search() {
         const email=user.email
 
         if (!codeApe){return}
-        const locationSplit = locationTypped.split(',')
-        const locationWithoutSpace = locationSplit[0].replace(/ /g, '-')
+        const locationSplit = locationTypped.split(', ')
+        let locationWithoutSpace = locationSplit[0].replace(/ /g, '-')
+        let postcode
+        if (locationSplit.length>0){
+            postcode = locationSplit[1]
+        }
+
+        // Vérification si présence Paris, Marseille ou Lyon et dans ce cas envoie du codepostal pour recherche arrondissement
+
+        const regexMarseille = /marseille/i
+        const regexParis = /paris/i
+        const regexLyon = /lyon/i
+
+        if (regexMarseille.test(locationWithoutSpace)){
+            locationWithoutSpace="Marseille"
+        }
+        if(regexParis.test(locationWithoutSpace)){
+            locationWithoutSpace="Paris"
+        }
+        if(regexLyon.test(locationWithoutSpace)){
+            locationWithoutSpace="Lyon"
+        }
 
         fetch(`${url}/searches/newSearch`, {
             method: 'PUT',
@@ -57,6 +77,7 @@ function Search() {
                 nafCode : codeApe,
                 token,
                 email,
+                postcode,
             })
             })
         .then(response=>response.json())

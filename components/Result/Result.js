@@ -9,6 +9,7 @@ import Histogram from '../../components/Result/Histogram';
 import Comparaisonstatus from '../../components/Result/Comparaisonstatus';
 import Selectedstatus from '../../components/Result/Selectedstatus';
 import Zoom from '../../components/Result/Zoom';
+import zoom from '../../datas/zoom';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
@@ -131,14 +132,16 @@ console.log(score)
         }
 
         bottomPage =
-        <div className={styles.detailledResult}>
-            <h3>COMPARAISON DES STATUTS</h3>
-            <div>
-                <Comparaisonstatus callStatus={callStatus} />
-                <Zoom />
+            <div className={styles.detailledResult}>
+                <h3>COMPARAISON DES STATUTS</h3>
+                <div>
+                    <Comparaisonstatus callStatus={callStatus} />
+                </div>
+                <div className={styles.faq}>
+                    {isOpen ? (<Selectedstatus {...selection} />) : null}
+                    <Zoom {...zoom} />
+                </div>
             </div>
-            { isOpen ? ( <Selectedstatus {...selection} /> ) : null }
-        </div>
     }
 
     return (
@@ -173,7 +176,7 @@ console.log(score)
                     <Graph />
                     <Histogram data={histogramData} />
                 </div>
-                {bottomPage} 
+                {bottomPage}
             </div>
         </div>
     )

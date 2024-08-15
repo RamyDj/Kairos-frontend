@@ -138,7 +138,7 @@ function TableStatus() {
                             <td><FontAwesomeIcon icon={statut[0].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut[0].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut[0].status_id.cotisation_percentage}</td>
                         </tr>
                         <tr>
@@ -207,7 +207,7 @@ function TableStatus() {
                             <td><FontAwesomeIcon icon={statut[1].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut[1].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut[0].status_id.cotisation_percentage}</td>
                             <td>{statut[1].status_id.cotisation_percentage}</td>
                         </tr>
@@ -287,7 +287,7 @@ function TableStatus() {
                             <td><FontAwesomeIcon icon={statut[2].status_id.discharged_taxes ? faSquareCheck : faXmark} style={statut[2].status_id.discharged_taxes ? iconStyle : iconStyle2} className={styles.icon} /></td>
                         </tr>
                         <tr>
-                            <td className={styles.firstTD}>Taux de cotisation</td>
+                            <td className={styles.firstTD}>Imposition</td>
                             <td>{statut[0].status_id.cotisation_percentage}</td>
                             <td>{statut[1].status_id.cotisation_percentage}</td>
                             <td>{statut[2].status_id.cotisation_percentage}</td>
