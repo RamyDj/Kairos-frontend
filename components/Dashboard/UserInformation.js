@@ -101,7 +101,7 @@ function UserInformation() {
             }).then(response => response.json())
             .then(data => {
                 if(data.result){
-                    dispatch(userInfo(logout()))
+                    dispatch(logout())
                     router.push('/delete-confirm')
                 }
             })

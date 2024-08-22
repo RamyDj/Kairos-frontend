@@ -49,19 +49,9 @@ function SignIn() {
                     name: data.user.name, 
                     firstname: data.user.firstname }))
                 if (data.user.skills.length >=1) {
-                    dispatch(userSkill({ 
-                        skills: { 
-                            legal: data.user.skills[0].legalScore, 
-                            commerce: data.user.skills[0].commerceScore 
-                        } 
-                    }));
+                    dispatch(userSkill({ legal: data.user.skills[0].legalScore, commerce: data.user.skills[0].commerceScore }))
                 } else {
-                    dispatch(userSkill({ 
-                        skills: { 
-                            legal: 0, 
-                            commerce: 0 
-                        } 
-                    }))
+                    dispatch(userSkill({legal: 0, commerce: 0 }))
                 }
                 if (Object.keys(search).length === 0) {                
                     router.push('/dashboard')
