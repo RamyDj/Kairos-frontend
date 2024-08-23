@@ -1,10 +1,10 @@
-.noResultPage{
+.noResultPage {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.noResultSentence{
+.noResultSentence {
   margin-top: 7vh;
 }
 
@@ -33,6 +33,7 @@
   width: 90%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .mapResult {
@@ -57,13 +58,11 @@
   border-radius: 25px;
 }
 
-
-
-.map{
-    height: 90%;
-    width: 90%;
-    margin-bottom: 2px;
-  }
+.map {
+  height: 90%;
+  width: 90%;
+  margin-bottom: 2px;
+}
 
 .companiesNb {
   width: 90%;
@@ -94,12 +93,12 @@
   width: 100%;
 }
 
-.caGraph canvas{
- width: 100% !important;
- height: auto !important;
+.caGraph canvas {
+  width: 100% !important;
+  height: auto !important;
 }
 
-.details{
+.details {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -107,7 +106,7 @@
   align-items: center;
 }
 
-.ad{
+.ad {
   text-decoration: none;
   width: 120px;
   height: 40px;
@@ -140,17 +139,80 @@
   overflow-wrap: break-word;
 }
 
-.caGraph{
+.caGraph {
   width: 50%;
   padding: 25px;
 }
 
-.histo{
+.histo {
   width: 50%;
   padding: 25px;
-
 }
+
 .faq {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
+}
+/* ::::::::::::::::::::::::::::::::RESPONSIVE :::::::::::::::::::::::::::::::::::::::::::::*/
+@media (max-width: 1200px) {
+  .firstResult {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .mapResult,
+  .showResult {
+      width: 100%;
+      height: 45vh;
+      margin-bottom: 20px;
+  }
+
+  .mapResult {
+      min-width: 100%;
+      height: 45vh;
+  }
+
+  .showResult {
+      min-width: 100%;
+      overflow-y: auto;
+      height: 45vh;
+  }
+
+  .allGraphs {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .caGraph,
+  .histo {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .detailledResult {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .score {
+      font-size: 35px;
+  }
+
+  .mapResult,
+  .showResult {
+      width: 100%;
+      height: 40vh;
+  }
+
+  .caGraph,
+  .histo {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .details {
+      margin-top: 20px;
+  }
+
 }

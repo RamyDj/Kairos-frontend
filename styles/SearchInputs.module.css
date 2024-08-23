@@ -76,3 +76,23 @@
     text-underline-offset: 3px;
     cursor: pointer;
 }
+/* ::::::::::::::::::::::::::::::::RESPONSIVE :::::::::::::::::::::::::::::::::::::::::::::*/
+@media (max-width: 1200px) {
+    .formContainer{
+        width: 100%;
+    }
+
+    .form input{
+        width: 40vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .formContainer{
+        width: 100%;
+    }
+
+    .form input{
+        width: 40vw;
+    }
+}
