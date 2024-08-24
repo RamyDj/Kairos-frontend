@@ -13,6 +13,8 @@ function QuizPage(){
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.value);
     console.log(user)
+
+    const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
       
 
   // const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
@@ -64,7 +66,7 @@ function QuizPage(){
       commerceScore: Math.floor(score.commerceScore)
     }
 
-    fetch(`http://localhost:3000/dashboard/save-scores`, {
+    fetch(`${url}/dashboard/save-scores`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
