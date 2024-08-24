@@ -154,3 +154,12 @@
   display:flex;
   justify-content: space-evenly;
 }
+
+.bottomPageStyle {
+  width: 100%;
+}
+
+.statusTab {
+  display: flex;
+  justify-content: center;
+}

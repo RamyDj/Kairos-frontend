@@ -139,9 +139,10 @@ console.log(score)
         }
 
         bottomPage =
-            <div className={styles.detailledResult}>
+            <div className={styles.bottomPageStyle}>
                 <h3>COMPARAISON DES STATUTS</h3>
-                <div>
+                <div className={styles.statusTab}
+                >
                     <Comparaisonstatus callStatus={callStatus} />
                 </div>
                 <div className={styles.faq}>
