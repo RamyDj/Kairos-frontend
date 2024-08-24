@@ -74,7 +74,8 @@ function QuizPage(){
       .then(data => {
         console.log(data)
           if(data.result) {
-            dispatch(userSkill({ skills: { legal: roundedScore.legalScore, commerce: roundedScore.commerceScore } }))
+            dispatch(userSkill({ legal: roundedScore.legalScore, commerce: roundedScore.commerceScore }));
+            console.log(user)
             router.push('/dashboard')
           }
       })

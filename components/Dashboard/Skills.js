@@ -13,15 +13,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function Skills() {
     const router = useRouter();
     const user = useSelector((state) => state.user.value);
-    console.log(user)
+    
 
-    const legalScore = user.skills.legal;
-    const commerceScore = user.skills.commerce;
-    // const legalScore = 80;
-    // const commerceScore = 20;
-
-    const hasCompletedQuiz = legalScore ===  0 && commerceScore === 0;
+    const legalScore = (user.skills && user.skills.length === 1) ? user.skills[0].legal : 0;
+    const commerceScore = (user.skills && user.skills.length === 1) ? user.skills[0].commerce : 0;    
+    const hasCompletedQuiz = (legalScore > 0 && commerceScore > 0);
+   
     console.log(hasCompletedQuiz)
+  
 
     const goToQuizz = () => {
         router.push('/quiz');
@@ -132,7 +131,7 @@ function Skills() {
         <div className={styles.skillsContainer}>
             <h2 className={styles.titleSkill}>Mes Compétences</h2>
             <div className={styles.skillsInfo}>
-                {hasCompletedQuiz ? (
+                {!hasCompletedQuiz ? (
                     <>
                         <p>Faire le quiz pour évaluer vos compétences en droit et commerce.</p>
                         <button onClick={()=>goToQuizz()}>Commencer le quizz</button>

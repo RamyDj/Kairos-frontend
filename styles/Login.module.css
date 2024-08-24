@@ -8,3 +8,10 @@
     border-bottom-left-radius: 25vw;
     border-bottom-right-radius: 25vw;
   }
+
+  @media (max-width: 900px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+}
