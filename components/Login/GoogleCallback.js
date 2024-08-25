@@ -38,14 +38,9 @@ function GoogleCallback() {
               email: data.email,
             }));
             // Rediriger vers le tableau de bord
-            window.location.href = 'https://kairos-frontend-six.vercel.app/dashboard';
           }
         })
-        .catch(error => {
-          // Gérer les erreurs de réseau ici
-          console.error('Fetch error:', error);
-          window.location.href = '/'; // Redirige en cas d'erreur
-        });
+
     };
 
     fetchUserData();
