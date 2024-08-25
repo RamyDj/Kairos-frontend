@@ -18,7 +18,6 @@ function GoogleCallback() {
           if (data.error) {
             // Gérer les erreurs d'authentification ici
             console.error('Authentication failed:', data.error);
-            window.location.href = '/'; // Redirige en cas d'erreur
           } else {
 
             //Met à jour le token utilisateur
@@ -44,7 +43,6 @@ function GoogleCallback() {
         .catch(error => {
           // Gérer les erreurs de réseau ici
           console.error('Fetch error:', error);
-          window.location.href = '/'; // Redirige en cas d'erreur
         });
     };
 
