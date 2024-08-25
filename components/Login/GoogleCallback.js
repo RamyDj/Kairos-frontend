@@ -9,7 +9,7 @@ function GoogleCallback() {
 
   useEffect(() => {
     const fetchUserData = () => {
-      fetch(`https://kairos-backend.vercel.app/users/api/me`, { 
+      fetch(`${url}/users/api/me`, { 
         method: 'GET',
         credentials: 'include',
       })
