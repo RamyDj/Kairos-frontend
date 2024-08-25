@@ -40,10 +40,7 @@ function GoogleCallback() {
             window.location.href = 'https://kairos-frontend-six.vercel.app/dashboard';
           }
         })
-        .catch(error => {
-          // Gérer les erreurs de réseau ici
-          console.error('Fetch error:', error);
-        });
+
     };
 
     fetchUserData();
