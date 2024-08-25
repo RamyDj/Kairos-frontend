@@ -5,9 +5,11 @@ import { userInfo } from '../../reducers/user';
 function GoogleCallback() {
   const dispatch = useDispatch();
 
+  const url = process.env.NEXT_PUBLIC_BACK_ADDRESS
+
   useEffect(() => {
     const fetchUserData = () => {
-      fetch('http://localhost:3000/users/api/me', { // Met à jour l'URL en fonction de ton API
+      fetch(`${url}/users/api/me`, { // Met à jour l'URL en fonction de ton API
         method: 'GET',
         credentials: 'include', // Assure-toi que les cookies sont envoyés
       })
@@ -20,7 +22,7 @@ function GoogleCallback() {
           } else {
 
             //Met à jour le token utilisateur
-            fetch('http://localhost:3000/users/update', {
+            fetch(`${url}/users/update`, {
               method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({token: data.token, email: data.email})
@@ -36,7 +38,7 @@ function GoogleCallback() {
               email: data.email,
             }));
             // Rediriger vers le tableau de bord
-            window.location.href = 'http://localhost:3001/dashboard';
+            window.location.href = 'https://kairos-frontend-six.vercel.app/dashboard';
           }
         })
         .catch(error => {

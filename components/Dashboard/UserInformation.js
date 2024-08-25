@@ -94,7 +94,7 @@ function UserInformation() {
 
     //Delete User
     const handleDelete = () => {
-        fetch('http://localhost:3000/users/',{
+        fetch(`${url}/users/`,{
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token : userReducer.token}),
