@@ -139,8 +139,8 @@ console.log(score)
         }
 
         bottomPage =
-            <div className={styles.detailledResult}>
-                <h3>COMPARAISON DES STATUTS</h3>
+            <div className={styles.detailledTable}>
+                <h3 className={styles.h3}>COMPARAISON DES STATUTS</h3>
                 <div>
                     <Comparaisonstatus callStatus={callStatus} />
                 </div>
@@ -178,7 +178,7 @@ console.log(score)
             </div>
 
             <div className={styles.detailledResult}>
-                <h3>DETAILS DE MA RECHERCHE</h3>
+                <h3 className={styles.h3}>DETAILS DE LA RECHERCHE</h3>
                 <div className={styles.allGraphs}>
                     <div className={styles.caGraph}>
                 <h3>Evolution du chiffre d'affaire moyen par année</h3>

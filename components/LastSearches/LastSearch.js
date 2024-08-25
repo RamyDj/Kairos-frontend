@@ -10,7 +10,7 @@ function LastSearch(props) {
         <div className={styles.card}>
         <p>Activité : </p>
         <h3>{props.activity}</h3>
-        <p>Zone géographique : </p>
+        <p>Commune : </p>
         <h3>{props.area}</h3>
         <p>recherché le : </p>
         <h3>{props.date}</h3>

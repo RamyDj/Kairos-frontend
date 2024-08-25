@@ -64,6 +64,12 @@
   margin-bottom: 2px;
 }
 
+.h3{
+  border-bottom: 3px solid #E6E6E6;
+  font-size: 30px;
+  color : #163050;
+}
+
 .companiesNb {
   width: 90%;
 }
@@ -77,8 +83,10 @@
 }
 
 .detailledResult {
-  padding: 2%;
-  width: 80%;
+  width: 90%;
+}
+.detailledTable{
+  width : 100%;
 }
 
 .allGraphs {

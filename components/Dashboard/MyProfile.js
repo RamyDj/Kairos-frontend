@@ -23,7 +23,7 @@ function MyProfile(){
     
     return(
         <div className={styles.myProfileContainer}>
-            <h2>Mon Profil</h2>
+            <h2 className={styles.titleMyInfo}>Mon Profil</h2>
             <div className={styles.btnParams}>
                 <button onClick={()=>handleRedirect()}>Mes informations</button>
                 <button onClick={() => handleDisconnect()}>Déconnexion</button>

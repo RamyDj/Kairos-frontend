@@ -135,7 +135,7 @@ function Search() {
     <div className={styles.container}>
         <div className={styles.searchContainer}>
             <p className={styles.text}>“C’est quoi le statut d’entrepreneur individuel? Est ce que j’ai des concurrents?”<br></br>
-                <span className={styles.title}>Difficile de se lancer?<br></br>KAIROS est fait pour vous!</span></p>
+                <span className={styles.titleText}>Difficile de se lancer?<br></br><span className={styles.title}>KAIROS </span>est fait pour vous!</span></p>
         </div>
         <div className={styles.formContainer}>
         <Modal 

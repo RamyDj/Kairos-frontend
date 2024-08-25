@@ -4,7 +4,9 @@
 
 
 .searchesListTitle{
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid #E6E6E6;
+    font-size: 30px;
+    color : #163050;
 }
 
 .SearchesContainer{
