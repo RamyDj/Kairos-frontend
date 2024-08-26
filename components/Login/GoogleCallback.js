@@ -15,6 +15,7 @@ function GoogleCallback() {
       })
         .then(response => response.json())
         .then(data => {
+          console.log(data)
           if (data.error) {
             // Gérer les erreurs d'authentification ici
             console.error('Authentication failed:', data.error);
