@@ -100,3 +100,12 @@
     text-underline-offset: 3px;
     cursor: pointer;
 }
+.titleText{
+    font-size: 33px;
+}
+.text{
+    font-size: 26px;
+}
+.title{
+    color : #163050;
+}

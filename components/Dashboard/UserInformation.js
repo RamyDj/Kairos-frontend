@@ -190,12 +190,15 @@ function UserInformation() {
                 setNewFirstname('')
                 setNewName('')
                 setNewPassword('')
+                setConfirmPassword('')
+                setOldPassword('')
 
                 setUserFirstname(data.user.firstname)
                 setUserName(data.user.name)
 
                 setIsEditingName(false)
                 setIsEditingFirstname(false)
+                setIsEditingPassword(false)
             }
         })
 

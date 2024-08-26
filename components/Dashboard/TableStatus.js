@@ -66,9 +66,11 @@ function TableStatus() {
         statut2 = []
         return (
             <div className={styles.statusContainer}>
-                <a href="/">Aucuns statuts correspondants à votre recherche à afficher</a>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                <p>Aucun statuts correspondants à votre dernière recherche</p>
+                <div className={styles.linksContainer}>
+                    <a href="/allstatus">Acceder à tous les status</a><br />
+                    <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                </div>
             </div>
         )
     }
@@ -147,8 +149,10 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                <div className={styles.linksContainer}>
+                    <a href="/allstatus">Acceder à tous les status</a><br />
+                    <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                </div>
             </div>
         )
     }
@@ -218,8 +222,10 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
+                <div className={styles.linksContainer}>
+                <a href="/allstatus">Acceder à tous les status</a><br />
                 <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                </div>
             </div>
         )
     }
@@ -300,8 +306,10 @@ function TableStatus() {
                         </tr>
                     </tbody>
                 </table>
-                <a href="/allstatus">Acceder à tous les status</a>
-                <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                <div className={styles.linksContainer}>
+                    <a href="/allstatus">Acceder à tous les status</a><br />
+                    <Link href="/lastsearches">Accéder à toutes mes recherches</Link>
+                </div>
             </div>
         )
     }

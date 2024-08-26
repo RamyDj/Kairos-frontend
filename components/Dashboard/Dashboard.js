@@ -78,13 +78,13 @@ function Dashboard() {
                 <Skills />
             </div>
             <div className={styles.col2}>
-                <h2>Ma Dernière recherche</h2>
+                <h2 className={styles.titleh2}>Ma Dernière recherche</h2>
                 <LastSearch />
-                <h2>Nouvelle Recherche</h2>
+                <h2 className={styles.titleh2}>Nouvelle Recherche</h2>
                 <SearchInputs />
             </div>
             <div className={styles.col3}>
-                <h2>Mes Derniers Statuts</h2>
+                <h2 className={styles.titleh2}>Mes Derniers Statuts</h2>
                 <TableStatus />
             </div>
         </div>
