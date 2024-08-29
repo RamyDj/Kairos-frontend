@@ -27,7 +27,7 @@ function Result() {
     const [isOpen, setIsOpen] = useState(false);
     console.log(`statut ${isOpen}`)
 
-    console.log(selection)
+   // console.log(selection)
 
     // Variable search qui va enregistrer tout le reducer ou juste une recherche si on arrive sur la page avec son id en router.query
 
@@ -36,7 +36,7 @@ function Result() {
     const { searchid } = router.query
 
     const allSearches = useSelector((state) => state.search.value)
-    console.log(allSearches)
+    //console.log(allSearches)
 
     if (searchid !== "companies") {
         search = allSearches.filter(e => e._id == searchid)
@@ -54,7 +54,7 @@ function Result() {
 
         // Si un utilisateur arrive sur la page avec un token et une recherche non enregistrée, fetch de la route pour enregistrer celle ci
 
-        if (user.token && allSearches[i] !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !allSearches[i]?._id && search[i]) {
+        if (user.token && allSearches[i] !== "Aucune entreprise trouvée pour ce type d'activité dans ce secteur." && !allSearches[i]?._id /* && search[i] */) {
             fetch(`${url}/results/registerSearch`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
