@@ -28,7 +28,7 @@ function App({ Component, pageProps }) {
         <PersistGate persistor={persistor}>
         <Head>
           <title>Kairos</title>
-          <meta name="description" content="Kairos vous aide à mieux prévoir votre projet entreprenarial" lang="fr"/>
+          <meta name="description" content="Kairos vous aide à mieux prévoir votre projet entreprenarial" />
         </Head>
         {<Header />}
         <Component {...pageProps} />
