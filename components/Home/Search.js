@@ -82,11 +82,11 @@ function Search() {
             })
         .then(response=>response.json())
         .then(data=> {
-            console.log(data)
+            //console.log(data)
             dispatch(addSearch(data.result))
             // À rechecker en faisant un console log de user dans result
             if (data.searchForeignKey){dispatch(addIdOfASearch(data.searchForeignKey))}
-            console.log(user)
+            //console.log(user)
             router.push('/result/companies')
         })
     }
@@ -116,7 +116,7 @@ function Search() {
         if (characters.length<3){return setIsHelpVisible(false)}
         const regex = new RegExp(characters, 'i')
         const isThereAnyMatch = activitiesList.some(e=> regex.test(e.value))
-        console.log(isThereAnyMatch)
+        //console.log(isThereAnyMatch)
         !isThereAnyMatch ? setIsHelpVisible(true) : setIsHelpVisible(false)
     }
 
